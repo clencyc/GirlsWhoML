@@ -1,75 +1,80 @@
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from '../components/shared/Header';
+import Footer from '../components/shared/Footer';
 
 export default function AboutUs() {
   return (
-    <div className="relative w-full h-[2937px] bg-white">
+    <div className="relative w-[1440px] h-[2937px] bg-[#FFFFFF]">
       <Header />
 
-      {/* Frame 124 - Main Content */}
-      <div className="absolute w-[1441px] h-[2937px] left-[calc(50%-1441px/2+0.5px)] top-[156px]">
+      {/* topSection - exact Figma specs */}
+      <section className="absolute w-[1440px] h-[1023px] left-0 top-[156px]">
+        {/* content */}
+        <div className="flex flex-col items-center p-0 gap-[93px] absolute w-[1065px] h-[732px] left-[188px] top-[146px]">
 
-        {/* Top Section */}
-        <section className="w-full h-[1023px] relative">
-          <div className="absolute w-[1065px] h-[732px] left-[188px] top-[146px] flex flex-col items-center gap-[93px]">
-            {/* About us heading */}
-            <h1 className="w-[915px] h-[87px] font-medium text-[72px] leading-[87px] text-center -tracking-[0.04em] text-black">
-              About us
-            </h1>
+          {/* About us heading */}
+          <h1 className="w-[915px] h-[87px] font-['Inter'] font-medium text-[72px] leading-[87px] text-center tracking-[-0.04em] text-[#000000] order-0">
+            About us
+          </h1>
 
-            {/* Description */}
-            <p className="w-[1065px] h-[273px] font-medium text-[32px] leading-[39px] text-center -tracking-[0.04em] text-black">
-              Harangè is collective that is born out of the necessity to capture women's ambitions, dreams and aspirations of their AI-mediated futures. Led by GirlsWhoML and supported by Women AI Collective and Oeuvre, it took shape as an interactive installation at the Mozilla Festival 2025 and has since taken a life of its own. Harangè - as the Korean word means to fly skyward - makes space for people to reflect, reframe and reimagine our collective digital futures.
-            </p>
+          {/* Description */}
+          <p className="w-[1065px] h-[273px] font-['Inter'] font-medium text-[32px] leading-[39px] text-center tracking-[-0.04em] text-[#000000] order-1">
+            Harangè is collective that is born out of the necessity to capture women's ambitions, dreams and aspirations of their AI-mediated futures. Led by GirlsWhoML and supported by Women AI Collective and Oeuvre, it took shape as an interactive installation at the Mozilla Festival 2025 and has since taken a life of its own. Harangè - as the Korean word means to fly skyward - makes space for people to reflect, reframe and reimagine our collective digital futures.
+          </p>
 
-            {/* Logos */}
-            <div className="flex items-center gap-[60px] w-[863px] h-[186px]">
-              {/* Harangè Logo */}
-              <div className="flex items-center gap-3 w-[189px] h-[128px]">
-                <svg width="128" height="128" viewBox="0 0 128 128" fill="none" className="flex-shrink-0">
-                  <circle cx="64" cy="64" r="64" fill="#261033"/>
-                  <rect x="40" y="32" width="16" height="16" fill="#D89EFA"/>
-                  <rect x="40" y="48" width="16" height="16" fill="#D89EFA"/>
-                  <rect x="40" y="64" width="16" height="16" fill="#D89EFA"/>
-                  <rect x="56" y="64" width="16" height="16" fill="#D89EFA"/>
-                  <rect x="72" y="64" width="16" height="16" fill="#D89EFA"/>
-                  <rect x="40" y="80" width="16" height="16" fill="#D89EFA"/>
-                  <rect x="72" y="80" width="16" height="16" fill="#D89EFA"/>
-                  <rect x="56" y="48" width="16" height="16" fill="#D89EFA"/>
-                  <rect x="72" y="48" width="16" height="16" fill="#D89EFA"/>
-                </svg>
-                <span className="font-alata text-[60px] leading-[20px] -tracking-[0.05em] text-[#261033]">harangè</span>
-              </div>
+          {/* logos - exact Figma specs */}
+          <div className="flex flex-row items-center p-0 gap-[60px] w-[863px] h-[186px] order-2">
 
-              {/* X separator */}
-              <span className="w-[32px] h-[32px] font-medium text-[32px] leading-[32px] text-black">×</span>
+            {/* Frame 156 - Harangè Logo */}
+            <div className="flex flex-col items-center p-0 gap-[12px] w-[189px] h-[186px] order-0">
+              <img src="/images/about/logo1.png" alt="Harangè logo" className="w-full h-full object-contain" />
+            </div>
 
-              {/* Oeuvre logo placeholder */}
-              <div className="w-[196px] h-[186px] bg-[#D9D9D9] rounded-[20px]"></div>
+            {/* image 1 - x separator */}
+            <div className="w-[40px] h-[40px] order-1 flex items-center justify-center relative">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="8" y1="8" x2="32" y2="32" stroke="#000000" strokeWidth="1.5" strokeLinecap="round"/>
+                <line x1="32" y1="8" x2="8" y2="32" stroke="#000000" strokeWidth="1.5" strokeLinecap="round"/>
+              </svg>
+            </div>
 
-              {/* X separator */}
-              <span className="w-[32px] h-[32px] font-medium text-[32px] leading-[32px] text-black">×</span>
+            {/* Oeuvre Logo */}
+            <div className="w-[196px] h-[186px] order-2">
+              <img src="/images/about/logo2.png" alt="Oeuvre logo" className="w-full h-full object-contain" />
+            </div>
 
-              {/* Partner logo placeholder */}
-              <div className="w-[174px] h-[174px] bg-[#D9D9D9] rounded-[20px]"></div>
+            {/* image 2 - x separator */}
+            <div className="w-[40px] h-[40px] order-3 flex items-center justify-center relative">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="8" y1="8" x2="32" y2="32" stroke="#000000" strokeWidth="1.5" strokeLinecap="round"/>
+                <line x1="32" y1="8" x2="8" y2="32" stroke="#000000" strokeWidth="1.5" strokeLinecap="round"/>
+              </svg>
+            </div>
+
+            {/* GirlsWhoML Logo */}
+            <div className="w-[174px] h-[174px] order-4">
+              <img src="/images/about/logo3.png" alt="GirlsWhoML logo" className="w-full h-full object-contain" />
             </div>
           </div>
-        </section>
-
-        {/* Bottom Section - Quote */}
-        <section className="absolute w-full h-[977px] left-0 top-[1179px] bg-[#F5F3ED] flex flex-col items-center justify-center gap-20 py-[200px]">
-          <p className="w-[1077px] h-[420px] font-medium text-[58px] leading-[70px] text-center -tracking-[0.04em] text-black">
-            "If we don't get women and people of colour at the table – real technologists doing the real work – we will bias systems. Trying to reverse that a decade or two from now will be so much more difficult, if not close to impossible."
-          </p>
-          <p className="w-[529px] h-[77px] font-medium text-[28px] leading-[34px] text-center -tracking-[0.04em] text-black opacity-50">
-            Melinda Gates, Co-chair Bill & Melinda Gates Foundation
-          </p>
-        </section>
-
-        {/* Footer */}
-        <div className="absolute w-full top-[2156px]">
-          <Footer />
         </div>
+      </section>
+
+      {/* bottomSection - exact Figma specs */}
+      <section className="flex flex-col items-center p-[200px_0px] gap-[80px] absolute w-[1440px] h-[977px] left-[calc(50%-1440px/2+1px)] top-[1179px] bg-[#F5F3ED]">
+
+        {/* Quote */}
+        <p className="w-[1077px] h-[420px] font-['Inter'] font-medium text-[58px] leading-[70px] text-center tracking-[-0.04em] text-[#000000] order-0">
+          "If we don't get women and people of colour at the table – real technologists doing the real work – we will bias systems. Trying to reverse that a decade or two from now will be so much more difficult, if not close to impossible."
+        </p>
+
+        {/* Attribution */}
+        <p className="w-[529px] h-[77px] font-['Inter'] font-medium text-[28px] leading-[34px] text-center tracking-[-0.04em] text-[#000000] opacity-50 order-1">
+          Melinda Gates, Co-chair Bill & Melinda Gates Foundation
+        </p>
+      </section>
+
+      {/* footer */}
+      <div className="absolute w-[1441px] h-[781px] left-[-1px] top-[2156px]">
+        <Footer />
       </div>
     </div>
   );

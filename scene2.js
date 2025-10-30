@@ -28,12 +28,27 @@ const TILE_GRADIENTS = [
       const cardsContainer = document.getElementById('cardsContainer');
       const slots = Array.from(document.querySelectorAll('.slot'));
       const collectionCountEl = document.getElementById('collectionCount');
+      const body = document.body;
       const MAX = slots.length;
       let collected = [];
 
       
 
       function updateUI(){
+        if (collected.length === 4) {
+            const div = document.createElement('div');
+            div.className = "fixed bottom-8 left-1/2 -translate-x-1/2 p-6 rounded-2xl backdrop-blur-lg border border-[var(--accent-glow)]/50 bg-gradient-to-r from-[var(--accent-glow)]/20 to-[var(--deep-lilac)]/20 shadow-2xl max-w-md text-center";
+            div.style.opacity = "1";
+            div.style.transform = "none";
+            div.innerHTML = `
+                <div style="box-shadow: rgba(199, 184, 255, 0.573) 0px 0px 47.2243px;">
+                    <p class="text-[var(--soft-light)] mb-2">Collection Complete! ✨</p>
+                    <p class="text-sm text-[var(--water-silver)] opacity-80 mb-4">You've collected 4 resonant reflections</p>
+                    <button class="w-full px-6 py-3 rounded-xl backdrop-blur-lg border border-[var(--accent-glow)]/60 bg-[var(--accent-glow)]/20 text-[var(--soft-light)] hover:bg-[var(--accent-glow)]/30 hover:border-[var(--accent-glow)]/80 transition-all duration-300 hover:shadow-lg hover:shadow-[var(--accent-glow)]/30" tabindex="0" style="transform: none;">View Your Collection</button>
+                </div>
+            `;
+            body.appendChild(div);
+        }
           collectionCountEl.textContent = `${collected.length}/${MAX}`;
           slots.forEach((s, i) => {
               if (collected[i]) {
@@ -44,7 +59,9 @@ const TILE_GRADIENTS = [
                   s.textContent = '';
               }
           });
+          
       }
+      
 
       
       function createCard(response, index){
@@ -129,6 +146,6 @@ const TILE_GRADIENTS = [
           }
       });
 
-      // Initialize UI
+     
       updateUI();
   })();

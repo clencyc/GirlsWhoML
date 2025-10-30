@@ -1,6 +1,6 @@
 """
 TASK 2 – SERIES ID GENERATOR
-Creates sequential IDs like H-20250001 and stores counter locally.
+Creates sequential IDs like H-20250001 and stores the counter locally.
 """
 
 import json, os
@@ -18,3 +18,4 @@ def generate_series_id(counter_file="output/id_counter.json"):
 
 if __name__ == "__main__":
     generate_series_id()
+

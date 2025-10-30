@@ -1,0 +1,32 @@
+:root {
+    --soft-light: #e6f0ff;
+    --water-silver: #a0b8d4;
+    --mist-blue: #8fbfe0;
+    --deep-lilac: #c7b8ff;
+    --accent-glow: #8fbfe0;
+}
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: #0a0e1a;
+    color: var(--soft-light);
+}
+
+/* card layout */
+.grid-wrap { padding: 2rem; max-width: 1200px; margin: 0 auto; }
+.cards { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+
+.card { perspective: 1200px; height: 16rem; cursor: pointer; position: relative; }
+.card-inner { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform .65s ease; }
+.card.is-flipped .card-inner { transform: rotateY(180deg); }
+.face { position: absolute; inset: 0; border-radius: 12px; padding: 1rem; backface-visibility: hidden; display:flex; flex-direction:column; justify-content:space-between; box-shadow: 0 10px 30px rgba(0,0,0,.45); }
+.face.front { transform: none; }
+.face.back { transform: rotateY(180deg); }
+.tap-hint { font-size: .8rem; opacity: .85; color: var(--water-silver); }
+
+.collect-btn { width: 100%; padding: .65rem; border-radius: 10px; border: 1px solid rgba(255,255,255,.06); background: rgba(255,107,107,.08); color: var(--soft-light); font-weight:600; cursor:pointer; }
+.card.collected { opacity: .75; }
+.collection-bar { display:flex; gap:.5rem; align-items:center; justify-content:center; }
+.slot { width:40px; height:40px; border-radius:8px; border:2px solid rgba(143,191,224,.3); display:flex; align-items:center; justify-content:center; background:transparent; color:var(--soft-light); font-weight:600; }
+.slot.filled { background: rgba(143,191,224,.18); border-color: rgba(143,191,224,.6); }
+.collection-count { color: var(--mist-blue); font-size:.9rem; margin-left:.75rem; }

@@ -19,3 +19,4 @@ def generate_series_id(counter_file="output/id_counter.json"):
 if __name__ == "__main__":
     generate_series_id()
 
+

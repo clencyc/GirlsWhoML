@@ -1,0 +1,401 @@
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Digital Souvenir</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .visuals-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .visuals-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .visual-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .mosaic-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .mosaic-item {
+            aspect-ratio: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .mosaic-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .mosaic-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .water-tank-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .water-tank-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .water-tank {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease;
+        }
+        
+        .water-tank:hover {
+            transform: scale(1.03);
+        }
+        
+        .reflection-questions {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .question {
+            margin-bottom: 20px;
+        }
+        
+        .question:last-child {
+            margin-bottom: 0;
+        }
+        
+        .question-text {
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .response-input {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .response-input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+        }
+        
+        .response-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #FF416C, #FF4B2B);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .visual-description {
+            text-align: center;
+            margin-top: 15px;
+            font-style: italic;
+            opacity: 0.8;
+        }
+        
+        .save-indicator {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Your Digital Souvenir</h1>
+            <p class="subtitle">Treasure these memories and reflections of your journey with us</p>
+        </header>
+        
+        <div class="visuals-container">
+            <!-- Digital Souvenir Mosaic -->
+            <div class="visual-card">
+                <h2 class="card-title">Digital Souvenir</h2>
+                <div class="mosaic-container">
+                    <div class="mosaic-item" style="background: linear-gradient(135deg, #ff9a9e, #fad0c4);">
+                        <!-- In a real implementation, this would be an actual image -->
+                        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#333;font-weight:bold;">Memory #1</div>
+                    </div>
+                    <div class="mosaic-item" style="background: linear-gradient(135deg, #a1c4fd, #c2e9fb);">
+                        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#333;font-weight:bold;">Memory #2</div>
+                    </div>
+                    <div class="mosaic-item" style="background: linear-gradient(135deg, #ffecd2, #fcb69f);">
+                        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#333;font-weight:bold;">Memory #3</div>
+                    </div>
+                    <div class="mosaic-item" style="background: linear-gradient(135deg, #84fab0, #8fd3f4);">
+                        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#333;font-weight:bold;">Memory #4</div>
+                    </div>
+                </div>
+                <p class="visual-description">A 2×2 mosaic of your unique digital journey</p>
+            </div>
+            
+            <!-- Personal Water Tank Screenshot with Reflection Questions -->
+            <div class="visual-card">
+                <h2 class="card-title">Your Personal Water Tank & Reflections</h2>
+                <div class="water-tank-container">
+                    <div class="water-tank-visual">
+                        <!-- In a real implementation, this would be the actual screenshot -->
+                        <div class="water-tank" style="width:300px;height:300px;background:linear-gradient(135deg, #4facfe, #00f2fe);border-radius:10px;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;font-size:1.2rem;flex-direction:column;">
+                            Personal Water Tank Design<br>
+                            <span style="font-size:0.9rem;margin-top:10px;display:block;">Capacity: 5,000L</span>
+                            <div style="width:80%;height:20px;background:rgba(255,255,255,0.3);border-radius:10px;margin-top:15px;overflow:hidden;">
+                                <div style="width:75%;height:100%;background:rgba(255,255,255,0.7);"></div>
+                            </div>
+                            <span style="font-size:0.8rem;margin-top:5px;">75% Full</span>
+                        </div>
+                    </div>
+                    
+                    <div class="reflection-questions">
+                        <div class="question">
+                            <div class="question-text">1. What word best describes how you feel after exploring our installation?</div>
+                            <input type="text" class="response-input" id="feeling-word" placeholder="Enter one word that captures your feeling...">
+                            <div class="save-indicator" id="save-indicator-1"></div>
+                        </div>
+                        
+                        <div class="question">
+                            <div class="question-text">2. What is one insight/learning/reflection that you'll take away with you?</div>
+                            <textarea class="response-input" id="takeaway-insight" rows="3" placeholder="Share your key insight or learning..."></textarea>
+                            <div class="save-indicator" id="save-indicator-2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="action-buttons">
+            <button class="btn btn-primary" id="download-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                    <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                </svg>
+                Download Souvenir & Reflections
+            </button>
+            <button class="btn btn-secondary" id="share-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                </svg>
+                Share on Social Media
+            </button>
+        </div>
+        
+        <div class="footer">
+            <p>Thank you for being part of our water conservation initiative</p>
+            <p>Your reflections help us understand the impact of our work</p>
+        </div>
+    </div>
+
+    <script>
+        // Simple animation for mosaic items
+        document.querySelectorAll('.mosaic-item').forEach((item, index) => {
+            item.style.animationDelay = `${index * 0.1}s`;
+            item.style.animation = `fadeIn 0.5s ease forwards`;
+        });
+        
+        // Auto-save functionality for reflection questions
+        const feelingInput = document.getElementById('feeling-word');
+        const insightInput = document.getElementById('takeaway-insight');
+        const saveIndicator1 = document.getElementById('save-indicator-1');
+        const saveIndicator2 = document.getElementById('save-indicator-2');
+        
+        let saveTimeout;
+        
+        function showSavedIndicator(indicatorElement) {
+            indicatorElement.textContent = "✓ Saved";
+            setTimeout(() => {
+                indicatorElement.textContent = "";
+            }, 2000);
+        }
+        
+        feelingInput.addEventListener('input', function() {
+            clearTimeout(saveTimeout);
+            saveTimeout = setTimeout(() => {
+                // In a real implementation, this would save to a database
+                localStorage.setItem('userFeeling', feelingInput.value);
+                showSavedIndicator(saveIndicator1);
+            }, 1000);
+        });
+        
+        insightInput.addEventListener('input', function() {
+            clearTimeout(saveTimeout);
+            saveTimeout = setTimeout(() => {
+                // In a real implementation, this would save to a database
+                localStorage.setItem('userInsight', insightInput.value);
+                showSavedIndicator(saveIndicator2);
+            }, 1000);
+        });
+        
+        // Load previously saved responses if they exist
+        window.addEventListener('load', function() {
+            const savedFeeling = localStorage.getItem('userFeeling');
+            const savedInsight = localStorage.getItem('userInsight');
+            
+            if (savedFeeling) {
+                feelingInput.value = savedFeeling;
+            }
+            
+            if (savedInsight) {
+                insightInput.value = savedInsight;
+            }
+        });
+        
+        // Button interactions
+        document.getElementById('download-btn').addEventListener('click', function() {
+            if (feelingInput.value && insightInput.value) {
+                alert('Your digital souvenir and reflections are being prepared for download. Thank you for sharing!');
+                // In a real implementation, this would generate a PDF or image with both visuals and reflections
+            } else {
+                alert('Please complete the reflection questions before downloading.');
+            }
+        });
+        
+        document.getElementById('share-btn').addEventListener('click', function() {
+            if (feelingInput.value && insightInput.value) {
+                alert('Sharing dialog would open with your visuals and reflections. In a real implementation, this would open share options.');
+            } else {
+                alert('Please complete the reflection questions before sharing.');
+            }
+        });
+        
+        // Add CSS for fadeIn animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
+

@@ -12,12 +12,12 @@ export default function AboutUs() {
         <div className="flex flex-col items-center p-0 gap-[93px] absolute w-[1065px] h-[732px] left-[188px] top-[146px]">
 
           {/* About us heading */}
-          <h1 className="w-[915px] h-[87px] font-['Inter'] font-medium text-[72px] leading-[87px] text-center tracking-[-0.04em] text-[#000000] order-0">
+          <h1 className="w-[915px] h-[87px] font-['Inter'] text-[72px] leading-[87px] text-center tracking-[-0.04em] text-[#000000] order-0" style={{fontWeight: 500}}>
             About us
           </h1>
 
           {/* Description */}
-          <p className="w-[1065px] h-[273px] font-['Inter'] font-medium text-[32px] leading-[39px] text-center tracking-[-0.04em] text-[#000000] order-1">
+          <p className="w-[1065px] h-[273px] font-['Inter'] text-[32px] leading-[39px] text-center tracking-[-0.04em] text-[#000000] order-1" style={{fontWeight: 500}}>
             Harangè is collective that is born out of the necessity to capture women's ambitions, dreams and aspirations of their AI-mediated futures. Led by GirlsWhoML and supported by Women AI Collective and Oeuvre, it took shape as an interactive installation at the Mozilla Festival 2025 and has since taken a life of its own. Harangè - as the Korean word means to fly skyward - makes space for people to reflect, reframe and reimagine our collective digital futures.
           </p>
 
@@ -62,12 +62,12 @@ export default function AboutUs() {
       <section className="flex flex-col items-center p-[200px_0px] gap-[80px] absolute w-[1440px] h-[977px] left-[calc(50%-1440px/2+1px)] top-[1179px] bg-[#F5F3ED]">
 
         {/* Quote */}
-        <p className="w-[1077px] h-[420px] font-['Inter'] font-medium text-[58px] leading-[70px] text-center tracking-[-0.04em] text-[#000000] order-0">
+        <p className="w-[1077px] h-[420px] font-['Inter'] text-[58px] leading-[70px] text-center tracking-[-0.04em] text-[#000000] order-0" style={{fontWeight: 500}}>
           "If we don't get women and people of colour at the table – real technologists doing the real work – we will bias systems. Trying to reverse that a decade or two from now will be so much more difficult, if not close to impossible."
         </p>
 
         {/* Attribution */}
-        <p className="w-[529px] h-[77px] font-['Inter'] font-medium text-[28px] leading-[34px] text-center tracking-[-0.04em] text-[#000000] opacity-50 order-1">
+        <p className="w-[529px] h-[77px] font-['Inter'] text-[28px] leading-[34px] text-center tracking-[-0.04em] text-[#000000] opacity-50 order-1" style={{fontWeight: 500}}>
           Melinda Gates, Co-chair Bill & Melinda Gates Foundation
         </p>
       </section>

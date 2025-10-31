@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Header from '../components/shared/Header';
 import Footer from '../components/shared/Footer';
 
@@ -44,6 +44,9 @@ export default function MosaicOfVoices() {
   const [showMore, setShowMore] = useState(false);
   const [tileColors, setTileColors] = useState([]); // Start with empty array
   const [isClient, setIsClient] = useState(false);
+  const [visibleTiles, setVisibleTiles] = useState(new Set());
+  const [hoveredTile, setHoveredTile] = useState(null);
+  const tileRefs = useRef({});
 
   // Generate colors only on client side to avoid hydration mismatch
   useEffect(() => {
@@ -51,8 +54,53 @@ export default function MosaicOfVoices() {
     setTileColors(generateRandomColors());
   }, []);
 
+  // Intersection observer for tile animations
+  useEffect(() => {
+    const observers = new Map();
+
+    const observerCallback = (entries, tileId) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setVisibleTiles(prev => new Set([...prev, tileId]));
+        }
+      });
+    };
+
+    // Create observers for each tile
+    for (let i = 0; i < 24; i++) {
+      const element = tileRefs.current[`tile-${i}`];
+      if (element) {
+        const observer = new IntersectionObserver(
+          (entries) => observerCallback(entries, `tile-${i}`),
+          { threshold: 0.3, rootMargin: '50px' }
+        );
+        observer.observe(element);
+        observers.set(`tile-${i}`, observer);
+      }
+    }
+
+    return () => {
+      observers.forEach(observer => observer.disconnect());
+    };
+  }, [isClient]);
+
+  const getTileClass = (tileId, baseClass = '') => {
+    const isVisible = visibleTiles.has(tileId);
+    return `${baseClass} transition-all duration-700 ease-out transform cursor-pointer ${
+      isVisible
+        ? 'opacity-100 translate-y-0 scale-100'
+        : 'opacity-0 translate-y-8 scale-95'
+    } hover:scale-110 hover:shadow-2xl hover:z-10 active:scale-105`;
+  };
+
   const handleViewMore = () => {
     setShowMore(true);
+    // Trigger animations for new tiles immediately
+    setTimeout(() => {
+      for (let i = 12; i < 24; i++) {
+        setVisibleTiles(prev => new Set([...prev, `tile-${i}`]));
+      }
+    }, 100);
   };
 
   return (
@@ -70,47 +118,191 @@ export default function MosaicOfVoices() {
       </p>
 
       {/* tiles - Row 1 */}
-      <div className="absolute w-[400px] h-[400px] left-[80px] top-[623px] rounded-[20px]" style={{backgroundColor: isClient ? tileColors[0] : '#D3D3D3'}}></div>
-      <div className="absolute w-[400px] h-[400px] left-[521px] top-[623px] rounded-[20px]" style={{backgroundColor: isClient ? tileColors[1] : '#D3D3D3'}}></div>
-      <div className="absolute w-[400px] h-[400px] left-[961px] top-[623px] rounded-[20px]" style={{backgroundColor: isClient ? tileColors[2] : '#D3D3D3'}}></div>
+      <div
+        ref={el => tileRefs.current['tile-0'] = el}
+        className={getTileClass('tile-0', "absolute w-[400px] h-[400px] left-[80px] top-[623px] rounded-[20px]")}
+        style={{backgroundColor: isClient ? tileColors[0] : '#D3D3D3'}}
+        onMouseEnter={() => setHoveredTile('tile-0')}
+        onMouseLeave={() => setHoveredTile(null)}
+      ></div>
+      <div
+        ref={el => tileRefs.current['tile-1'] = el}
+        className={getTileClass('tile-1', "absolute w-[400px] h-[400px] left-[521px] top-[623px] rounded-[20px]")}
+        style={{backgroundColor: isClient ? tileColors[1] : '#D3D3D3'}}
+        onMouseEnter={() => setHoveredTile('tile-1')}
+        onMouseLeave={() => setHoveredTile(null)}
+      ></div>
+      <div
+        ref={el => tileRefs.current['tile-2'] = el}
+        className={getTileClass('tile-2', "absolute w-[400px] h-[400px] left-[961px] top-[623px] rounded-[20px]")}
+        style={{backgroundColor: isClient ? tileColors[2] : '#D3D3D3'}}
+        onMouseEnter={() => setHoveredTile('tile-2')}
+        onMouseLeave={() => setHoveredTile(null)}
+      ></div>
 
       {/* tiles - Row 2 */}
-      <div className="absolute w-[400px] h-[400px] left-[80px] top-[1073px] rounded-[20px]" style={{backgroundColor: isClient ? tileColors[3] : '#D3D3D3'}}></div>
-      <div className="absolute w-[400px] h-[400px] left-[521px] top-[1073px] rounded-[20px]" style={{backgroundColor: isClient ? tileColors[4] : '#D3D3D3'}}></div>
-      <div className="absolute w-[400px] h-[400px] left-[961px] top-[1073px] rounded-[20px]" style={{backgroundColor: isClient ? tileColors[5] : '#D3D3D3'}}></div>
+      <div
+        ref={el => tileRefs.current['tile-3'] = el}
+        className={getTileClass('tile-3', "absolute w-[400px] h-[400px] left-[80px] top-[1073px] rounded-[20px]")}
+        style={{backgroundColor: isClient ? tileColors[3] : '#D3D3D3'}}
+        onMouseEnter={() => setHoveredTile('tile-3')}
+        onMouseLeave={() => setHoveredTile(null)}
+      ></div>
+      <div
+        ref={el => tileRefs.current['tile-4'] = el}
+        className={getTileClass('tile-4', "absolute w-[400px] h-[400px] left-[521px] top-[1073px] rounded-[20px]")}
+        style={{backgroundColor: isClient ? tileColors[4] : '#D3D3D3'}}
+        onMouseEnter={() => setHoveredTile('tile-4')}
+        onMouseLeave={() => setHoveredTile(null)}
+      ></div>
+      <div
+        ref={el => tileRefs.current['tile-5'] = el}
+        className={getTileClass('tile-5', "absolute w-[400px] h-[400px] left-[961px] top-[1073px] rounded-[20px]")}
+        style={{backgroundColor: isClient ? tileColors[5] : '#D3D3D3'}}
+        onMouseEnter={() => setHoveredTile('tile-5')}
+        onMouseLeave={() => setHoveredTile(null)}
+      ></div>
 
       {/* tiles - Row 3 */}
-      <div className="absolute w-[400px] h-[400px] left-[80px] top-[1523px] rounded-[20px]" style={{backgroundColor: isClient ? tileColors[6] : '#D3D3D3'}}></div>
-      <div className="absolute w-[400px] h-[400px] left-[521px] top-[1523px] rounded-[20px]" style={{backgroundColor: isClient ? tileColors[7] : '#D3D3D3'}}></div>
-      <div className="absolute w-[400px] h-[400px] left-[961px] top-[1523px] rounded-[20px]" style={{backgroundColor: isClient ? tileColors[8] : '#D3D3D3'}}></div>
+      <div
+        ref={el => tileRefs.current['tile-6'] = el}
+        className={getTileClass('tile-6', "absolute w-[400px] h-[400px] left-[80px] top-[1523px] rounded-[20px]")}
+        style={{backgroundColor: isClient ? tileColors[6] : '#D3D3D3'}}
+        onMouseEnter={() => setHoveredTile('tile-6')}
+        onMouseLeave={() => setHoveredTile(null)}
+      ></div>
+      <div
+        ref={el => tileRefs.current['tile-7'] = el}
+        className={getTileClass('tile-7', "absolute w-[400px] h-[400px] left-[521px] top-[1523px] rounded-[20px]")}
+        style={{backgroundColor: isClient ? tileColors[7] : '#D3D3D3'}}
+        onMouseEnter={() => setHoveredTile('tile-7')}
+        onMouseLeave={() => setHoveredTile(null)}
+      ></div>
+      <div
+        ref={el => tileRefs.current['tile-8'] = el}
+        className={getTileClass('tile-8', "absolute w-[400px] h-[400px] left-[961px] top-[1523px] rounded-[20px]")}
+        style={{backgroundColor: isClient ? tileColors[8] : '#D3D3D3'}}
+        onMouseEnter={() => setHoveredTile('tile-8')}
+        onMouseLeave={() => setHoveredTile(null)}
+      ></div>
 
       {/* tiles - Row 4 */}
-      <div className="absolute w-[400px] h-[400px] left-[80px] top-[1973px] rounded-[20px]" style={{backgroundColor: isClient ? tileColors[9] : '#D3D3D3'}}></div>
-      <div className="absolute w-[400px] h-[400px] left-[521px] top-[1973px] rounded-[20px]" style={{backgroundColor: isClient ? tileColors[10] : '#D3D3D3'}}></div>
-      <div className="absolute w-[400px] h-[400px] left-[961px] top-[1973px] rounded-[20px]" style={{backgroundColor: isClient ? tileColors[11] : '#D3D3D3'}}></div>
+      <div
+        ref={el => tileRefs.current['tile-9'] = el}
+        className={getTileClass('tile-9', "absolute w-[400px] h-[400px] left-[80px] top-[1973px] rounded-[20px]")}
+        style={{backgroundColor: isClient ? tileColors[9] : '#D3D3D3'}}
+        onMouseEnter={() => setHoveredTile('tile-9')}
+        onMouseLeave={() => setHoveredTile(null)}
+      ></div>
+      <div
+        ref={el => tileRefs.current['tile-10'] = el}
+        className={getTileClass('tile-10', "absolute w-[400px] h-[400px] left-[521px] top-[1973px] rounded-[20px]")}
+        style={{backgroundColor: isClient ? tileColors[10] : '#D3D3D3'}}
+        onMouseEnter={() => setHoveredTile('tile-10')}
+        onMouseLeave={() => setHoveredTile(null)}
+      ></div>
+      <div
+        ref={el => tileRefs.current['tile-11'] = el}
+        className={getTileClass('tile-11', "absolute w-[400px] h-[400px] left-[961px] top-[1973px] rounded-[20px]")}
+        style={{backgroundColor: isClient ? tileColors[11] : '#D3D3D3'}}
+        onMouseEnter={() => setHoveredTile('tile-11')}
+        onMouseLeave={() => setHoveredTile(null)}
+      ></div>
 
       {/* Additional tiles - shown when "View more" is clicked */}
       {showMore && (
         <>
           {/* tiles - Row 5 */}
-          <div className="absolute w-[400px] h-[400px] left-[80px] top-[2423px] rounded-[20px]" style={{backgroundColor: isClient ? tileColors[12] : '#D3D3D3'}}></div>
-          <div className="absolute w-[400px] h-[400px] left-[521px] top-[2423px] rounded-[20px]" style={{backgroundColor: isClient ? tileColors[13] : '#D3D3D3'}}></div>
-          <div className="absolute w-[400px] h-[400px] left-[961px] top-[2423px] rounded-[20px]" style={{backgroundColor: isClient ? tileColors[14] : '#D3D3D3'}}></div>
+          <div
+            ref={el => tileRefs.current['tile-12'] = el}
+            className={getTileClass('tile-12', "absolute w-[400px] h-[400px] left-[80px] top-[2423px] rounded-[20px]")}
+            style={{backgroundColor: isClient ? tileColors[12] : '#D3D3D3', animationDelay: '0ms'}}
+            onMouseEnter={() => setHoveredTile('tile-12')}
+            onMouseLeave={() => setHoveredTile(null)}
+          ></div>
+          <div
+            ref={el => tileRefs.current['tile-13'] = el}
+            className={getTileClass('tile-13', "absolute w-[400px] h-[400px] left-[521px] top-[2423px] rounded-[20px]")}
+            style={{backgroundColor: isClient ? tileColors[13] : '#D3D3D3', animationDelay: '100ms'}}
+            onMouseEnter={() => setHoveredTile('tile-13')}
+            onMouseLeave={() => setHoveredTile(null)}
+          ></div>
+          <div
+            ref={el => tileRefs.current['tile-14'] = el}
+            className={getTileClass('tile-14', "absolute w-[400px] h-[400px] left-[961px] top-[2423px] rounded-[20px]")}
+            style={{backgroundColor: isClient ? tileColors[14] : '#D3D3D3', animationDelay: '200ms'}}
+            onMouseEnter={() => setHoveredTile('tile-14')}
+            onMouseLeave={() => setHoveredTile(null)}
+          ></div>
 
           {/* tiles - Row 6 */}
-          <div className="absolute w-[400px] h-[400px] left-[80px] top-[2873px] rounded-[20px]" style={{backgroundColor: isClient ? tileColors[15] : '#D3D3D3'}}></div>
-          <div className="absolute w-[400px] h-[400px] left-[521px] top-[2873px] rounded-[20px]" style={{backgroundColor: isClient ? tileColors[16] : '#D3D3D3'}}></div>
-          <div className="absolute w-[400px] h-[400px] left-[961px] top-[2873px] rounded-[20px]" style={{backgroundColor: isClient ? tileColors[17] : '#D3D3D3'}}></div>
+          <div
+            ref={el => tileRefs.current['tile-15'] = el}
+            className={getTileClass('tile-15', "absolute w-[400px] h-[400px] left-[80px] top-[2873px] rounded-[20px]")}
+            style={{backgroundColor: isClient ? tileColors[15] : '#D3D3D3', animationDelay: '300ms'}}
+            onMouseEnter={() => setHoveredTile('tile-15')}
+            onMouseLeave={() => setHoveredTile(null)}
+          ></div>
+          <div
+            ref={el => tileRefs.current['tile-16'] = el}
+            className={getTileClass('tile-16', "absolute w-[400px] h-[400px] left-[521px] top-[2873px] rounded-[20px]")}
+            style={{backgroundColor: isClient ? tileColors[16] : '#D3D3D3', animationDelay: '400ms'}}
+            onMouseEnter={() => setHoveredTile('tile-16')}
+            onMouseLeave={() => setHoveredTile(null)}
+          ></div>
+          <div
+            ref={el => tileRefs.current['tile-17'] = el}
+            className={getTileClass('tile-17', "absolute w-[400px] h-[400px] left-[961px] top-[2873px] rounded-[20px]")}
+            style={{backgroundColor: isClient ? tileColors[17] : '#D3D3D3', animationDelay: '500ms'}}
+            onMouseEnter={() => setHoveredTile('tile-17')}
+            onMouseLeave={() => setHoveredTile(null)}
+          ></div>
 
           {/* tiles - Row 7 */}
-          <div className="absolute w-[400px] h-[400px] left-[80px] top-[3323px] rounded-[20px]" style={{backgroundColor: isClient ? tileColors[18] : '#D3D3D3'}}></div>
-          <div className="absolute w-[400px] h-[400px] left-[521px] top-[3323px] rounded-[20px]" style={{backgroundColor: isClient ? tileColors[19] : '#D3D3D3'}}></div>
-          <div className="absolute w-[400px] h-[400px] left-[961px] top-[3323px] rounded-[20px]" style={{backgroundColor: isClient ? tileColors[20] : '#D3D3D3'}}></div>
+          <div
+            ref={el => tileRefs.current['tile-18'] = el}
+            className={getTileClass('tile-18', "absolute w-[400px] h-[400px] left-[80px] top-[3323px] rounded-[20px]")}
+            style={{backgroundColor: isClient ? tileColors[18] : '#D3D3D3', animationDelay: '600ms'}}
+            onMouseEnter={() => setHoveredTile('tile-18')}
+            onMouseLeave={() => setHoveredTile(null)}
+          ></div>
+          <div
+            ref={el => tileRefs.current['tile-19'] = el}
+            className={getTileClass('tile-19', "absolute w-[400px] h-[400px] left-[521px] top-[3323px] rounded-[20px]")}
+            style={{backgroundColor: isClient ? tileColors[19] : '#D3D3D3', animationDelay: '700ms'}}
+            onMouseEnter={() => setHoveredTile('tile-19')}
+            onMouseLeave={() => setHoveredTile(null)}
+          ></div>
+          <div
+            ref={el => tileRefs.current['tile-20'] = el}
+            className={getTileClass('tile-20', "absolute w-[400px] h-[400px] left-[961px] top-[3323px] rounded-[20px]")}
+            style={{backgroundColor: isClient ? tileColors[20] : '#D3D3D3', animationDelay: '800ms'}}
+            onMouseEnter={() => setHoveredTile('tile-20')}
+            onMouseLeave={() => setHoveredTile(null)}
+          ></div>
 
           {/* tiles - Row 8 */}
-          <div className="absolute w-[400px] h-[400px] left-[80px] top-[3773px] rounded-[20px]" style={{backgroundColor: isClient ? tileColors[21] : '#D3D3D3'}}></div>
-          <div className="absolute w-[400px] h-[400px] left-[521px] top-[3773px] rounded-[20px]" style={{backgroundColor: isClient ? tileColors[22] : '#D3D3D3'}}></div>
-          <div className="absolute w-[400px] h-[400px] left-[961px] top-[3773px] rounded-[20px]" style={{backgroundColor: isClient ? tileColors[23] : '#D3D3D3'}}></div>
+          <div
+            ref={el => tileRefs.current['tile-21'] = el}
+            className={getTileClass('tile-21', "absolute w-[400px] h-[400px] left-[80px] top-[3773px] rounded-[20px]")}
+            style={{backgroundColor: isClient ? tileColors[21] : '#D3D3D3', animationDelay: '900ms'}}
+            onMouseEnter={() => setHoveredTile('tile-21')}
+            onMouseLeave={() => setHoveredTile(null)}
+          ></div>
+          <div
+            ref={el => tileRefs.current['tile-22'] = el}
+            className={getTileClass('tile-22', "absolute w-[400px] h-[400px] left-[521px] top-[3773px] rounded-[20px]")}
+            style={{backgroundColor: isClient ? tileColors[22] : '#D3D3D3', animationDelay: '1000ms'}}
+            onMouseEnter={() => setHoveredTile('tile-22')}
+            onMouseLeave={() => setHoveredTile(null)}
+          ></div>
+          <div
+            ref={el => tileRefs.current['tile-23'] = el}
+            className={getTileClass('tile-23', "absolute w-[400px] h-[400px] left-[961px] top-[3773px] rounded-[20px]")}
+            style={{backgroundColor: isClient ? tileColors[23] : '#D3D3D3', animationDelay: '1100ms'}}
+            onMouseEnter={() => setHoveredTile('tile-23')}
+            onMouseLeave={() => setHoveredTile(null)}
+          ></div>
         </>
       )}
 
@@ -118,7 +310,7 @@ export default function MosaicOfVoices() {
       {!showMore && (
         <button
           onClick={handleViewMore}
-          className="flex flex-col items-center p-0 gap-[4px] absolute w-[157px] h-[82px] left-[calc(50%-157px/2+0.5px)] top-[2492px] opacity-50 hover:opacity-75 transition-opacity cursor-pointer border-none outline-none bg-transparent"
+          className="flex flex-col items-center p-0 gap-[4px] absolute w-[157px] h-[82px] left-[calc(50%-157px/2+0.5px)] top-[2492px] opacity-50 hover:opacity-75 transition-all duration-300 ease-out cursor-pointer border-none outline-none bg-transparent hover:scale-110 hover:translate-y-2"
         >
           <span className="w-[157px] h-[39px] font-['Inter'] text-[32px] leading-[39px] text-center tracking-[-0.02em] text-[#000000] order-0" style={{fontWeight: 500}}>
             View more

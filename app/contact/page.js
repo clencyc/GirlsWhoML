@@ -1,7 +1,26 @@
+'use client';
+import { useEffect } from 'react';
 import Header from '../components/shared/Header';
 import Footer from '../components/shared/Footer';
 
 export default function Contact() {
+  // Add smooth scrolling and hover animations
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        overflow-x: hidden;
+      }
+    `;
+    document.head.appendChild(style);
+
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
   return (
     <div className="relative w-[1440px] h-[1831px] bg-[#FFFFFF]">
       <Header />
@@ -21,7 +40,7 @@ export default function Contact() {
       <div className="flex flex-row items-center p-0 gap-[39px] absolute w-[1077px] h-[325px] left-[calc(50%-1077px/2+0.5px)] top-[585px]">
 
         {/* Frame 167 - Help Card */}
-        <div className="flex flex-col justify-center items-center p-[40px_32px] gap-[40px] w-[519px] h-[325px] bg-[#FFFFFF] border border-[#E3E3E3] rounded-[20px] order-0">
+        <div className="flex flex-col justify-center items-center p-[40px_32px] gap-[40px] w-[519px] h-[325px] bg-[#FFFFFF] border border-[#E3E3E3] rounded-[20px] order-0 transition-all duration-300 ease-out hover:shadow-xl hover:scale-105 hover:bg-[#FAFAFA]">
           {/* helpIcon - heart */}
           <div className="w-[64px] h-[64px] relative flex-none order-0">
             <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -44,7 +63,7 @@ export default function Contact() {
         </div>
 
         {/* Frame 168 - Support Card */}
-        <div className="flex flex-col justify-center items-center p-[40px_32px] gap-[40px] w-[519px] h-[325px] bg-[#FFFFFF] border border-[#E3E3E3] rounded-[20px] order-1">
+        <div className="flex flex-col justify-center items-center p-[40px_32px] gap-[40px] w-[519px] h-[325px] bg-[#FFFFFF] border border-[#E3E3E3] rounded-[20px] order-1 transition-all duration-300 ease-out hover:shadow-xl hover:scale-105 hover:bg-[#FAFAFA]">
           {/* supportIcon - question mark */}
           <div className="w-[64px] h-[64px] relative flex-none order-0">
             <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">

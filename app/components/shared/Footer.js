@@ -1,40 +1,88 @@
+'use client';
+import { useState, useEffect, useRef } from 'react';
+
 export default function Footer() {
+  const [isVisible, setIsVisible] = useState(false);
+  const footerRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.2, rootMargin: '50px' }
+    );
+
+    if (footerRef.current) {
+      observer.observe(footerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <footer className="w-[1441px] h-[781px] bg-[#393939] order-4">
+    <footer ref={footerRef} className="w-[1441px] h-[781px] bg-[#393939] order-4">
       {/* Empowering women in ML and AI - exact Figma specs */}
-      <h2 className="absolute w-[706px] h-[174px] left-[calc(50%-706px/2-288.5px)] top-[102px] font-['Inter'] text-[72px] leading-[87px] tracking-[-0.04em] text-[#FFFFFF]" style={{fontWeight: 500}}>
+      <h2
+        className={`absolute w-[706px] h-[174px] left-[calc(50%-706px/2-288.5px)] top-[102px] font-['Inter'] text-[72px] leading-[87px] tracking-[-0.04em] text-[#FFFFFF] transition-all duration-1000 ease-out ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}
+        style={{fontWeight: 500, animationDelay: '200ms'}}
+      >
         Empowering women in ML and AI
       </h2>
 
       {/* cta - exact Figma specs */}
       <a
         href="/mosaic-of-voices"
-        className="flex flex-row justify-center items-center p-[20px_28px] gap-[8px] absolute w-[257px] h-[64px] left-[calc(50%-257px/2-513px)] top-[327px] bg-[#D89EFA] rounded-[100px]"
+        className={`flex flex-row justify-center items-center p-[20px_28px] gap-[8px] absolute w-[257px] h-[64px] left-[calc(50%-257px/2-513px)] top-[327px] bg-[#D89EFA] rounded-[100px] transition-all duration-700 ease-out hover:bg-[#C88FE8] hover:scale-105 hover:shadow-xl active:scale-95 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}
+        style={{animationDelay: '400ms'}}
       >
         <span className="w-[169px] h-[24px] font-['Inter'] text-[20px] leading-[24px] tracking-[-0.02em] text-[#000000] order-0" style={{fontWeight: 500}}>
           See the live action
         </span>
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="order-1">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="order-1 transition-transform duration-300 ease-out group-hover:translate-x-1">
           <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#231F20" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       </a>
 
       {/* divider */}
-      <div className="absolute w-[1275px] h-0 left-[calc(50%-1275px/2-4px)] top-[456px] border border-[#8A8A8A]"></div>
+      <div
+        className={`absolute w-[1275px] h-0 left-[calc(50%-1275px/2-4px)] top-[456px] border border-[#8A8A8A] transition-all duration-700 ease-out ${
+          isVisible ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
+        }`}
+        style={{animationDelay: '600ms'}}
+      ></div>
 
       {/* harangè logo */}
-      <span className="absolute w-[275px] h-[24px] left-[79px] top-[521px] font-alata font-normal text-[56px] leading-[20px] tracking-[-0.05em] text-[#FFFFFF]">
+      <span
+        className={`absolute w-[275px] h-[24px] left-[79px] top-[521px] font-alata font-normal text-[56px] leading-[20px] tracking-[-0.05em] text-[#FFFFFF] transition-all duration-700 ease-out hover:tracking-[-0.02em] cursor-pointer ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}
+        style={{animationDelay: '800ms'}}
+      >
         harangè
       </span>
 
       {/* socialMedia - exact Figma specs */}
-      <div className="flex flex-row items-center p-0 gap-[16px] absolute w-[218px] h-[62px] left-[77px] top-[614px]">
+      <div
+        className={`flex flex-row items-center p-0 gap-[16px] absolute w-[218px] h-[62px] left-[77px] top-[614px] transition-all duration-700 ease-out ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}
+        style={{animationDelay: '1000ms'}}
+      >
         {/* Frame 109 - Instagram */}
         <a
           href="https://www.instagram.com/girlswhoml/"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-[62px] h-[62px] bg-[#575757] rounded-[31px] flex items-center justify-center hover:bg-[#6A6A6A] transition-colors order-0"
+          className="w-[62px] h-[62px] bg-[#575757] rounded-[31px] flex items-center justify-center hover:bg-[#E4405F] transition-all duration-300 ease-out hover:scale-110 hover:shadow-lg active:scale-95 order-0 group"
           aria-label="Instagram"
         >
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
@@ -49,7 +97,7 @@ export default function Footer() {
           href="https://www.linkedin.com/company/girlswhoml/posts/?feedView=all"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-[62px] h-[62px] bg-[#575757] rounded-[31px] flex items-center justify-center hover:bg-[#6A6A6A] transition-colors order-1"
+          className="w-[62px] h-[62px] bg-[#575757] rounded-[31px] flex items-center justify-center hover:bg-[#0077B5] transition-all duration-300 ease-out hover:scale-110 hover:shadow-lg active:scale-95 order-1 group"
           aria-label="LinkedIn"
         >
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
@@ -62,7 +110,7 @@ export default function Footer() {
           href="https://x.com/girlswhoml"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-[62px] h-[62px] bg-[#575757] rounded-[31px] flex items-center justify-center hover:bg-[#6A6A6A] transition-colors order-2"
+          className="w-[62px] h-[62px] bg-[#575757] rounded-[31px] flex items-center justify-center hover:bg-[#1DA1F2] transition-all duration-300 ease-out hover:scale-110 hover:shadow-lg active:scale-95 order-2 group"
           aria-label="X"
         >
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none">

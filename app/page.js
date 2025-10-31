@@ -1,8 +1,79 @@
+'use client';
+import { useState, useEffect, useRef } from 'react';
 import Header from './components/shared/Header';
 import Footer from './components/shared/Footer';
 import TestimonialSlider from './components/home/TestimonialSlider';
 
 export default function Home() {
+  const [visibleSections, setVisibleSections] = useState(new Set());
+  const [scrollY, setScrollY] = useState(0);
+  const sectionRefs = useRef({});
+
+  useEffect(() => {
+    const observers = new Map();
+
+    const observerCallback = (entries, sectionId) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setVisibleSections(prev => new Set([...prev, sectionId]));
+        }
+      });
+    };
+
+    // Create observers for each section
+    ['hero', 'live-badge', 'description', 'change1', 'change2', 'change3', 'cta', 'testimonials'].forEach(sectionId => {
+      const element = sectionRefs.current[sectionId];
+      if (element) {
+        const observer = new IntersectionObserver(
+          (entries) => observerCallback(entries, sectionId),
+          { threshold: 0.1, rootMargin: '50px' }
+        );
+        observer.observe(element);
+        observers.set(sectionId, observer);
+      }
+    });
+
+    return () => {
+      observers.forEach(observer => observer.disconnect());
+    };
+  }, []);
+
+  // Parallax scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const getSectionClass = (sectionId, baseClass = '') => {
+    const isVisible = visibleSections.has(sectionId);
+    return `${baseClass} transition-all duration-1000 ease-out ${
+      isVisible
+        ? 'opacity-100 translate-y-0'
+        : 'opacity-0 translate-y-8'
+    }`;
+  };
+  // Add smooth scrolling styles
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        overflow-x: hidden;
+      }
+    `;
+    document.head.appendChild(style);
+
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
+
   return (
     <div className="relative w-[1440px] h-[8664px] bg-[#FFFFFF]">
       <Header />
@@ -10,7 +81,10 @@ export default function Home() {
       {/* topSection */}
       <section className="absolute w-[1441px] h-[1769px] left-[calc(50%-1441px/2+0.5px)] top-[156px]">
         {/* heroText */}
-        <div className="flex flex-col items-center p-0 gap-[52px] absolute w-[881px] h-[368px] left-[281px] top-[120px]">
+        <div
+          ref={el => sectionRefs.current['hero'] = el}
+          className={getSectionClass('hero', "flex flex-col items-center p-0 gap-[52px] absolute w-[881px] h-[368px] left-[281px] top-[120px]")}
+        >
           {/* h1 */}
           <div className="flex flex-col items-center p-0 gap-[40px] w-[881px] h-[252px] flex-none order-0 self-stretch flex-grow-0">
             <h1 className="w-[881px] h-[174px] font-['Inter'] text-[72px] leading-[87px] text-center tracking-[-0.04em] text-[#000000] flex-none order-0 self-stretch flex-grow-0" style={{fontWeight: 500}}>
@@ -24,7 +98,7 @@ export default function Home() {
           {/* cta1 */}
           <a
             href="/mosaic-of-voices"
-            className="flex flex-row justify-center items-center p-[20px_28px] gap-[8px] w-[323px] h-[64px] bg-[#D89EFA] rounded-[100px] flex-none order-1 flex-grow-0"
+            className="flex flex-row justify-center items-center p-[20px_28px] gap-[8px] w-[323px] h-[64px] bg-[#D89EFA] rounded-[100px] flex-none order-1 flex-grow-0 transition-all duration-300 ease-out hover:bg-[#C88FE8] hover:scale-105 hover:shadow-lg active:scale-95"
           >
             <span className="w-[235px] h-[24px] font-['Inter'] font-bold text-[20px] leading-[24px] tracking-[-0.02em] text-[#000000] flex-none order-0 flex-grow-0" style={{fontWeight: 450}}>
               Explore Collective Gallery
@@ -36,16 +110,29 @@ export default function Home() {
         </div>
 
         {/* liveBadge */}
-        <div className="box-border flex flex-row justify-center items-center p-[8px_16px] gap-[8px] absolute w-[83px] h-[35px] left-[calc(50%-83px/2)] top-[618px] border border-[#DBDBDB] rounded-[100px]">
-          <div className="w-[9px] h-[9px] bg-[#F06464] rounded-full flex-none order-0 flex-grow-0"></div>
+        <div
+          ref={el => sectionRefs.current['live-badge'] = el}
+          className={getSectionClass('live-badge', "box-border flex flex-row justify-center items-center p-[8px_16px] gap-[8px] absolute w-[83px] h-[35px] left-[calc(50%-83px/2)] top-[618px] border border-[#DBDBDB] rounded-[100px]")}
+        >
+          <div className="w-[9px] h-[9px] bg-[#F06464] rounded-full flex-none order-0 flex-grow-0 animate-pulse"></div>
           <span className="w-[34px] h-[19px] font-['Inter'] text-[16px] leading-[19px] tracking-[-0.02em] text-[#000000] flex-none order-1 flex-grow-0" style={{fontWeight: 600}}>LIVE</span>
         </div>
 
         {/* Rectangle 24 */}
-        <div className="absolute w-[1056px] h-[608px] left-[192px] top-[681px] bg-[#000000] rounded-[20px]"></div>
+        <div
+          className="absolute w-[1056px] h-[608px] left-[192px] bg-[#000000] rounded-[20px] transition-transform duration-100 ease-out"
+          style={{
+            top: `${681 + scrollY * 0.05}px`,
+            transform: `translateY(${scrollY * -0.02}px)`
+          }}
+        ></div>
 
         {/* description */}
-        <div className="absolute w-[1440px] left-[calc(50%-1440px/2)] top-[1415px] text-[32px] leading-[39px] text-center text-[#000000]" style={{fontFamily: 'var(--font-inter)', fontWeight: 500, letterSpacing: '-4%'}}>
+        <div
+          ref={el => sectionRefs.current['description'] = el}
+          className={getSectionClass('description', "absolute w-[1440px] left-[calc(50%-1440px/2)] top-[1415px] text-[32px] leading-[39px] text-center text-[#000000]")}
+          style={{fontFamily: 'var(--font-inter)', fontWeight: 500, letterSpacing: '-4%'}}
+        >
           <div className="whitespace-nowrap">On November 7th, 2025, GirlsWhoML and Oeuvre unveiled "Below the Surface",</div>
           <div className="whitespace-nowrap">an installation that transforms a quiet gesture into an act of visibility.</div>
           <div>&nbsp;</div>
@@ -62,7 +149,10 @@ export default function Home() {
         </h2>
 
         {/* change1 */}
-        <div className="flex flex-row items-center p-0 gap-[75px] absolute w-[1069.29px] h-[563px] left-[187px] top-[571px]">
+        <div
+          ref={el => sectionRefs.current['change1'] = el}
+          className={getSectionClass('change1', "flex flex-row items-center p-0 gap-[75px] absolute w-[1069.29px] h-[563px] left-[187px] top-[571px]")}
+        >
           {/* leftText */}
           <div className="flex flex-col items-start p-0 gap-[44px] w-[566px] h-[563px] flex-none order-0 flex-grow-0">
             <div className="w-[566px] h-[195px] font-['Inter'] text-[54px] leading-[65px] tracking-[-0.04em] text-[#000000] flex-none order-0 self-stretch flex-grow-0" style={{fontWeight: 500}}>
@@ -84,16 +174,19 @@ export default function Home() {
           </div>
           {/* img */}
           <div className="w-[428px] h-[520px] flex-none order-1 flex-grow-0 flex items-center justify-center">
-            <div className="w-[440px] h-[550px] flex-none order-1">
+            <div className="w-[440px] h-[550px] flex-none order-1 transition-all duration-500 ease-out hover:scale-105">
               <img src="/images/home/img1.png" alt="Below the Surface illustration" className="w-full h-full object-contain" />
             </div>
           </div>
         </div>
 
         {/* change2 */}
-        <div className="flex flex-row items-start p-0 gap-[69px] absolute w-[1100px] h-[707px] left-[187px] top-[1444px]">
+        <div
+          ref={el => sectionRefs.current['change2'] = el}
+          className={getSectionClass('change2', "flex flex-row items-start p-0 gap-[69px] absolute w-[1100px] h-[707px] left-[187px] top-[1444px]")}
+        >
           {/* img */}
-          <div className="w-[476px] h-[476px] flex-none order-0 flex-grow-0">
+          <div className="w-[476px] h-[476px] flex-none order-0 flex-grow-0 transition-all duration-500 ease-out hover:scale-105">
             <img src="/images/home/img2.png" alt="Tiles of reflection illustration" className="w-full h-full object-contain" />
           </div>
 
@@ -107,7 +200,7 @@ export default function Home() {
             </p>
             <a
               href="/mosaic-of-voices"
-              className="flex flex-row justify-center items-center p-[20px_28px] gap-[8px] w-[206px] h-[64px] bg-[#000000] rounded-[100px] flex-none order-2 flex-grow-0"
+              className="flex flex-row justify-center items-center p-[20px_28px] gap-[8px] w-[206px] h-[64px] bg-[#000000] rounded-[100px] flex-none order-2 flex-grow-0 transition-all duration-300 ease-out hover:bg-[#333333] hover:scale-105 hover:shadow-lg active:scale-95"
             >
               <span className="w-[150px] h-[24px] font-['Inter'] text-[20px] leading-[24px] tracking-[-0.02em] text-[#F5F5F5] flex-none order-0 flex-grow-0" style={{fontWeight: 500}}>
                 See their stories
@@ -117,7 +210,10 @@ export default function Home() {
         </div>
 
         {/* change3 */}
-        <div className="flex flex-row items-start p-0 gap-[53px] absolute w-[1079px] h-[851px] left-[187px] top-[2677px]">
+        <div
+          ref={el => sectionRefs.current['change3'] = el}
+          className={getSectionClass('change3', "flex flex-row items-start p-0 gap-[53px] absolute w-[1079px] h-[851px] left-[187px] top-[2677px]")}
+        >
           {/* leftText */}
           <div className="flex flex-col items-start p-0 gap-[44px] w-[521px] h-[851px] flex-none order-0 flex-grow-0">
             <h3 className="w-[521px] h-[195px] font-['Inter'] text-[54px] leading-[65px] tracking-[-0.04em] text-[#000000] flex-none order-0 self-stretch flex-grow-0" style={{fontWeight: 500}}>
@@ -131,9 +227,105 @@ export default function Home() {
             </div>
           </div>
 
-          {/* img */}
-          <div className="w-[505px] h-[639px] flex-none order-1 flex-grow-0">
-            <img src="/images/home/img3.png" alt="Reflection questions interface" className="w-full h-full object-cover rounded-[20px]" />
+          {/* Reflection Form - Main Container */}
+          <div className="w-[505px] h-[639px] flex-none order-1 flex-grow-0 bg-[#575757] rounded-[20px] relative transition-all duration-500 ease-out hover:shadow-2xl hover:scale-105">
+
+            {/* Question 1 - Rotated */}
+            <div
+              className="absolute w-[424px] h-[80px] bg-[#D89EFA] rounded-[20px] flex items-center justify-center"
+              style={{
+                left: '50.91px',
+                top: '57.61px',
+                transform: 'rotate(-3.13deg)'
+              }}
+            >
+              <span
+                className="font-['Inter'] text-[24px] leading-[52px] tracking-[-0.05em] text-[#000000]"
+                style={{
+                  fontWeight: 500,
+                  transform: 'rotate(-3.13deg)'
+                }}
+              >
+                Q1. What word best describe...
+              </span>
+            </div>
+
+            {/* Question 2 - Rotated */}
+            <div
+              className="absolute w-[424px] h-[80px] bg-[#D89EFA] rounded-[20px] flex items-center justify-center"
+              style={{
+                left: '48px',
+                top: '167px',
+                transform: 'rotate(2.08deg)'
+              }}
+            >
+              <span
+                className="font-['Inter'] text-[24px] leading-[52px] tracking-[-0.05em] text-[#000000]"
+                style={{
+                  fontWeight: 500,
+                  transform: 'rotate(2.08deg)'
+                }}
+              >
+                Q2. What is one insight or...
+              </span>
+            </div>
+
+            {/* Text Area Container */}
+            <div
+              className="absolute w-[409px] h-[167px] bg-[#383838] border border-[#C3C3C3] rounded-[10px]"
+              style={{
+                left: '48px',
+                top: '306px'
+              }}
+            >
+              <textarea
+                className="absolute w-[352px] h-[72px] bg-transparent border-none outline-none resize-none text-[#FFFFFF] font-['Inter'] text-[20px] leading-[24px] tracking-[-0.02em] placeholder-[#CCCCCC] transition-all duration-300 ease-out focus:scale-105 focus:shadow-lg"
+                style={{
+                  left: '28px',
+                  top: '27px',
+                  fontWeight: 500
+                }}
+                placeholder="This experience gave me the confidence to pursue AI, something I never imagined possible..."
+              />
+            </div>
+
+            {/* Send Button Container */}
+            <div className="absolute" style={{ left: '48px', top: '501px' }}>
+              {/* Button */}
+              <button
+                className="w-[242px] h-[64px] bg-[#F1F1F1] hover:bg-[#E5E5E5] transition-all duration-300 ease-out rounded-[100px] flex flex-row justify-center items-center border-none outline-none hover:scale-105 hover:shadow-lg active:scale-95"
+                style={{ padding: '20px 28px' }}
+              >
+                <span
+                  className="font-['Inter'] text-[20px] leading-[24px] tracking-[-0.02em] text-[#000000]"
+                  style={{fontWeight: 500}}
+                >
+                  Send your reflection
+                </span>
+              </button>
+
+              {/* Purple Arrow Cursor - positioned under o and n in reflection */}
+              <div
+                className="absolute transition-all duration-300 ease-out hover:scale-110 hover:rotate-6"
+                style={{
+                  left: '220px',
+                  top: '85%',
+                  transform: 'translateX(-50%)'
+                }}
+              >
+                <svg width="51" height="58" viewBox="0 0 51 58" fill="none" className="transition-all duration-300 ease-out">
+                  <path
+                    d="M1.06783 5.71928C0.456195 2.30615 4.18041 -0.215276 7.12227 1.62023L48.1239 27.2018C51.0939 29.0549 50.4188 33.5601 47.036 34.4612L30.3342 38.9098C29.0279 39.2579 27.8771 40.0369 27.0689 41.1206L16.7363 54.975C14.6434 57.7813 10.2097 56.7349 9.59207 53.2891L1.06783 5.71928Z"
+                    fill="#D89EFA"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -142,7 +334,11 @@ export default function Home() {
       <section className="absolute w-[1441px] h-[985px] left-[calc(50%-1441px/2+0.5px)] top-[5567px]">
         <div className="flex flex-col items-center p-[100px_0px] gap-[10px] w-[1441px] h-[985px]">
           {/* ctaCard */}
-          <div className="flex flex-col justify-center items-center p-[120px_98px] gap-[95px] w-[1262px] h-[785px] bg-[#F6D55C] rounded-[50px] flex-none order-0 flex-grow-0">
+          <div
+            ref={el => sectionRefs.current['cta'] = el}
+            className={getSectionClass('cta', "flex flex-col justify-center items-center p-[120px_98px] gap-[95px] w-[1262px] h-[785px] bg-[#F6D55C] rounded-[50px] flex-none order-0 flex-grow-0 hover:shadow-2xl hover:scale-105")}
+            style={{transition: 'all 0.5s ease-out'}}
+          >
             <h2 className="w-[989px] h-[174px] font-['Inter'] text-[72px] leading-[87px] text-center tracking-[-0.04em] text-[#000000] flex-none order-0 flex-grow-0" style={{fontWeight: 500}}>
               Support the Next Generation<br />of Women in AI
             </h2>
@@ -152,7 +348,7 @@ export default function Home() {
             {/* ctaButton */}
             <a
               href="/contact"
-              className="flex flex-row justify-center items-center p-[20px_28px] gap-[8px] w-[230px] h-[64px] bg-[#000000] rounded-[100px] flex-none order-2 flex-grow-0"
+              className="flex flex-row justify-center items-center p-[20px_28px] gap-[8px] w-[230px] h-[64px] bg-[#000000] rounded-[100px] flex-none order-2 flex-grow-0 transition-all duration-300 ease-out hover:bg-[#333333] hover:scale-105 hover:shadow-lg active:scale-95"
             >
               <span className="w-[174px] h-[24px] font-['Inter'] text-[20px] leading-[24px] tracking-[-0.02em] text-[#F5F5F5] flex-none order-0 flex-grow-0" style={{fontWeight: 500}}>
                 Support the Future
@@ -163,12 +359,17 @@ export default function Home() {
       </section>
 
       {/* forthSection */}
-      <section className="absolute w-[1441px] h-[1331px] left-[calc(50%-1441px/2+0.5px)] top-[6552px] bg-[#F5F3ED]">
+      <section
+        ref={el => sectionRefs.current['testimonials'] = el}
+        className={getSectionClass('testimonials', "absolute w-[1441px] h-[1331px] left-[calc(50%-1441px/2+0.5px)] top-[6552px] bg-[#F5F3ED]")}
+      >
         <h2 className="absolute w-[919px] h-[87px] left-[calc(50%-919px/2+2px)] top-[242px] font-['Inter'] text-[72px] leading-[87px] text-center tracking-[-0.04em] text-[#000000]" style={{fontWeight: 500}}>
           Voices & Reflections: Women Shaping AI
         </h2>
 
-        <TestimonialSlider />
+        <div className="transition-all duration-700 ease-out">
+          <TestimonialSlider />
+        </div>
       </section>
 
       {/* footer */}

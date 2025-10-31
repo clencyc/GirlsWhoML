@@ -14,7 +14,7 @@ import os
 import requests
 
 
-def create_complete_souvenir(image_urls, name, country, backend_url=None, base_url=None):
+def create_complete_souvenir(image_urls, name, country, screenshot_url=None, backend_url=None, base_url=None):
     """
     Complete Scene 3 workflow.
     
@@ -22,6 +22,7 @@ def create_complete_souvenir(image_urls, name, country, backend_url=None, base_u
         image_urls: List of 4 image URLs from Scene 2
         name: Contributor name
         country: Contributor country
+        screenshot_url: Water tank screenshot URL (from Scene 1, optional)
         backend_url: Backend API URL (optional, from environment)
         base_url: Base URL for QR codes (optional, from environment)
     
@@ -65,33 +66,59 @@ def create_complete_souvenir(image_urls, name, country, backend_url=None, base_u
         print(f"❌ Failed to generate QR code: {e}")
         raise
     
-    # Step 4: Upload to Backend (optional, if backend is available)
+    # Step 4: Upload to Backend
     print("\n[Step 4/5] Uploading to backend...")
     backend_response = None
     try:
         with open(mosaic_path, 'rb') as mosaic_file:
+            # Prepare files
             files = {
-                'mosaic': ('mosaic.png', mosaic_file, 'image/png'),
+                'mosaic': (f'{series_id}_mosaic.png', mosaic_file, 'image/png'),
             }
+            
+            # Prepare form data - INCLUDE SERIES_ID as Christine requested
             data = {
                 'name': name,
                 'country': country,
-                'series_id': series_id,
+                'series_id': series_id,  # ✅ Christine confirmed this should be included
             }
             
+            # If screenshot URL is provided (from Scene 1), download and include it
+            if screenshot_url:
+                try:
+                    print(f"   Downloading screenshot from: {screenshot_url}")
+                    screenshot_response = requests.get(screenshot_url, timeout=10)
+                    if screenshot_response.status_code == 200:
+                        files['screenshot'] = (
+                            'screenshot.png',
+                            screenshot_response.content,
+                            'image/png'
+                        )
+                        print(f"   ✅ Screenshot included")
+                    else:
+                        print(f"   ⚠️ Could not download screenshot (status {screenshot_response.status_code})")
+                except Exception as e:
+                    print(f"   ⚠️ Error downloading screenshot: {e}")
+            else:
+                print(f"   ℹ️ No screenshot provided (Scene 1 should provide this)")
+            
+            # Send to Christine's backend
+            print(f"   Sending to: {backend_url}/contributors/")
             response = requests.post(
                 f"{backend_url}/contributors/",
                 files=files,
                 data=data,
-                timeout=10
+                timeout=30
             )
             
             if response.status_code == 200:
                 backend_response = response.json()
                 print(f"✅ Successfully uploaded to backend!")
-                print(f"   Backend URL: {backend_response.get('mosaic_url', 'N/A')}")
+                print(f"   Backend Contributor ID: {backend_response.get('id')}")
+                print(f"   Backend Mosaic URL: {backend_response.get('mosaic_url', 'N/A')}")
             else:
                 print(f"⚠️ Backend upload failed: {response.status_code}")
+                print(f"   Response: {response.text}")
                 print(f"   Continuing with local files...")
                 
     except Exception as e:
@@ -111,6 +138,7 @@ def create_complete_souvenir(image_urls, name, country, backend_url=None, base_u
             "lookup_url": qr_result['lookup_url']
         },
         "backend_saved": backend_response is not None,
+        "backend_id": backend_response.get('id') if backend_response else None,
         "share_url": f"{backend_url}/contributors/{backend_response['id']}/share" if backend_response else None
     }
     
@@ -123,8 +151,12 @@ def create_complete_souvenir(image_urls, name, country, backend_url=None, base_u
     print(f"QR Code (local):  {qr_result['local_path']}")
     print(f"Lookup URL:       {qr_result['lookup_url']}")
     if backend_response:
+        print(f"Backend ID:       {backend_response.get('id')}")
         print(f"Backend URL:      {backend_response.get('mosaic_url', 'N/A')}")
         print(f"Share Page:       {result['share_url']}")
+        print(f"Status:           ✅ Saved to backend")
+    else:
+        print(f"Status:           ⚠️ Local only (backend unavailable)")
     print("="*60 + "\n")
     
     return result
@@ -141,13 +173,15 @@ def main():
             "https://example.com/card4.jpg"
         ],
         'name': "Test User",
-        'country': "Tunisia"
+        'country': "Tunisia",
+        'screenshot_url': "https://example.com/water-tank-screenshot.jpg"  # From Scene 1
     }
     
     result = create_complete_souvenir(
         image_urls=test_data['image_urls'],
         name=test_data['name'],
-        country=test_data['country']
+        country=test_data['country'],
+        screenshot_url=test_data['screenshot_url']  # Optional - from Scene 1
     )
     
     return result

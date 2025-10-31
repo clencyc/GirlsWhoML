@@ -1,23 +1,157 @@
 """
 TASK 4 – FULL WORKFLOW (Tasks 1–3)
-Creates mosaic → generates Series ID → produces QR → uploads both to S3.
+Original Author: Yasaswini (Scene 3)
+Updated by: Anissa Rmedi - Complete Scene 3 workflow with backend integration
+
+Description:
+Creates mosaic → generates Series ID → produces QR → sends to backend for storage.
 """
 
 from mosaic_export import create_mosaic
 from series_id_generator import generate_series_id
 from qr_generator import create_qr
 import os
+import requests
+
+
+def create_complete_souvenir(image_urls, name, country, backend_url=None, base_url=None):
+    """
+    Complete Scene 3 workflow.
+    
+    Args:
+        image_urls: List of 4 image URLs from Scene 2
+        name: Contributor name
+        country: Contributor country
+        backend_url: Backend API URL (optional, from environment)
+        base_url: Base URL for QR codes (optional, from environment)
+    
+    Returns:
+        dict: Complete result with all paths, URLs, and IDs
+    """
+    print("\n" + "="*60)
+    print("SCENE 3: CREATING DIGITAL SOUVENIR")
+    print("="*60)
+    
+    # Get URLs from environment if not provided
+    if not backend_url:
+        backend_url = os.getenv("BACKEND_URL", "http://localhost:8000")
+    if not base_url:
+        base_url = os.getenv("BASE_URL", "https://placeholder.site/series/")
+    
+    # Step 1: Generate Series ID
+    print("\n[Step 1/5] Generating Series ID...")
+    try:
+        series_id = generate_series_id()
+    except Exception as e:
+        print(f"❌ Failed to generate Series ID: {e}")
+        raise
+    
+    # Step 2: Create Mosaic
+    print("\n[Step 2/5] Creating 2×2 mosaic...")
+    try:
+        mosaic_path = create_mosaic(
+            image_paths=image_urls,
+            series_id=series_id
+        )
+    except Exception as e:
+        print(f"❌ Failed to create mosaic: {e}")
+        raise
+    
+    # Step 3: Generate QR Code
+    print("\n[Step 3/5] Generating QR code...")
+    try:
+        qr_result = create_qr(series_id, base_url=base_url)
+    except Exception as e:
+        print(f"❌ Failed to generate QR code: {e}")
+        raise
+    
+    # Step 4: Upload to Backend (optional, if backend is available)
+    print("\n[Step 4/5] Uploading to backend...")
+    backend_response = None
+    try:
+        with open(mosaic_path, 'rb') as mosaic_file:
+            files = {
+                'mosaic': ('mosaic.png', mosaic_file, 'image/png'),
+            }
+            data = {
+                'name': name,
+                'country': country,
+                'series_id': series_id,
+            }
+            
+            response = requests.post(
+                f"{backend_url}/contributors/",
+                files=files,
+                data=data,
+                timeout=10
+            )
+            
+            if response.status_code == 200:
+                backend_response = response.json()
+                print(f"✅ Successfully uploaded to backend!")
+                print(f"   Backend URL: {backend_response.get('mosaic_url', 'N/A')}")
+            else:
+                print(f"⚠️ Backend upload failed: {response.status_code}")
+                print(f"   Continuing with local files...")
+                
+    except Exception as e:
+        print(f"⚠️ Backend unavailable: {e}")
+        print(f"   Continuing with local files...")
+    
+    # Step 5: Prepare Result
+    print("\n[Step 5/5] Preparing result...")
+    result = {
+        "series_id": series_id,
+        "mosaic": {
+            "local_path": mosaic_path,
+            "backend_url": backend_response.get('mosaic_url') if backend_response else None
+        },
+        "qr_code": {
+            "local_path": qr_result['local_path'],
+            "lookup_url": qr_result['lookup_url']
+        },
+        "backend_saved": backend_response is not None,
+        "share_url": f"{backend_url}/contributors/{backend_response['id']}/share" if backend_response else None
+    }
+    
+    # Print Summary
+    print("\n" + "="*60)
+    print("✅ WORKFLOW COMPLETE!")
+    print("="*60)
+    print(f"Series ID:        {series_id}")
+    print(f"Mosaic (local):   {mosaic_path}")
+    print(f"QR Code (local):  {qr_result['local_path']}")
+    print(f"Lookup URL:       {qr_result['lookup_url']}")
+    if backend_response:
+        print(f"Backend URL:      {backend_response.get('mosaic_url', 'N/A')}")
+        print(f"Share Page:       {result['share_url']}")
+    print("="*60 + "\n")
+    
+    return result
+
 
 def main():
-    os.makedirs("output", exist_ok=True)
-    # Step 1 – Mosaic
-    images = ["input/img1.png","input/img2.png","input/img3.png","input/img4.png"]
-    mosaic = create_mosaic(images)
-    # Step 2 – ID
-    sid = generate_series_id()
-    # Step 3 – QR
-    qr = create_qr(sid)
-    print(f"\n✅ Workflow complete!\nMosaic: {mosaic}\nSeries ID: {sid}\nQR: {qr}")
+    """Test function with sample data."""
+    # Sample data (Scene 2 will provide this)
+    test_data = {
+        'image_urls': [
+            "https://example.com/card1.jpg",
+            "https://example.com/card2.jpg",
+            "https://example.com/card3.jpg",
+            "https://example.com/card4.jpg"
+        ],
+        'name': "Test User",
+        'country': "Tunisia"
+    }
+    
+    result = create_complete_souvenir(
+        image_urls=test_data['image_urls'],
+        name=test_data['name'],
+        country=test_data['country']
+    )
+    
+    return result
+
 
 if __name__ == "__main__":
     main()

@@ -1,44 +1,71 @@
 """
-TASK 3 – QR CODE GENERATOR + AWS S3 UPLOAD (PLACEHOLDER)
-Generates 300×300 plain QR for Series ID and uploads to S3 (if configured).
+TASK 3 – QR CODE GENERATOR
+Original Author: Yasaswini (Scene 3)
+Updated by: Anissa Rmedi - QR code generation for Series ID lookup
+
+Description:
+Generates 300×300 plain QR code linking to Series ID lookup page.
+Users can scan this QR to view their mosaic later.
 """
 
-import qrcode, os, boto3
+import qrcode
+import os
 
-# AWS Placeholders
-AWS_ACCESS_KEY = "YOUR_AWS_ACCESS_KEY"
-AWS_SECRET_KEY = "YOUR_AWS_SECRET_KEY"
-AWS_BUCKET_NAME = "YOUR_BUCKET_NAME"
-AWS_REGION = "YOUR_REGION"
 
-def upload_to_s3(file_path, s3_folder="qr_codes/"):
-    try:
-        s3 = boto3.client("s3",
-            aws_access_key_id=AWS_ACCESS_KEY,
-            aws_secret_access_key=AWS_SECRET_KEY,
-            region_name=AWS_REGION)
-        name = os.path.basename(file_path)
-        key = f"{s3_folder}{name}"
-        s3.upload_file(file_path, AWS_BUCKET_NAME, key)
-        url = f"https://{AWS_BUCKET_NAME}.s3.{AWS_REGION}.amazonaws.com/{key}"
-        print(f"✅ QR uploaded → {url}")
-        return url
-    except Exception as e:
-        print(f"⚠️ Upload skipped (placeholder): {e}")
-        return None
-
-def create_qr(series_id, output_dir="output/qr_codes/"):
+def create_qr(series_id, base_url=None, output_dir="output/qr_codes/", size=300):
+    """
+    Generate a QR code for a Series ID.
+    
+    Args:
+        series_id: Series ID (e.g., "H-20250001")
+        base_url: Base URL for lookup page (from environment or default)
+        output_dir: Directory to save QR code
+        size: QR code size in pixels (default: 300)
+    
+    Returns:
+        dict: Contains local_path and lookup_url
+    """
+    # Get base URL
+    if not base_url:
+        base_url = os.getenv("BASE_URL", "https://placeholder.site/series/")
+    
+    # Ensure output directory exists
     os.makedirs(output_dir, exist_ok=True)
-    url = f"https://placeholder.site/{series_id}"
-    qr = qrcode.QRCode(box_size=10, border=4)
-    qr.add_data(url); qr.make(fit=True)
+    
+    # Construct lookup URL
+    lookup_url = f"{base_url}{series_id}"
+    
+    # Create QR code
+    qr = qrcode.QRCode(
+        version=1,
+        error_correction=qrcode.constants.ERROR_CORRECT_H,  # High error correction
+        box_size=10,
+        border=4
+    )
+    qr.add_data(lookup_url)
+    qr.make(fit=True)
+    
+    # Generate image
     img = qr.make_image(fill_color="black", back_color="white")
-    path = os.path.join(output_dir, f"{series_id}.png")
-    img.save(path)
-    print(f"✅ QR created → {path}")
-    upload_to_s3(path)
-    return path
+    
+    # Resize to specified size
+    img = img.resize((size, size), resample=1)
+    
+    # Save locally
+    file_path = os.path.join(output_dir, f"{series_id}_qr.png")
+    img.save(file_path)
+    print(f"✅ QR code created → {file_path}")
+    
+    return {
+        "local_path": file_path,
+        "lookup_url": lookup_url
+    }
+
 
 if __name__ == "__main__":
-    create_qr("H-20250001")
-
+    # Test QR code generation
+    result = create_qr("H-20250001", size=300)
+    
+    print(f"\nQR Code Result:")
+    print(f"  Local: {result['local_path']}")
+    print(f"  Lookup URL: {result['lookup_url']}")

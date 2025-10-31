@@ -32,7 +32,9 @@ const TILE_GRADIENTS = [
       const MAX = slots.length;
       let collected = [];
 
-      
+       function viewCollection(collected){
+         alert('collection object : ' + JSON.stringify(collected))
+      }
 
       function updateUI(){
         if (collected.length === 4) {
@@ -44,11 +46,19 @@ const TILE_GRADIENTS = [
                 <div style="box-shadow: rgba(199, 184, 255, 0.573) 0px 0px 47.2243px;">
                     <p class="text-[var(--soft-light)] mb-2">Collection Complete! ✨</p>
                     <p class="text-sm text-[var(--water-silver)] opacity-80 mb-4">You've collected 4 resonant reflections</p>
-                    <button class="w-full px-6 py-3 rounded-xl backdrop-blur-lg border border-[var(--accent-glow)]/60 bg-[var(--accent-glow)]/20 text-[var(--soft-light)] hover:bg-[var(--accent-glow)]/30 hover:border-[var(--accent-glow)]/80 transition-all duration-300 hover:shadow-lg hover:shadow-[var(--accent-glow)]/30" tabindex="0" style="transform: none;">View Your Collection</button>
+                    <button class="view-collection w-full px-6 py-3 rounded-xl backdrop-blur-lg border border-[var(--accent-glow)]/60 bg-[var(--accent-glow)]/20 text-[var(--soft-light)] hover:bg-[var(--accent-glow)]/30 hover:border-[var(--accent-glow)]/80 transition-all duration-300 hover:shadow-lg hover:shadow-[var(--accent-glow)]/30" tabindex="0" style="transform: none;" >View Your Collection</button>
                 </div>
             `;
             body.appendChild(div);
         }
+        const viewCollectionBtn = document.querySelector('.view-collection');
+          if(viewCollectionBtn)
+          {
+            viewCollectionBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            viewCollection(collected);
+          });
+          }
           collectionCountEl.textContent = `${collected.length}/${MAX}`;
           slots.forEach((s, i) => {
               if (collected[i]) {
@@ -62,7 +72,7 @@ const TILE_GRADIENTS = [
           
       }
       
-
+     
       
       function createCard(response, index){
           const g = TILE_GRADIENTS[index % TILE_GRADIENTS.length];
@@ -73,7 +83,7 @@ const TILE_GRADIENTS = [
           card.tabIndex = 0;
 
           const frontStyle = ` background: linear-gradient(135deg, ${g.from}15, ${g.to}08); box-shadow: 0 10px 40px ${g.glow}, 0 0 20px ${g.glow}; border-color: ${g.border},`;
-          const backStyle = `background: linear-gradient(135deg, ${g.from}80, ${g.to}80); border: 1px solid ${g.border}; box-shadow: 0 10px 40px ${g.glow}, 0 0 30px ${g.glow};`;
+          const backStyle = `background: linear-gradient(135deg, ${g.from}25, ${g.to}15); border-color:  ${g.border}; box-shadow: 0 10px 40px ${g.glow}, 0 0 30px ${g.glow};`;
 
           card.innerHTML = `
               <div class="card-inner flex ">
@@ -110,6 +120,7 @@ const TILE_GRADIENTS = [
         console.log(card);
           const btn = card.querySelector('.collect-btn');
           
+          
 
           card.addEventListener('click', (e) => {
               if (btn && (e.target === btn || btn.contains(e.target))) return;
@@ -134,11 +145,11 @@ const TILE_GRADIENTS = [
                       alert('Collection is full');
                       return;
                   }
-                
-                  collected.push(card.id);
+                  response = MOCK_RESPONSES.find(r => r.id === card.id);
+                  collected.push(response);
                   card.classList.add('collected');
                   btn.disabled = true;
-                  btn.textContent = 'Collected';
+                  btn.innerHTML = '<span class="flex items-center justify-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check w-4 h-4" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Collected</span>';
                   card.classList.add('is-flipped');
                   updateUI();
                   console.log('Collected:', collected);
@@ -146,6 +157,7 @@ const TILE_GRADIENTS = [
           }
       });
 
+      
      
       updateUI();
   })();

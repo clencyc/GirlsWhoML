@@ -9,12 +9,22 @@
    
 </head>
 <body>
-    <div class="grid-wrap">
-        <header style="text-align:center; margin-bottom:1rem;">
-            <h1 style="font-size:2rem; margin:0 0 .5rem;">Resonance Collection</h1>
-            <p style="color:var(--water-silver); max-width:800px; margin:0 auto 1rem;">Explore reflections from our workshop. Tap any tile to discover who shared this thought, then collect the responses that resonate most deeply with you.</p>
-            <div class="collection-bar" style="margin-top:.75rem;">
-                <div style="margin-right:.75rem;">Your Collection</div>
+    <div class="grid-wrap min-h-screen bg-gradient-to-br from-[#0a0e1a] via-[#0f1420] to-[#0a0e1a] p-8">
+        <!--Back Button-->  
+      
+         <!--Header--> 
+        <header class="max-w-7xl mx-auto mb-12" style="text-align:center; margin-bottom:1rem;">
+            <div >
+                 <div className="text-center mb-8 inline-block mb-4" style="box-shadow:0 0 20px rgba(199, 184, 255, 0.3),
+                0 0 40px rgba(199, 184, 255, 0.5),
+                0 0 20px rgba(199, 184, 255, 0.3);">
+            <h1  class="text-4xl text-[var(--soft-light)] px-6 py-2" style="font-size:2rem; margin:0 0 .5rem;">Resonance Collection</h1>
+           </div> 
+            </div>
+          
+            <p class="text-[var(--water-silver)] max-w-2xl mx-auto opacity-80" style="color:var(--water-silver); max-width:800px; margin:0 auto 1rem;">Explore reflections from our workshop. Tap any tile to discover who shared this thought, then collect the responses that resonate most deeply with you.</p>
+            <div class="collection-bar" style="margin-top:.75rem; border-color: rgba(199, 184, 255, 0.3); ">
+                <div class="text-[var(--soft-light)]" style='margin-right:.75rem; '>Your Collection</div>
                 <div id="slots" style="display:flex; gap:.5rem;">
                     <div class="slot" data-index="0"></div>
                     <div class="slot" data-index="1"></div>

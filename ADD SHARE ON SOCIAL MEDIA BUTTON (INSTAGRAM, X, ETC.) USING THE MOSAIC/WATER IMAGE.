@@ -1,0 +1,47 @@
+Social Media Sharing
+html
+<div class="social-sharing">
+    <h3>Share Your Creation</h3>
+    <div class="share-buttons">
+        <!-- Instagram Share -->
+        <button class="share-btn instagram" onclick="shareOnInstagram()">
+            <i class="fab fa-instagram"></i>
+            Share on Instagram
+        </button>
+        
+        <!-- Twitter/X Share -->
+        <button class="share-btn twitter" onclick="shareOnTwitter()">
+            <i class="fab fa-twitter"></i>
+            Share on X
+        </button>
+        <!-- Facebook Share -->
+        <button class="share-btn facebook" onclick="shareOnFacebook()">
+            <i class="fab fa-facebook"></i>
+            Share on Facebook
+        </button>
+        <!-- Download Option -->
+        <button class="share-btn download" onclick="downloadAssets()">
+            <i class="fas fa-download"></i>
+            Download Images
+        </button>
+    </div>
+</div>
+
+<script>
+function shareOnInstagram() {
+    const mosaicUrl = userData.mediaLinks.mosaic.fullMosaic;
+    // Instagram doesn't have direct share API, so we download and prompt user to post
+    downloadImage(mosaicUrl, 'my-digital-souvenir.jpg');
+    alert('Download complete! Please post this image on Instagram manually.');
+}
+function shareOnTwitter() {
+    const text = `Check out my digital souvenir! I contributed to the water conservation project. ${window.location.href}`;
+    const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(userData.mediaLinks.mosaic.fullMosaic)}`;
+    window.open(url, '_blank');
+}
+function shareOnFacebook() {
+    const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=My digital souvenir from the water conservation project!`;
+    window.open(url, '_blank');
+}
+</script>
+

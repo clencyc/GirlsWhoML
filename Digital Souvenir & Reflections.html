@@ -486,15 +486,15 @@ html
                     
                     <div class="qr-container">
                         <div id="qrcode"></div>
-                        <div class="website-link">www.waterconservation.org/contributors</div>
+                        <div class="website-link">https://www.girlswhoml.com/</div>
                     </div>
                 </div>
             </div>
         </div>
         
         <div class="footer">
-            <p>Thank you for participating in our Water Conservation Initiative</p>
-            <p>Your contribution helps raise awareness about sustainable water usage</p>
+            <p>Thank you for participating</p>
+            <p>Your contribution </p>
         </div>
     </div>
 
@@ -502,7 +502,7 @@ html
         // Generate QR Code
         document.addEventListener('DOMContentLoaded', function() {
             const qrcode = new QRCode(document.getElementById("qrcode"), {
-                text: "https://www.waterconservation.org/contributors",
+                text: "https://www.girlswhoml.com/",
                 width: 150,
                 height: 150,
                 colorDark: "#000000",
@@ -625,7 +625,7 @@ html
         }
         
         function shareOnTwitter() {
-            const text = `Check out my digital souvenir from the Water Conservation Initiative! ${userData.feeling ? `I'm feeling ${userData.feeling}. ` : ''}${window.location.href}`;
+            const text = `Check out my digital souvenir from the GirlsWhoML! ${userData.feeling ? `I'm feeling ${userData.feeling}. ` : ''}${window.location.href}`;
             const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
             window.open(url, '_blank');
         }

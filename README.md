@@ -44,5 +44,3 @@ digital-souvenir-platform/
         └── custom.css         # Additional styling
 ```
 
-
-**Note**: This is a frontend-only implementation. For production use with user data persistence, consider adding a backend database solution.

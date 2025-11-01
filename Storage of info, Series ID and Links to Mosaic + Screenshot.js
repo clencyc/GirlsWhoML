@@ -1,3 +1,24 @@
+User Information Collection
+html
+<div class="user-info-form">
+    <h2>Claim Your Digital Souvenir</h2>
+    <form id="souvenirForm">
+        <div class="input-group">
+            <label for="userName">Full Name *</label>
+            <input type="text" id="userName" name="userName" required placeholder="Enter your full name">
+        </div>
+        <div class="input-group">
+            <label for="userCountry">Country *</label>
+            <select id="userCountry" name="userCountry" required>
+                <option value="">Select your country</option>
+                <!-- Country options would be populated here -->
+            </select>
+        </div>
+        <button type="submit" class="cta-button">Generate My Souvenir</button>
+    </form>
+</div>
+
+
 Data Storage Structure
 javascript
 // Data object to be stored

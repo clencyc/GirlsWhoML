@@ -1,11 +1,11 @@
-Digital Souvenir & Reflection Platform
+Digital Souvenir Platform
 html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Souvenir & Reflections</title>
+    <title>Digital Souvenir Platform - Girls Who ML</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
     <style>
@@ -420,6 +420,7 @@ html
             
             <!-- Right Panel: User Info and Actions -->
             <div class="panel right-panel">
+                
                 <!-- User Information Form -->
                 <div class="card">
                     <h2 class="card-title">Your Information</h2>
@@ -491,15 +492,19 @@ html
             </div>
         </div>
         <div class="footer">
-            <p>Thank you for participating</p>
+            <p>Powered by Girls Who Machine Learn - Amplifying Women's Voices in AI</p>
+              <p>Join the movement to shape an inclusive AI future</p>
         </div>
     </div>
-
     <script>
-        // Generate QR Code
+        
+    // API Configuration
+        const API_BASE_URL = 'https://girlswhoml.onrender.com';
+        
+         // Generate QR Code
         document.addEventListener('DOMContentLoaded', function() {
             const qrcode = new QRCode(document.getElementById("qrcode"), {
-                text: "https://harange.org/",
+                text: "https://girlswhoml.onrender.com",
                 width: 150,
                 height: 150,
                 colorDark: "#000000",
@@ -508,41 +513,58 @@ html
             });
         });
 
-        // Generate Series ID
-        function generateSeriesId() {
+        // Generate Unique ID
+        function generateUniqueId() {
             const timestamp = new Date().getTime().toString(36);
             const random = Math.random().toString(36).substring(2, 8);
-            return `WC-${timestamp}-${random}`.toUpperCase();
+            return `GWM-${timestamp}-${random}`.toUpperCase();
         }
 
-        // Auto-save functionality for reflection questions
+        // DOM Elements
         const feelingInput = document.getElementById('feeling-word');
         const insightInput = document.getElementById('takeaway-insight');
+        const narrativeInput = document.getElementById('userNarrative');
         const saveIndicator1 = document.getElementById('save-indicator-1');
         const saveIndicator2 = document.getElementById('save-indicator-2');
         const userNameInput = document.getElementById('userName');
         const userCountryInput = document.getElementById('userCountry');
         const seriesIdDisplay = document.getElementById('seriesIdDisplay');
-        const generateBtn = document.getElementById('generate-btn');
+        const submitBtn = document.getElementById('submit-btn');
         const downloadBtn = document.getElementById('download-btn');
+        const apiStatus = document.getElementById('apiStatus');
         
         let userData = {
-            seriesId: '',
+            contribution_id: '',
             name: '',
             country: '',
-            feeling: '',
-            insight: '',
-            mosaicImages: [
-                'https://res.cloudinary.com/dejwpgmfk/image/upload/v1762000238/mosaics/msgiezwye0l1ollarqze.png',
-                'https://res.cloudinary.com/dejwpgmfk/image/upload/v1762000238/mosaics/msgiezwye0l1ollarqze.png',
-                'https://res.cloudinary.com/dejwpgmfk/image/upload/v1762000238/mosaics/msgiezwye0l1ollarqze.png',
-                'https://res.cloudinary.com/dejwpgmfk/image/upload/v1762000238/mosaics/msgiezwye0l1ollarqze.png'
+            narrative: '',
+            feeling_word: '',
+            key_insight: '',
+            mosaic_images: [
+                'ai-future-1.jpg',
+                'ai-future-2.jpg',
+                'ai-future-3.jpg',
+                'ai-future-4.jpg'
             ],
-            waterTankImage: 'water-tank.jpg'
+            water_tank_image: 'contribution-visual.jpg'
         };
         
         let saveTimeout;
         
+        // Show API status message
+        function showApiStatus(message, type) {
+            apiStatus.textContent = message;
+            apiStatus.className = `api-status api-${type}`;
+            apiStatus.style.display = 'block';
+            
+            if (type !== 'loading') {
+                setTimeout(() => {
+                    apiStatus.style.display = 'none';
+                }, 5000);
+            }
+        }
+        
+        // Save indicators for reflection questions
         function showSavedIndicator(indicatorElement) {
             indicatorElement.textContent = "✓ Saved";
             setTimeout(() => {
@@ -550,13 +572,15 @@ html
             }, 2000);
         }
         
+        // Save user data to localStorage
         function saveUserData() {
-            localStorage.setItem('userSouvenirData', JSON.stringify(userData));
+            localStorage.setItem('girlsWhoMLData', JSON.stringify(userData));
         }
         
+        // Event listeners for auto-save
         feelingInput.addEventListener('input', function() {
             clearTimeout(saveTimeout);
-            userData.feeling = feelingInput.value;
+            userData.feeling_word = feelingInput.value;
             saveTimeout = setTimeout(() => {
                 saveUserData();
                 showSavedIndicator(saveIndicator1);
@@ -565,11 +589,15 @@ html
         
         insightInput.addEventListener('input', function() {
             clearTimeout(saveTimeout);
-            userData.insight = insightInput.value;
+            userData.key_insight = insightInput.value;
             saveTimeout = setTimeout(() => {
                 saveUserData();
                 showSavedIndicator(saveIndicator2);
             }, 1000);
+        });
+        
+        narrativeInput.addEventListener('input', function() {
+            userData.narrative = narrativeInput.value;
         });
         
         userNameInput.addEventListener('input', function() {
@@ -580,55 +608,101 @@ html
             userData.country = userCountryInput.value;
         });
         
-        // Generate Souvenir
-        generateBtn.addEventListener('click', function() {
-            if (!userNameInput.value || !userCountryInput.value) {
-                alert('Please enter your name and country before generating your souvenir.');
+        // Submit to Girls Who ML API
+        async function submitToGirlsWhoML() {
+            if (!userNameInput.value || !userCountryInput.value || !narrativeInput.value) {
+                showApiStatus('Please complete all required fields: Name, Country, and AI Narrative', 'error');
                 return;
             }
             
-            userData.seriesId = generateSeriesId();
-            userData.name = userNameInput.value;
-            userData.country = userCountryInput.value;
+            // Generate contribution ID
+            userData.contribution_id = generateUniqueId();
+            seriesIdDisplay.textContent = userData.contribution_id;
             
-            seriesIdDisplay.textContent = userData.seriesId;
-            saveUserData();
+            // Prepare data for API
+            const submissionData = {
+                contribution_id: userData.contribution_id,
+                name: userData.name,
+                country: userData.country,
+                narrative: userData.narrative,
+                feeling_word: userData.feeling_word,
+                key_insight: userData.key_insight,
+                mosaic_images: userData.mosaic_images,
+                water_tank_image: userData.water_tank_image,
+                submitted_at: new Date().toISOString()
+            };
             
-            // Simulate storing data on server
-            setTimeout(() => {
-                alert(`Your digital souvenir has been generated!\nSeries ID: ${userData.seriesId}`);
-            }, 500);
-        });
+            showApiStatus('Submitting your contribution to Girls Who ML...', 'loading');
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/contributors/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(submissionData)
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const result = await response.json();
+                
+                showApiStatus('✅ Success! Your contribution has been added to the Girls Who ML database.', 'success');
+                saveUserData();
+                
+                console.log('API Response:', result);
+                
+            } catch (error) {
+                console.error('Error submitting to API:', error);
+                showApiStatus('❌ Failed to submit. Please check your connection and try again.', 'error');
+                
+                // Fallback: Save locally and show success message anyway
+                saveUserData();
+                setTimeout(() => {
+                    showApiStatus('📱 Your contribution has been saved locally. Please try submitting again later.', 'success');
+                }, 2000);
+            }
+        }
         
         // Download functionality
         downloadBtn.addEventListener('click', function() {
-            if (!userData.seriesId) {
-                alert('Please generate your souvenir first.');
+            if (!userData.contribution_id) {
+                showApiStatus('Please submit your contribution first.', 'error');
                 return;
             }
             
-            if (!feelingInput.value || !insightInput.value) {
-                alert('Please complete the reflection questions before downloading.');
-                return;
-            }
+            // Create a downloadable JSON file with user's data
+            const dataStr = JSON.stringify(userData, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `girls-who-ml-contribution-${userData.contribution_id}.json`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
             
-            // In a real implementation, this would generate a PDF or image with both visuals and reflections
-            alert('Your digital souvenir and reflections are being prepared for download. Thank you for sharing!');
+            showApiStatus('📥 Your contribution data has been downloaded!', 'success');
         });
         
         // Social Media Sharing Functions
         function shareOnInstagram() {
-            alert('In a real implementation, this would share your mosaic image on Instagram. For now, please download your image and share it manually.');
+            const message = `Check out my AI vision contribution to Girls Who ML! ${userData.feeling_word ? `I'm feeling ${userData.feeling_word} about our AI future. ` : ''}Join the conversation!`;
+            alert(`Share this on Instagram:\n\n${message}\n\n#GirlsWhoML #WomenInAI #AIFuture`);
         }
         
         function shareOnTwitter() {
-            const text = `Check out my digital souvenir from the GirlsWhoML! ${userData.feeling ? `I'm feeling ${userData.feeling}. ` : ''}${window.location.href}`;
+            const text = `I shared my vision for our AI-mediated future with @GirlsWhoML! ${userData.feeling_word ? `Feeling ${userData.feeling_word}. ` : ''}Join me: ${window.location.href}`;
             const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
             window.open(url, '_blank');
         }
         
         function shareOnFacebook() {
-            const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=My digital souvenir from the GirlsWhoML!`;
+            const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=My AI vision contribution to Girls Who ML!`;
             window.open(url, '_blank');
         }
         
@@ -637,20 +711,39 @@ html
             window.open(url, '_blank');
         }
         
+        // Event Listeners
+        submitBtn.addEventListener('click', submitToGirlsWhoML);
+        
         // Load previously saved data if it exists
         window.addEventListener('load', function() {
-            const savedData = localStorage.getItem('userSouvenirData');
+            const savedData = localStorage.getItem('girlsWhoMLData');
             
             if (savedData) {
                 userData = JSON.parse(savedData);
                 
                 if (userData.name) userNameInput.value = userData.name;
                 if (userData.country) userCountryInput.value = userData.country;
-                if (userData.feeling) feelingInput.value = userData.feeling;
-                if (userData.insight) insightInput.value = userData.insight;
-                if (userData.seriesId) seriesIdDisplay.textContent = userData.seriesId;
+                if (userData.narrative) narrativeInput.value = userData.narrative;
+                if (userData.feeling_word) feelingInput.value = userData.feeling_word;
+                if (userData.key_insight) insightInput.value = userData.key_insight;
+                if (userData.contribution_id) seriesIdDisplay.textContent = userData.contribution_id;
             }
+            
+            // Test API connection on load
+            testApiConnection();
         });
+        
+        // Test API connection
+        async function testApiConnection() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/`);
+                if (response.ok) {
+                    console.log('✅ API connection successful');
+                }
+            } catch (error) {
+                console.log('⚠️ API connection test failed - using offline mode');
+            }
+        }
     </script>
 </body>
 </html>

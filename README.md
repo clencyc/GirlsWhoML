@@ -215,20 +215,5 @@ Auto-save indicators
 
 Download fallback option
 
-📄 License
-MIT License - feel free to modify for your needs.
 
-Ready to use immediately! Just open the HTML file in a browser and start collecting contributions. 🎯
-
-🔄 Version History
-v1.0: Initial release with API integration
-
-v1.1: Added offline fallback and enhanced UI
-
-v1.2: Social sharing and QR code features
-Make your changes
-Test thoroughly
-Submit a pull request
-Social media integration
-QR code generation
 

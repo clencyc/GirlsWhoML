@@ -483,18 +483,15 @@ html
                 <div class="cta-section">
                     <h3 class="cta-title">See All Contributors</h3>
                     <p>Scan the QR code to visit our website and see all participants from around the world!</p>
-                    
                     <div class="qr-container">
                         <div id="qrcode"></div>
-                        <div class="website-link">https://www.girlswhoml.com/</div>
+                        <div class="website-link">https://girlswhoml.onrender.com/contributors/4/share/</div>
                     </div>
                 </div>
             </div>
         </div>
-        
         <div class="footer">
             <p>Thank you for participating</p>
-            <p>Your contribution </p>
         </div>
     </div>
 
@@ -502,7 +499,7 @@ html
         // Generate QR Code
         document.addEventListener('DOMContentLoaded', function() {
             const qrcode = new QRCode(document.getElementById("qrcode"), {
-                text: "https://www.girlswhoml.com/",
+                text: "https://harange.org/",
                 width: 150,
                 height: 150,
                 colorDark: "#000000",
@@ -536,10 +533,10 @@ html
             feeling: '',
             insight: '',
             mosaicImages: [
-                'memory1.jpg',
-                'memory2.jpg',
-                'memory3.jpg',
-                'memory4.jpg'
+                'https://res.cloudinary.com/dejwpgmfk/image/upload/v1762000238/mosaics/msgiezwye0l1ollarqze.png',
+                'https://res.cloudinary.com/dejwpgmfk/image/upload/v1762000238/mosaics/msgiezwye0l1ollarqze.png',
+                'https://res.cloudinary.com/dejwpgmfk/image/upload/v1762000238/mosaics/msgiezwye0l1ollarqze.png',
+                'https://res.cloudinary.com/dejwpgmfk/image/upload/v1762000238/mosaics/msgiezwye0l1ollarqze.png'
             ],
             waterTankImage: 'water-tank.jpg'
         };
@@ -631,7 +628,7 @@ html
         }
         
         function shareOnFacebook() {
-            const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=My digital souvenir from the GirlWhoML!`;
+            const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=My digital souvenir from the GirlsWhoML!`;
             window.open(url, '_blank');
         }
         

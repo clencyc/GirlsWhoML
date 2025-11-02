@@ -23,7 +23,7 @@ body {
 {
     scale: 0.95 ;
 }
-.card { perspective: 1200px; height: 16rem; cursor: pointer; position: relative; }
+.card { perspective: 1200px; height: 16rem; cursor: pointer; position: relative; transition: all 0.3s ease-out; }
 .card-inner { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform .65s ease; }
 .card.is-flipped .card-inner { transform: rotateY(180deg); }
 .face { position: absolute; inset: 0; border-radius: 12px; padding: 1rem; backface-visibility: hidden; display:flex; flex-direction:column; justify-content:space-between; box-shadow: 0 10px 30px rgba(0,0,0,.45); }
@@ -32,7 +32,36 @@ body {
 .tap-hint { font-size: .8rem; opacity: .85; color: var(--water-silver); }
 
 .collect-btn { width: 100%; padding: .65rem; border-radius: 10px; border: 1px solid rgba(255,255,255,.06); background: rgba(255,107,107,.08); color: var(--soft-light); font-weight:600; cursor:pointer; }
-.card.collected { opacity: .75; }
+.card.collected { 
+    opacity: 1; 
+    transform: scale(0.98);
+    border: 3px solid var(--accent-glow);
+    box-shadow: 0 0 30px rgba(143,191,224,.6), 0 0 60px rgba(143,191,224,.4);
+    position: relative;
+}
+.card.collected .face.front::after {
+    content: '✓';
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 50px;
+    height: 50px;
+    background: var(--accent-glow);
+    color: #0a0e1a;
+    border-radius: 50%;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 50px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(143,191,224,.5);
+    z-index: 10;
+    animation: checkmark-pop 0.3s ease-out;
+}
+@keyframes checkmark-pop {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); opacity: 1; }
+}
 .collection-bar { display:flex; gap:.5rem; align-items:center; justify-content:center; }
 .slot { width:40px; height:40px; border-radius:8px; border:2px solid rgba(143,191,224,.3); display:flex; align-items:center; justify-content:center; background:transparent; color:var(--soft-light); font-weight:600; }
 .slot.filled { background: rgba(143,191,224,.18); border-color: rgba(143,191,224,.6); }

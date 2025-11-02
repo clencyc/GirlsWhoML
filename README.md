@@ -41,8 +41,6 @@ Download the HTML file
 
 Open in any modern web browser
 
-No additional setup required!
-
 File Structure
 text
 digital-souvenir/
@@ -73,11 +71,6 @@ Share on social media
 Download JSON backup
 
 Scan QR code for community gallery
-
-For Organizers
-Set up at events with tablets/computers
-
-Share link for remote participation
 
 Monitor API submissions
 

@@ -3,7 +3,8 @@ import Footer from '../components/shared/Footer';
 
 export default function AboutUs() {
   return (
-    <div className="relative w-[1440px] h-[2937px] bg-[#FFFFFF]">
+    <div className="relative w-full min-h-screen bg-[#FFFFFF] flex flex-col items-center">
+    <div className="relative w-[1440px] h-[8664px] bg-[#FFFFFF]">
       <Header />
 
       {/* topSection - exact Figma specs */}
@@ -76,6 +77,7 @@ export default function AboutUs() {
       <div className="absolute w-[1441px] h-[781px] left-[-1px] top-[2156px]">
         <Footer />
       </div>
+    </div>
     </div>
   );
 }

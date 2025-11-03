@@ -102,7 +102,7 @@ export default function TestimonialSlider() {
         {visibleTestimonials.map((testimonial, idx) => (
           <div
             key={`${testimonial.name}-${idx}`}
-            className="flex flex-col justify-between items-start p-[40px_32px] w-[519px] h-[465px] bg-[#FFFFFF] rounded-[20px] flex-none transition-all duration-700 ease-out hover:shadow-xl hover:scale-105 hover:-translate-y-2 cursor-pointer group"
+            className="flex flex-col justify-between items-start p-[40px_32px] w-[519px] h-[465px] bg-[#FFFFFF] rounded-[20px] flex-none transition-all duration-700 ease-out"
             style={{animationDelay: `${idx * 200}ms`}}
           >
             <p className="font-['Inter'] italic text-[24px] leading-[32px] tracking-[-0.02em] text-[#000000] transition-all duration-300 ease-out group-hover:text-[#261033]" style={{fontWeight: 500}}>
@@ -143,7 +143,7 @@ export default function TestimonialSlider() {
         </button>
 
         {/* Progress indicators */}
-        <div className="flex gap-[8px] ml-[32px]">
+        {/* <div className="flex gap-[8px] ml-[32px]">
           {testimonials.map((_, index) => (
             <button
               key={index}
@@ -159,7 +159,7 @@ export default function TestimonialSlider() {
               }`}
             />
           ))}
-        </div>
+        </div> */}
       </div>
     </>
   );

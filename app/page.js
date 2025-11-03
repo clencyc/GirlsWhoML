@@ -75,6 +75,7 @@ export default function Home() {
   }, []);
 
   return (
+    <div className="relative w-full min-h-screen bg-[#FFFFFF] flex flex-col items-center">
     <div className="relative w-[1440px] h-[8664px] bg-[#FFFFFF]">
       <Header />
 
@@ -97,10 +98,10 @@ export default function Home() {
 
           {/* cta1 */}
           <a
-            href="/mosaic-of-voices"
-            className="flex flex-row justify-center items-center p-[20px_28px] gap-[8px] w-[323px] h-[64px] bg-[#D89EFA] rounded-[100px] flex-none order-1 flex-grow-0 transition-all duration-300 ease-out hover:bg-[#C88FE8] hover:scale-105 hover:shadow-lg active:scale-95"
+            href="./mosaic-of-voices"
+            className="flex flex-row justify-center items-center p-[20px_28px] gap-[8px] w-[323px] h-[64px] bg-[#D89EFA] rounded-[100px] flex-none order-1 flex-grow-0 transition-all duration-300 ease-out "
           >
-            <span className="w-[235px] h-[24px] font-['Inter'] font-bold text-[20px] leading-[24px] tracking-[-0.02em] text-[#000000] flex-none order-0 flex-grow-0" style={{fontWeight: 450}}>
+            <span className="w-[235px] h-[24px] font-['Inter'] font-bold text-[20px] leading-[24px] tracking-[-0.02em] text-[#000000] flex-none order-0 flex-grow-0 " style={{fontWeight: 450}}>
               Explore Collective Gallery
             </span>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="flex-none order-1 flex-grow-0">
@@ -174,7 +175,7 @@ export default function Home() {
           </div>
           {/* img */}
           <div className="w-[428px] h-[520px] flex-none order-1 flex-grow-0 flex items-center justify-center">
-            <div className="w-[440px] h-[550px] flex-none order-1 transition-all duration-500 ease-out hover:scale-105">
+            <div className="w-[440px] h-[550px] flex-none order-1 transition-all duration-500 ease-out">
               <img src="/images/home/img1.png" alt="Below the Surface illustration" className="w-full h-full object-contain" />
             </div>
           </div>
@@ -186,7 +187,7 @@ export default function Home() {
           className={getSectionClass('change2', "flex flex-row items-start p-0 gap-[69px] absolute w-[1100px] h-[707px] left-[187px] top-[1444px]")}
         >
           {/* img */}
-          <div className="w-[476px] h-[476px] flex-none order-0 flex-grow-0 transition-all duration-500 ease-out hover:scale-105">
+          <div className="w-[476px] h-[476px] flex-none order-0 flex-grow-0 transition-all duration-500 ease-out">
             <img src="/images/home/img2.png" alt="Tiles of reflection illustration" className="w-full h-full object-contain" />
           </div>
 
@@ -200,9 +201,9 @@ export default function Home() {
             </p>
             <a
               href="/mosaic-of-voices"
-              className="flex flex-row justify-center items-center p-[20px_28px] gap-[8px] w-[206px] h-[64px] bg-[#000000] rounded-[100px] flex-none order-2 flex-grow-0 transition-all duration-300 ease-out hover:bg-[#333333] hover:scale-105 hover:shadow-lg active:scale-95"
+              className="flex flex-row justify-center items-center p-[20px_28px] gap-[8px] w-[206px] h-[64px] bg-[#000000] rounded-[100px] flex-none order-2 flex-grow-0 transition-all duration-300 ease-out ease-out hover:bg-[#333333]"
             >
-              <span className="w-[150px] h-[24px] font-['Inter'] text-[20px] leading-[24px] tracking-[-0.02em] text-[#F5F5F5] flex-none order-0 flex-grow-0" style={{fontWeight: 500}}>
+              <span className="w-[150px] h-[24px] font-['Inter'] text-[20px] leading-[24px] tracking-[-0.02em] text-[#F5F5F5] flex-none order-0 flex-grow-0 " style={{fontWeight: 500}}>
                 See their stories
               </span>
             </a>
@@ -228,22 +229,23 @@ export default function Home() {
           </div>
 
           {/* Reflection Form - Main Container */}
-          <div className="w-[505px] h-[639px] flex-none order-1 flex-grow-0 bg-[#575757] rounded-[20px] relative transition-all duration-500 ease-out hover:shadow-2xl hover:scale-105">
+          <div className="w-[500px] h-[640px] flex-none order-1 flex-grow-0 bg-[#575757] rounded-[20px] relative transition-all duration-500 ease-out">
 
             {/* Question 1 - Rotated */}
             <div
-              className="absolute w-[424px] h-[80px] bg-[#D89EFA] rounded-[20px] flex items-center justify-center"
+              className="absolute w-[424px] h-[80px] bg-[#D89EFA] rounded-[20px] flex items-center justify-start"
               style={{
                 left: '50.91px',
                 top: '57.61px',
-                transform: 'rotate(-3.13deg)'
+                transform: 'rotate(-3deg)'
               }}
             >
               <span
-                className="font-['Inter'] text-[24px] leading-[52px] tracking-[-0.05em] text-[#000000]"
+                className="font-['Inter'] text-[20px] leading-[52px] tracking-[-0.05em] text-[#000000] "
                 style={{
                   fontWeight: 500,
-                  transform: 'rotate(-3.13deg)'
+                  transform: 'rotate(-0.3deg)',
+                  paddingLeft: '24px'
                 }}
               >
                 Q1. What word best describe...
@@ -252,7 +254,7 @@ export default function Home() {
 
             {/* Question 2 - Rotated */}
             <div
-              className="absolute w-[424px] h-[80px] bg-[#D89EFA] rounded-[20px] flex items-center justify-center"
+              className="absolute w-[424px] h-[80px] bg-[#D89EFA] rounded-[20px] flex items-center justify-start"
               style={{
                 left: '48px',
                 top: '167px',
@@ -260,10 +262,11 @@ export default function Home() {
               }}
             >
               <span
-                className="font-['Inter'] text-[24px] leading-[52px] tracking-[-0.05em] text-[#000000]"
+                className="font-['Inter'] text-[20px] leading-[52px] tracking-[-0.05em] text-[#000000]"
                 style={{
                   fontWeight: 500,
-                  transform: 'rotate(2.08deg)'
+                  transform: 'rotate(0.4deg)',
+                 paddingLeft: '24px' 
                 }}
               >
                 Q2. What is one insight or...
@@ -275,14 +278,14 @@ export default function Home() {
               className="absolute w-[409px] h-[167px] bg-[#383838] border border-[#C3C3C3] rounded-[10px]"
               style={{
                 left: '48px',
-                top: '306px'
+                top: '290px'
               }}
             >
               <textarea
-                className="absolute w-[352px] h-[72px] bg-transparent border-none outline-none resize-none text-[#FFFFFF] font-['Inter'] text-[20px] leading-[24px] tracking-[-0.02em] placeholder-[#CCCCCC] transition-all duration-300 ease-out focus:scale-105 focus:shadow-lg"
+                className="absolute w-[352px] h-[72px] bg-transparent border-none outline-none resize-none text-[#FFFFFF] font-['Inter'] text-[16px] leading-[24px] tracking-[-0.02em] placeholder-[#CCCCCC] transition-all duration-300 ease-out focus:scale-105 focus:shadow-lg"
                 style={{
-                  left: '28px',
-                  top: '27px',
+                  left: '24px',
+                  top: '24px',
                   fontWeight: 500
                 }}
                 placeholder="This experience gave me the confidence to pursue AI, something I never imagined possible..."
@@ -293,11 +296,11 @@ export default function Home() {
             <div className="absolute" style={{ left: '48px', top: '501px' }}>
               {/* Button */}
               <button
-                className="w-[242px] h-[64px] bg-[#F1F1F1] hover:bg-[#E5E5E5] transition-all duration-300 ease-out rounded-[100px] flex flex-row justify-center items-center border-none outline-none hover:scale-105 hover:shadow-lg active:scale-95"
+                className="w-[208px] h-[54px] bg-[#F1F1F1] transition-all duration-300 ease-out rounded-[100px] flex flex-row justify-center items-center border-none outline-none"
                 style={{ padding: '20px 28px' }}
               >
                 <span
-                  className="font-['Inter'] text-[20px] leading-[24px] tracking-[-0.02em] text-[#000000]"
+                  className="font-['Inter'] text-[16px] leading-[20px] tracking-[-0.02em] text-[#000000]"
                   style={{fontWeight: 500}}
                 >
                   Send your reflection
@@ -308,12 +311,12 @@ export default function Home() {
               <div
                 className="absolute transition-all duration-300 ease-out hover:scale-110 hover:rotate-6"
                 style={{
-                  left: '220px',
-                  top: '85%',
+                  left: '200px',
+                  top: '65%',
                   transform: 'translateX(-50%)'
                 }}
               >
-                <svg width="51" height="58" viewBox="0 0 51 58" fill="none" className="transition-all duration-300 ease-out">
+                <svg width="51" height="58" viewBox="0 0 66 58" fill="none" className="transition-all duration-300 ease-out">
                   <path
                     d="M1.06783 5.71928C0.456195 2.30615 4.18041 -0.215276 7.12227 1.62023L48.1239 27.2018C51.0939 29.0549 50.4188 33.5601 47.036 34.4612L30.3342 38.9098C29.0279 39.2579 27.8771 40.0369 27.0689 41.1206L16.7363 54.975C14.6434 57.7813 10.2097 56.7349 9.59207 53.2891L1.06783 5.71928Z"
                     fill="#D89EFA"
@@ -336,7 +339,7 @@ export default function Home() {
           {/* ctaCard */}
           <div
             ref={el => sectionRefs.current['cta'] = el}
-            className={getSectionClass('cta', "flex flex-col justify-center items-center p-[120px_98px] gap-[95px] w-[1262px] h-[785px] bg-[#F6D55C] rounded-[50px] flex-none order-0 flex-grow-0 hover:shadow-2xl hover:scale-105")}
+            className={getSectionClass('cta', "flex flex-col justify-center items-center p-[120px_98px] gap-[95px] w-[1262px] h-[785px] bg-[#F6D55C] rounded-[50px] flex-none order-0 flex-grow-0")}
             style={{transition: 'all 0.5s ease-out'}}
           >
             <h2 className="w-[989px] h-[174px] font-['Inter'] text-[72px] leading-[87px] text-center tracking-[-0.04em] text-[#000000] flex-none order-0 flex-grow-0" style={{fontWeight: 500}}>
@@ -348,7 +351,7 @@ export default function Home() {
             {/* ctaButton */}
             <a
               href="/contact"
-              className="flex flex-row justify-center items-center p-[20px_28px] gap-[8px] w-[230px] h-[64px] bg-[#000000] rounded-[100px] flex-none order-2 flex-grow-0 transition-all duration-300 ease-out hover:bg-[#333333] hover:scale-105 hover:shadow-lg active:scale-95"
+              className="flex flex-row justify-center items-center p-[20px_28px] gap-[8px] w-[230px] h-[64px] bg-[#000000] rounded-[100px] flex-none order-2 flex-grow-0 transition-all duration-300 ease-out hover:bg-[#333333]"
             >
               <span className="w-[174px] h-[24px] font-['Inter'] text-[20px] leading-[24px] tracking-[-0.02em] text-[#F5F5F5] flex-none order-0 flex-grow-0" style={{fontWeight: 500}}>
                 Support the Future
@@ -373,9 +376,10 @@ export default function Home() {
       </section>
 
       {/* footer */}
-      <div className="absolute w-[1441px] h-[781px] left-[-1px] top-[7883px]">
+      <div className="absolute w-full h-[781px] left-0 top-[7883px] flex justify-center">
         <Footer />
       </div>
+    </div>
     </div>
   );
 }

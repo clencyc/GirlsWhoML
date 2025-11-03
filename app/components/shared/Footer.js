@@ -25,7 +25,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer ref={footerRef} className="w-[1441px] h-[781px] bg-[#393939] order-4">
+    <footer ref={footerRef} className="w-full max-w-[1441px] mx-auto h-[781px] bg-[#393939] order-4">
       {/* Empowering women in ML and AI - exact Figma specs */}
       <h2
         className={`absolute w-[706px] h-[174px] left-[calc(50%-706px/2-288.5px)] top-[102px] font-['Inter'] text-[72px] leading-[87px] tracking-[-0.04em] text-[#FFFFFF] transition-all duration-1000 ease-out ${
@@ -44,7 +44,7 @@ export default function Footer() {
         }`}
         style={{animationDelay: '400ms'}}
       >
-        <span className="w-[169px] h-[24px] font-['Inter'] text-[20px] leading-[24px] tracking-[-0.02em] text-[#000000] order-0" style={{fontWeight: 500}}>
+        <span className="w-[169px] h-[24px] font-['Inter'] text-[20px] leading-[24px] tracking-[-0.02em] text-[#000000] order-0 " style={{fontWeight: 500}}>
           See the live action
         </span>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="order-1 transition-transform duration-300 ease-out group-hover:translate-x-1">
@@ -62,7 +62,7 @@ export default function Footer() {
 
       {/* harangè logo */}
       <span
-        className={`absolute w-[275px] h-[24px] left-[79px] top-[521px] font-alata font-normal text-[56px] leading-[20px] tracking-[-0.05em] text-[#FFFFFF] transition-all duration-700 ease-out hover:tracking-[-0.02em] cursor-pointer ${
+        className={`absolute w-[275px] h-[24px] left-[79px] top-[521px] font-alata font-normal text-[56px] leading-[20px] tracking-[-0.05em] text-[#FFFFFF] transition-all duration-700 ease-out  ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
         style={{animationDelay: '800ms'}}

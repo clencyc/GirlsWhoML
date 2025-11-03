@@ -104,7 +104,8 @@ export default function MosaicOfVoices() {
   };
 
   return (
-    <div className={`relative w-[1440px] bg-[#F5F3ED] ${showMore ? 'h-[5359px]' : 'h-[3509px]'}`}>
+    <div className="relative w-full min-h-screen bg-[#FFFFFF] flex flex-col items-center">
+    <div className="relative w-[1440px] h-[8664px] bg-[#FFFFFF]">
       <Header />
 
       {/* Mosaic of Voices heading - exact Figma specs */}
@@ -312,10 +313,10 @@ export default function MosaicOfVoices() {
           onClick={handleViewMore}
           className="flex flex-col items-center p-0 gap-[4px] absolute w-[157px] h-[82px] left-[calc(50%-157px/2+0.5px)] top-[2492px] opacity-50 hover:opacity-75 transition-all duration-300 ease-out cursor-pointer border-none outline-none bg-transparent hover:scale-110 hover:translate-y-2"
         >
-          <span className="w-[157px] h-[39px] font-['Inter'] text-[32px] leading-[39px] text-center tracking-[-0.02em] text-[#000000] order-0" style={{fontWeight: 500}}>
+          <span className="w-[157px] h-[39px] font-['Inter'] text-[24px] leading-[39px] text-center tracking-[-0.02em] text-[#000000] order-0" style={{fontWeight: 500}}>
             View more
           </span>
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" className="order-1">
+          <svg width="32" height="32" viewBox="0 0 40 40" fill="none" className="order-1">
             <path d="M10 15L20 25L30 15" stroke="#000000" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </button>
@@ -325,6 +326,7 @@ export default function MosaicOfVoices() {
       <div className={`absolute w-[1441px] h-[781px] left-[-1px] ${showMore ? 'top-[4473px]' : 'top-[2728px]'}`}>
         <Footer />
       </div>
+    </div>
     </div>
   );
 }

@@ -12,8 +12,8 @@ const TILE_GRADIENTS = [
   ];
 
   const MOCK_RESPONSES = [
-    { id: "r1", answer: "Technology should amplify human creativity, not replace it. We need to build tools that honor the craft.", name: "Priya Sharma", occupation: "AI Ethics Researcher, India" , image: 'priya_sharma.jpg', story: 'Growing up in a small town, Priya witnessed firsthand how technology could both empower and marginalize communities. She pursued a career in AI ethics to ensure that technological advancements respect human values and creativity.'},
-    { id: "r2", answer: "The future of AI lies in understanding context, culture, and the nuances that make us human.", name: "Anjali Mehta", occupation: "Data Scientist, Bangladesh" , 'image': 'anjali_mehta.jpg', 'story': 'Anjali grew up fascinated by the stories her grandmother told about their village. She became a data scientist to create AI systems that respect and incorporate cultural contexts, ensuring technology serves diverse communities.'},
+    { id: "r1", answer: "Technology should amplify human creativity, not replace it. We need to build tools that honor the craft.", name: "Priya Sharma", occupation: "AI Ethics Researcher, India" , image: 'priya_sharma.jpeg', story: 'Growing up in a small town, Priya witnessed firsthand how technology could both empower and marginalize communities. She pursued a career in AI ethics to ensure that technological advancements respect human values and creativity.'},
+    { id: "r2", answer: "The future of AI lies in understanding context, culture, and the nuances that make us human.", name: "Anjali Mehta", occupation: "Data Scientist, Bangladesh" , 'image': 'priya_sharma.jpeg', 'story': 'Anjali grew up fascinated by the stories her grandmother told about their village. She became a data scientist to create AI systems that respect and incorporate cultural contexts, ensuring technology serves diverse communities.'},
     { id: "r3", answer: "Every algorithm carries the values of its creator. We must ask: whose values are we encoding?", name: "Fatima Khan", occupation: "Machine Learning Engineer, Pakistan", 'image': 'fatima_khan.jpg', 'story': 'Fatima’s journey into machine learning was driven by her desire to create technology that reflects diverse perspectives. She advocates for inclusive design practices that challenge biases in AI systems.' },
     { id: "r4", answer: "AI will transform work, but only if we ensure it creates opportunities rather than deepening divides.", name: "Lakshmi Reddy", occupation: "Tech Policy Advisor, Sri Lanka", 'image': 'lakshmi_reddy.jpg', 'story': 'Lakshmi’s passion for social justice led her to tech policy. She works to ensure that AI advancements lead to equitable job creation and do not exacerbate existing inequalities in the workforce.' },
     { id: "r5", answer: "The most powerful AI is the one that makes invisible labor visible and valued.", name: "Nisha Patel", occupation: "Social Impact Technologist, India" , 'image': 'nisha_patel.jpg', 'story': 'Nisha’s work focuses on leveraging AI to highlight and value the often-overlooked contributions of marginalized communities. She believes technology should serve as a tool for social empowerment.' },
@@ -78,38 +78,78 @@ const TILE_GRADIENTS = [
      
       
       function createCard(response, index){
-          const g = TILE_GRADIENTS[index % TILE_GRADIENTS.length];
-          const card = document.createElement('div');
-          card.className = 'card';
-          card.setAttribute('data-author', response.name);
-          card.id = `${response.id}`;
-          card.tabIndex = 0;
+        const g = TILE_GRADIENTS[index % TILE_GRADIENTS.length];
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.setAttribute('data-author', response.name);
+        card.id = `${response.id}`;
+        card.tabIndex = 0;
+    
+        const frontStyle = ` background: linear-gradient(135deg, ${g.from}15, ${g.to}08); box-shadow: 0 10px 40px ${g.glow}, 0 0 20px ${g.glow}; border-color: ${g.border},`;
+        const backStyle = `background: linear-gradient(135deg, ${g.from}25, ${g.to}15); border-color:  ${g.border}; box-shadow: 0 10px 40px ${g.glow}, 0 0 30px ${g.glow};`;
+    
+        card.innerHTML = `
+            <div class="card-inner flex">
 
-          const frontStyle = ` background: linear-gradient(135deg, ${g.from}15, ${g.to}08); box-shadow: 0 10px 40px ${g.glow}, 0 0 20px ${g.glow}; border-color: ${g.border},`;
-          const backStyle = `background: linear-gradient(135deg, ${g.from}25, ${g.to}15); border-color:  ${g.border}; box-shadow: 0 10px 40px ${g.glow}, 0 0 30px ${g.glow};`;
+  <!-- FRONT FACE -->
+  <div class="face front" style="
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      ${frontStyle}
+  ">
+    <!-- Background image and overlay (only for front) -->
+    <div style="
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: url('${response.image}') center/cover no-repeat;
+        z-index: 0;
+    "></div>
 
-          card.innerHTML = `
-              <div class="card-inner flex ">
-                  <div class="face front" style="${frontStyle} absolute inset-0 p-6 rounded-2xl backdrop-blur-lg border shadow-xl">
-                      <div claa="flex-1 flex items-center" style="margin:0; font-size:1rem; line-height:1.3; color:var(--soft-light); justify-self:center;">${response.answer}</div>
-                      <div style="display:flex; justify-content:space-between; align-items:center;">
-                          <span class="tap-hint">Tap to reveal</span>
-                          <span class="is-collected" style="color:var(--water-silver); font-size:.9rem;"></span>
-                      </div>
-                  </div>
+    <div style="
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 1;
+    "></div>
 
-                  <div class="face back" style="${backStyle}">
-                      <div style="text-align:center;">
-                          <h3 style="margin:0 0 .25rem; color:var(--soft-light);">${response.name}</h3>
-                          <p style="margin:0 0 1rem; color:var(--water-silver); font-size:.9rem;">${response.occupation}</p>
-                          <p style="color:var(--water-silver); font-size:.9rem;">${response.story}</p>
-                      </div>
-                     <button  class="collect-btn w-full py-3 rounded-xl border transition-all duration-300" tabindex="0" style="  color: rgb(230, 240, 255); cursor: pointer;  transform: none;"><span class="flex items-center justify-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles w-4 h-4" aria-hidden="true"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path><path d="M20 2v4"></path><path d="M22 4h-4"></path><circle cx="4" cy="20" r="2"></circle></svg>Collect This Response</span></button>
-                  </div>
-              </div>
-          `;
-          return card;
-      }
+    <!-- Front content -->
+    <div style=" height:100%; position: relative; z-index: 2; padding: 1rem; display:flex; flex-direction:column; align-content:space-between; ">
+      <div class="flex-1 flex items-center" style="margin:0; font-size:1rem; line-height:1.3; color:var(--soft-light); justify-self:center;">
+        ${response.answer}
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span class="tap-hint">Tap to reveal</span>
+        <span class="is-collected" style="color:var(--water-silver); font-size:.9rem;"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- BACK FACE -->
+ <div class="face back" style="${backStyle}">
+    <div style="text-align:center;">
+      <h3 style="margin:0 0 .25rem; color:var(--soft-light);">${response.name}</h3>
+      <p style="margin:0 0 1rem; color:var(--water-silver); font-size:.9rem;">${response.occupation}</p>
+      <p style="color:var(--water-silver); font-size:.9rem;">${response.story}</p>
+    </div>
+    <button class="collect-btn w-full py-3 rounded-xl border transition-all duration-300" tabindex="0" style="color: rgb(230, 240, 255); cursor: pointer;">
+      <span class="flex items-center justify-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles w-4 h-4" aria-hidden="true">
+          <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0-1.594-1.594z"></path>
+          <path d="M20 2v4"></path>
+          <path d="M22 4h-4"></path>
+          <circle cx="4" cy="20" r="2"></circle>
+        </svg>
+        Collect This Response
+      </span>
+    </button>
+  </div>
+
+        `;
+        return card;
+    }
 
       
       MOCK_RESPONSES.forEach((r, i) => {

@@ -11,6 +11,38 @@ body {
     background-color: #0a0e1a;
     color: var(--soft-light);
 }
+.card-inner {
+    position: relative;
+    perspective: 1000px;
+  }
+  
+  .face {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    transition: transform 0.8s;
+  }
+  
+  .front {
+    z-index: 2;
+    transform: rotateY(0deg);
+  }
+  
+  .back {
+    transform: rotateY(180deg);
+    z-index: 1;
+  }
+  
+  .card-inner.flipped .front {
+    transform: rotateY(180deg);
+  }
+  
+  .card-inner.flipped .back {
+    transform: rotateY(0deg);
+    z-index: 3; /* Ensure it's above the front when flipped */
+  }
+  
 
 /* card layout */
 .grid-wrap { padding: 2rem; max-width: 1200px; margin: 0 auto; }

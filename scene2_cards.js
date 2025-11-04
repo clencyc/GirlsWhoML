@@ -12,8 +12,32 @@ const TILE_GRADIENTS = [
   ];
 
   const MOCK_RESPONSES = [
-    { id: "r1", answer: "AI that brought a smile amidst loss and grief also became the reason for a girl to end her life.", name: "Priya Sharma", occupation: "AI Ethics Researcher, India" , image: 'priya_sharma.jpeg', story: `"My father passed away when I was just 3 years old. I used AI to create photos of myself with my father, and it made me very happy.Said Jouti, a college student from Haryana. “But on one end as it became a source of happiness to me, it had also been the reason for a young girl in my town to commit suiside. Some time ago, her face was used to create nude images, and everyone believed those nudes were real. It"s hampering everyone"s privacy." A strong weapon with no guardrail can do more harm than good.`},
-    { id: "r2", answer: "The future of AI lies in understanding context, culture, and the nuances that make us human.", name: "Anjali Mehta", occupation: "Data Scientist, Bangladesh" , 'image': 'priya_sharma2.jpeg', 'story': 'Anjali grew up fascinated by the stories her grandmother told about their village. She became a data scientist to create AI systems that respect and incorporate cultural contexts, ensuring technology serves diverse communities.'},
+    { id: "r1", answer: "AI that brought a smile amidst loss and grief also became the reason for a girl to end her life.", name: "Priya Sharma", occupation: "AI Ethics Researcher, India" , image: 'priya_sharma.jpeg',
+       story: `
+       "My father passed away when I was just 3 years old. I used AI to create photos of myself with my father, and it made me very happy."
+Said Jouti, a college student from Haryana. “But on one end as it became a source of happiness to me, it had also been the reason for a young girl in my town to commit suiside. Some time ago, her face was used to create nude images, and everyone believed those nudes were real. It's hampering everyone's privacy." A strong weapon with no guardrail can do more harm than good.
+
+"I'm not very hopeful about AI as a woman.” a girl from Patna shared reflecting on her witnessed experience of how rural women are especially targeted towards the misuse of AI, particularly with image generation, creating sexual content and blackmailing women. It is widely used to make negative content around women, and from the viewers' side, this is getting more reach too.
+
+Just like Instagram AI trend reels go viral, awareness-related videos should also be popularly available so they reach everyone. From farmers to illiterate women and men in rural villages of India who don't have much digital knowledge often tend to become victims. They are not aware of security and privacy, so having proper educational content to raise awareness will help boost confidence, and they too will move forward with AI.
+It’s high time the government shall run programs to raise awareness about security concerns related to AI. Global AI policy guidelines shall be determined with every country setting laws of punishment (fine or imprisonment) on committing crimes related to misuse of AI. Special international laws are needed to put a check on how the data collected from the masses are actually used by the AI companies and if the users have given consent on using their private information on training the Machine Learning Models. 
+
+The same AI that can bring a smile amidst loss and grief can also be the reason for someone to end their life. The final call to use it is always in the hands of humans. So while making these systems we shall be thinking like humans, not machines.
+       `},
+    { id: "r2", answer: `AI's Impact on Employment: A Journalists Outlook`, name: "Anjali Mehta", occupation: "Data Scientist, Bangladesh" , 'image': 'priya_sharma2.jpeg',
+       'story':`
+       "People think AI is taking you one step forward when in reality it is taking you two steps backward.”
+
+"I always wanted to create my identity through my own name. I didn't want anyone to call me 'so-and-so's daughter' or 'so-and-so's sister' or 'so-and-so's wife.' From the beginning, I wanted to be known by my own name and today, I've reached a point where people now know my family members by my name. I've endured bravery, self-dependence, and struggle, and today I've emerged as a fearless journalist. I'm originally from UP, living in Bihar alone for 3 years.” Shares Suman, a young Journalist from India. 
+
+From her experience lately she also shares how AI is rapidly killing journalism because it has replaced scriptwriters. With just a few words, you get scripts written and thumbnails ready but the responses are very fabricated. This is ending realistic human output, especially in journalism.
+AI creating images from news boardrooms, has even led to the decline of field reporting and field reporter roles. This has ended humans' potential to think critically. People just pick up their phones and start scrolling. They don't make an effort anymore, don't try to go where incidents are happening. Everything is available sitting at home.
+This has eliminated employment opportunities for so many people, or their minds have just shrunk. People can't think deeply anymore.
+
+"People think AI is taking you one step forward when in reality it is taking you two steps backward.”
+
+Recently, the Bureau of Labor Statistics of America reported that 7.2-7.3 million people are unemployed due to AI and robots. From doctors performing surgeries to laborers in factories- AI is replacing humans. People find machines more reliable nowadays. But this has made people unemployed, which is very saddening. This online boost is breaking human relations.
+       `},
     { id: "r3", answer: "Every algorithm carries the values of its creator. We must ask: whose values are we encoding?", name: "Fatima Khan", occupation: "Machine Learning Engineer, Pakistan", 'image': 'fatima_khan.jpg', 'story': 'Fatima’s journey into machine learning was driven by her desire to create technology that reflects diverse perspectives. She advocates for inclusive design practices that challenge biases in AI systems.' },
     { id: "r4", answer: "AI will transform work, but only if we ensure it creates opportunities rather than deepening divides.", name: "Lakshmi Reddy", occupation: "Tech Policy Advisor, Sri Lanka", 'image': 'lakshmi_reddy.jpg', 'story': 'Lakshmi’s passion for social justice led her to tech policy. She works to ensure that AI advancements lead to equitable job creation and do not exacerbate existing inequalities in the workforce.' },
     { id: "r5", answer: "The most powerful AI is the one that makes invisible labor visible and valued.", name: "Nisha Patel", occupation: "Social Impact Technologist, India" , 'image': 'nisha_patel.jpg', 'story': 'Nisha’s work focuses on leveraging AI to highlight and value the often-overlooked contributions of marginalized communities. She believes technology should serve as a tool for social empowerment.' },

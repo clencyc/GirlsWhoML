@@ -40,11 +40,11 @@ body {
   
   .card-inner.flipped .back {
     transform: rotateY(0deg);
-    z-index: 3; /* Ensure it's above the front when flipped */
+    z-index: 3; 
   }
   
 
-/* card layout */
+
 .grid-wrap { padding: 2rem; max-width: 1200px; margin: 0 auto; }
 .cards { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
 .view-collection:hover
@@ -98,3 +98,55 @@ body {
 .slot { width:40px; height:40px; border-radius:8px; border:2px solid rgba(143,191,224,.3); display:flex; align-items:center; justify-content:center; background:transparent; color:var(--soft-light); font-weight:600; }
 .slot.filled { background: rgba(143,191,224,.18); border-color: rgba(143,191,224,.6); }
 .collection-count { color: var(--mist-blue); font-size:.9rem; margin-left:.75rem; }
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+#story-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+#story-modal > div {
+  background: #1b1b2f;
+  color: #e6f0ff;
+  padding: 2rem;
+  border-radius: 16px;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  text-align: center;
+  animation: pop-in 0.3s ease-out;
+}
+
+@keyframes pop-in {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

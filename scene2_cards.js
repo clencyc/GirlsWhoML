@@ -12,8 +12,8 @@ const TILE_GRADIENTS = [
   ];
 
   const MOCK_RESPONSES = [
-    { id: "r1", answer: "Technology should amplify human creativity, not replace it. We need to build tools that honor the craft.", name: "Priya Sharma", occupation: "AI Ethics Researcher, India" , image: 'priya_sharma.jpeg', story: 'Growing up in a small town, Priya witnessed firsthand how technology could both empower and marginalize communities. She pursued a career in AI ethics to ensure that technological advancements respect human values and creativity.'},
-    { id: "r2", answer: "The future of AI lies in understanding context, culture, and the nuances that make us human.", name: "Anjali Mehta", occupation: "Data Scientist, Bangladesh" , 'image': 'priya_sharma.jpeg', 'story': 'Anjali grew up fascinated by the stories her grandmother told about their village. She became a data scientist to create AI systems that respect and incorporate cultural contexts, ensuring technology serves diverse communities.'},
+    { id: "r1", answer: "AI that brought a smile amidst loss and grief also became the reason for a girl to end her life.", name: "Priya Sharma", occupation: "AI Ethics Researcher, India" , image: 'priya_sharma.jpeg', story: `"My father passed away when I was just 3 years old. I used AI to create photos of myself with my father, and it made me very happy.Said Jouti, a college student from Haryana. “But on one end as it became a source of happiness to me, it had also been the reason for a young girl in my town to commit suiside. Some time ago, her face was used to create nude images, and everyone believed those nudes were real. It"s hampering everyone"s privacy." A strong weapon with no guardrail can do more harm than good.`},
+    { id: "r2", answer: "The future of AI lies in understanding context, culture, and the nuances that make us human.", name: "Anjali Mehta", occupation: "Data Scientist, Bangladesh" , 'image': 'priya_sharma2.jpeg', 'story': 'Anjali grew up fascinated by the stories her grandmother told about their village. She became a data scientist to create AI systems that respect and incorporate cultural contexts, ensuring technology serves diverse communities.'},
     { id: "r3", answer: "Every algorithm carries the values of its creator. We must ask: whose values are we encoding?", name: "Fatima Khan", occupation: "Machine Learning Engineer, Pakistan", 'image': 'fatima_khan.jpg', 'story': 'Fatima’s journey into machine learning was driven by her desire to create technology that reflects diverse perspectives. She advocates for inclusive design practices that challenge biases in AI systems.' },
     { id: "r4", answer: "AI will transform work, but only if we ensure it creates opportunities rather than deepening divides.", name: "Lakshmi Reddy", occupation: "Tech Policy Advisor, Sri Lanka", 'image': 'lakshmi_reddy.jpg', 'story': 'Lakshmi’s passion for social justice led her to tech policy. She works to ensure that AI advancements lead to equitable job creation and do not exacerbate existing inequalities in the workforce.' },
     { id: "r5", answer: "The most powerful AI is the one that makes invisible labor visible and valued.", name: "Nisha Patel", occupation: "Social Impact Technologist, India" , 'image': 'nisha_patel.jpg', 'story': 'Nisha’s work focuses on leveraging AI to highlight and value the often-overlooked contributions of marginalized communities. She believes technology should serve as a tool for social empowerment.' },
@@ -128,24 +128,30 @@ const TILE_GRADIENTS = [
   </div>
 
   <!-- BACK FACE -->
- <div class="face back" style="${backStyle}">
-    <div style="text-align:center;">
-      <h3 style="margin:0 0 .25rem; color:var(--soft-light);">${response.name}</h3>
-      <p style="margin:0 0 1rem; color:var(--water-silver); font-size:.9rem;">${response.occupation}</p>
-      <p style="color:var(--water-silver); font-size:.9rem;">${response.story}</p>
-    </div>
-    <button class="collect-btn w-full py-3 rounded-xl border transition-all duration-300" tabindex="0" style="color: rgb(230, 240, 255); cursor: pointer;">
-      <span class="flex items-center justify-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles w-4 h-4" aria-hidden="true">
-          <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0-1.594-1.594z"></path>
-          <path d="M20 2v4"></path>
-          <path d="M22 4h-4"></path>
-          <circle cx="4" cy="20" r="2"></circle>
-        </svg>
-        Collect This Response
-      </span>
-    </button>
+<div class="face back" style="${backStyle}" id="back-face-${response.id}">
+  <div style="text-align:center;">
+    <h3 style="margin:0 0 .25rem; color:var(--soft-light);">${response.name}</h3>
+    <p style="margin:0 0 1rem; color:var(--water-silver); font-size:.9rem;">${response.occupation}</p>
+    
+    <!-- Story text (short preview + View More button) -->
+    <p class="story-text" style="color:var(--water-silver); font-size:.9rem;">
+      ${response.story.length > 120 ? response.story.substring(0, 120) + "..." : response.story}
+      ${response.story.length > 120 ? `<br><a href="#" class="view-more" style="color: var(--accent-glow); font-size: .85rem; text-decoration: underline;">View More</a>` : ""}
+    </p>
   </div>
+
+  <button class="collect-btn w-full py-3 rounded-xl border transition-all duration-300" tabindex="0" style="color: rgb(230, 240, 255); cursor: pointer;">
+    <span class="flex items-center justify-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles w-4 h-4" aria-hidden="true">
+        <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0-1.594-1.594z"></path>
+        <path d="M20 2v4"></path>
+        <path d="M22 4h-4"></path>
+        <circle cx="4" cy="20" r="2"></circle>
+      </svg>
+      Collect This Response
+    </span>
+  </button>
+</div>
 
         `;
         return card;

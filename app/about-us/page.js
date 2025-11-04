@@ -4,7 +4,7 @@ import Footer from '../components/shared/Footer';
 export default function AboutUs() {
   return (
     <div className="relative w-full min-h-screen bg-[#FFFFFF] flex flex-col items-center">
-    <div className="relative w-[1440px] h-[8664px] bg-[#FFFFFF]">
+    
       <Header />
 
       {/* topSection - exact Figma specs */}
@@ -60,8 +60,7 @@ export default function AboutUs() {
       </section>
 
       {/* bottomSection - exact Figma specs */}
-      <section className="flex flex-col items-center p-[200px_0px] gap-[80px] absolute w-[1440px] h-[977px] left-[calc(50%-1440px/2+1px)] top-[1179px] bg-[#F5F3ED]">
-
+      <section className="flex flex-col items-center py-[200px] gap-[80px] absolute w-full left-0 top-[1179px] bg-[#F5F3ED]">
         {/* Quote */}
         <p className="w-[1077px] h-[420px] font-['Inter'] text-[58px] leading-[70px] text-center tracking-[-0.04em] text-[#000000] order-0" style={{fontWeight: 500}}>
           "If we don't get women and people of colour at the table – real technologists doing the real work – we will bias systems. Trying to reverse that a decade or two from now will be so much more difficult, if not close to impossible."
@@ -72,12 +71,12 @@ export default function AboutUs() {
           Melinda Gates, Co-chair Bill & Melinda Gates Foundation
         </p>
       </section>
-
+ 
       {/* footer */}
-      <div className="absolute w-[1441px] h-[781px] left-[-1px] top-[2156px]">
+      <div className="absolute w-full h-[781px] left-[-1px] top-[2156px]">
         <Footer />
       </div>
-    </div>
+    
     </div>
   );
-}
+} 

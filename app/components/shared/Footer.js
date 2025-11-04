@@ -25,7 +25,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer ref={footerRef} className="w-full max-w-[1441px] mx-auto h-[781px] bg-[#393939] order-4">
+    <footer ref={footerRef} className="w-full h-[781px] bg-[#393939] order-4"> 
       {/* Empowering women in ML and AI - exact Figma specs */}
       <h2
         className={`absolute w-[706px] h-[174px] left-[calc(50%-706px/2-288.5px)] top-[102px] font-['Inter'] text-[72px] leading-[87px] tracking-[-0.04em] text-[#FFFFFF] transition-all duration-1000 ease-out ${
@@ -39,18 +39,26 @@ export default function Footer() {
       {/* cta - exact Figma specs */}
       <a
         href="/mosaic-of-voices"
-        className={`flex flex-row justify-center items-center p-[20px_28px] gap-[8px] absolute w-[257px] h-[64px] left-[calc(50%-257px/2-513px)] top-[327px] bg-[#D89EFA] rounded-[100px] transition-all duration-700 ease-out hover:bg-[#C88FE8] hover:scale-105 hover:shadow-xl active:scale-95 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}
-        style={{animationDelay: '400ms'}}
-      >
-        <span className="w-[169px] h-[24px] font-['Inter'] text-[20px] leading-[24px] tracking-[-0.02em] text-[#000000] order-0 " style={{fontWeight: 500}}>
-          See the live action
-        </span>
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="order-1 transition-transform duration-300 ease-out group-hover:translate-x-1">
-          <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#231F20" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      </a>
+  className={`group flex flex-row justify-center items-center p-[20px_28px] gap-[8px] absolute w-[257px] h-[64px] left-[calc(50%-257px/2-513px)] top-[327px] bg-[#D89EFA] rounded-[100px] transition-all duration-700 ease-out hover:bg-[#000000] ${
+    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+  }`}
+  style={{animationDelay: '400ms'}}
+  onMouseEnter={(e) => {
+    e.currentTarget.querySelector('span').style.color = '#ffffff';
+    e.currentTarget.querySelector('svg').style.color = '#ffffff';
+  }}
+  onMouseLeave={(e) => {
+    e.currentTarget.querySelector('span').style.color = '#000000';
+    e.currentTarget.querySelector('svg').style.color = '#231F20';
+  }}
+>
+  <span className="w-[169px] h-[24px] font-['Inter'] text-[20px] leading-[24px] tracking-[-0.02em] text-[#000000] order-0 transition-colors duration-700" style={{fontWeight: 500}}>
+    See the live action
+  </span>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="order-1 transition-all duration-700 ease-out group-hover:translate-x-1 text-[#231F20]">
+    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+</a>
 
       {/* divider */}
       <div
@@ -62,7 +70,7 @@ export default function Footer() {
 
       {/* harangè logo */}
       <span
-        className={`absolute w-[275px] h-[24px] left-[79px] top-[521px] font-alata font-normal text-[56px] leading-[20px] tracking-[-0.05em] text-[#FFFFFF] transition-all duration-700 ease-out  ${
+        className={`absolute w-[275px] h-[24px] left-[calc(50%-1275px/2-4px)]  top-[521px] font-alata font-normal text-[56px] leading-[20px] tracking-[-0.05em] text-[#FFFFFF] transition-all duration-700 ease-out  ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
         style={{animationDelay: '800ms'}}
@@ -72,7 +80,7 @@ export default function Footer() {
 
       {/* socialMedia - exact Figma specs */}
       <div
-        className={`flex flex-row items-center p-0 gap-[16px] absolute w-[218px] h-[62px] left-[77px] top-[614px] transition-all duration-700 ease-out ${
+        className={`flex flex-row items-center p-0 gap-[16px] absolute w-[218px] h-[62px] left-[calc(50%-1275px/2-4px)]  top-[614px] transition-all duration-700 ease-out ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
         style={{animationDelay: '1000ms'}}

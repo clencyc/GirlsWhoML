@@ -41,6 +41,7 @@ export default function MosaicOfVoices() {
     return colors;
   };
 
+  const [hasMoreContent, setHasMoreContent] = useState(true);
   const [showMore, setShowMore] = useState(false);
   const [tileColors, setTileColors] = useState([]); // Start with empty array
   const [isClient, setIsClient] = useState(false);
@@ -96,6 +97,7 @@ export default function MosaicOfVoices() {
   const handleViewMore = () => {
     setShowMore(true);
     // Trigger animations for new tiles immediately
+    
     setTimeout(() => {
       for (let i = 12; i < 24; i++) {
         setVisibleTiles(prev => new Set([...prev, `tile-${i}`]));
@@ -104,8 +106,8 @@ export default function MosaicOfVoices() {
   };
 
   return (
-    <div className="relative w-full min-h-screen bg-[#FFFFFF] flex flex-col items-center">
-    <div className="relative w-[1440px] h-[8664px] bg-[#FFFFFF]">
+    <div className="relative w-full min-h-full bg-[#F5F3ED] flex flex-col items-center">
+    <div className="relative w-[1440px]">
       <Header />
 
       {/* Mosaic of Voices heading - exact Figma specs */}
@@ -321,12 +323,12 @@ export default function MosaicOfVoices() {
           </svg>
         </button>
       )}
-
+</div>
       {/* footer */}
-      <div className={`absolute w-[1441px] h-[781px] left-[-1px] ${showMore ? 'top-[4473px]' : 'top-[2728px]'}`}>
+      <div className={`absolute w-full h-[781px] left-[-1px] ${showMore ? 'top-[4473px]' : 'top-[2728px]'}`}>
         <Footer />
       </div>
-    </div>
+    
     </div>
   );
 }

@@ -74,11 +74,19 @@ export default function Home() {
     };
   }, []);
 
-  return (
-    <div className="relative w-full min-h-screen bg-[#FFFFFF] flex flex-col items-center">
-    <div className="relative w-[1440px] h-[8664px] bg-[#FFFFFF]">
-      <Header />
+return (
+  <div className="relative w-full min-h-screen bg-[#FFFFFF] flex flex-col items-center">
+    <div className="relative w-[1440px]  bg-[#FFFFFF]">
+      <div className="sticky top-0 z-50 bg-white w-full flex justify-center">
+        <div className="w-[1440px]">
+        <Header />
+        </div>
+      </div>
+      {/* rest of your content */}
 
+
+    {/* Main content */}
+    <div className="relative w-[1440px] bg-[#FFFFFF]"></div>
       {/* topSection */}
       <section className="absolute w-[1441px] h-[1769px] left-[calc(50%-1441px/2+0.5px)] top-[156px]">
         {/* heroText */}
@@ -98,14 +106,22 @@ export default function Home() {
 
           {/* cta1 */}
           <a
-            href="./mosaic-of-voices"
-            className="flex flex-row justify-center items-center p-[20px_28px] gap-[8px] w-[323px] h-[64px] bg-[#D89EFA] rounded-[100px] flex-none order-1 flex-grow-0 transition-all duration-300 ease-out "
+          href="./mosaic-of-voices"
+            className="group flex flex-row justify-center items-center p-[20px_28px] gap-[8px] w-[323px] h-[64px] bg-[#D89EFA] rounded-[100px] flex-none order-1 flex-grow-0 transition-all duration-700 ease-out hover:bg-[#000000]"
+            onMouseEnter={(e) => {
+              e.currentTarget.querySelector('span').style.color = '#ffffff';
+              e.currentTarget.querySelector('svg').style.color = '#ffffff';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.querySelector('span').style.color = '#000000';
+              e.currentTarget.querySelector('svg').style.color = '#231F20';
+            }}
           >
-            <span className="w-[235px] h-[24px] font-['Inter'] font-bold text-[20px] leading-[24px] tracking-[-0.02em] text-[#000000] flex-none order-0 flex-grow-0 " style={{fontWeight: 450}}>
+            <span className="w-[235px] h-[24px] font-['Inter'] font-bold text-[20px] leading-[24px] tracking-[-0.02em] text-[#000000] flex-none order-0 flex-grow-0 transition-colors duration-700" style={{fontWeight: 450}}>
               Explore Collective Gallery
             </span>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="flex-none order-1 flex-grow-0">
-              <path d="M3 12H21M21 12L14 5M21 12L14 19" stroke="#231F20" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="flex-none order-1 flex-grow-0 transition-all duration-700 ease-out group-hover:translate-x-1 text-[#231F20]">
+              <path d="M3 12H21M21 12L14 5M21 12L14 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </a>
         </div>
@@ -339,13 +355,13 @@ export default function Home() {
           {/* ctaCard */}
           <div
             ref={el => sectionRefs.current['cta'] = el}
-            className={getSectionClass('cta', "flex flex-col justify-center items-center p-[120px_98px] gap-[95px] w-[1262px] h-[785px] bg-[#F6D55C] rounded-[50px] flex-none order-0 flex-grow-0")}
+            className={getSectionClass('cta', "flex flex-col justify-center items-center p-[120px_98px] gap-[95px] w-[1079px] h-[785px] bg-[#F6D55C] rounded-[50px] flex-none order-0 flex-grow-0")}
             style={{transition: 'all 0.5s ease-out'}}
           >
-            <h2 className="w-[989px] h-[174px] font-['Inter'] text-[72px] leading-[87px] text-center tracking-[-0.04em] text-[#000000] flex-none order-0 flex-grow-0" style={{fontWeight: 500}}>
+            <h2 className="w-[989px] h-[174px] font-['Inter'] text-[68px] leading-[87px] text-center tracking-[-0.04em] text-[#000000] flex-none order-0 flex-grow-0" style={{fontWeight: 500}}>
               Support the Next Generation<br />of Women in AI
             </h2>
-            <p className="w-[1066px] h-[117px] font-['Inter'] text-[32px] leading-[39px] text-center tracking-[-0.02em] text-[#000000] flex-none order-1 flex-grow-0" style={{fontWeight: 500}}>
+            <p className="w-[1000px] h-[100px] font-['Inter'] text-[28px] leading-[40px] text-center tracking-[-0.02em] text-[#000000] flex-none order-1 flex-grow-0" style={{fontWeight: 500}}>
               Your donation helps us reach our goal of introducing 100,000 women and non-binary individuals to machine learning through free education, mentorship, and real-world opportunities.
             </p>
             {/* ctaButton */}
@@ -360,26 +376,36 @@ export default function Home() {
           </div>
         </div>
       </section>
+</div>
 
       {/* forthSection */}
       <section
-        ref={el => sectionRefs.current['testimonials'] = el}
-        className={getSectionClass('testimonials', "absolute w-[1441px] h-[1331px] left-[calc(50%-1441px/2+0.5px)] top-[6552px] bg-[#F5F3ED]")}
-      >
-        <h2 className="absolute w-[919px] h-[87px] left-[calc(50%-919px/2+2px)] top-[242px] font-['Inter'] text-[72px] leading-[87px] text-center tracking-[-0.04em] text-[#000000]" style={{fontWeight: 500}}>
-          Voices & Reflections: Women Shaping AI
-        </h2>
+  ref={el => sectionRefs.current['testimonials'] = el}
+  className={getSectionClass(
+    'testimonials',
+    "absolute w-full h-[1331px] left-0 top-[6552px] bg-[#F5F3ED] flex flex-col items-center"
+  )}
+>
+  <h2
+    className="absolute w-[915px] h-[87px] left-[calc(50%-915px/2+1px)] top-[179px] font-['Inter'] text-[72px] leading-[87px] text-center tracking-[-0.04em] text-[#000000]"
+    style={{ fontWeight: 500 }}
+  >
+    Voices & Reflections: Women Shaping AI
+  </h2>
 
-        <div className="transition-all duration-700 ease-out">
-          <TestimonialSlider />
-        </div>
-      </section>
+{/* Slider wrapper */}
+<div className="absolute top-[450px] left-1/2 transform -translate-x-1/2 transition-all duration-700 ease-out">
+  <TestimonialSlider />
+</div>
+
+</section>
+
 
       {/* footer */}
-      <div className="absolute w-full h-[781px] left-0 top-[7883px] flex justify-center">
+      <div className="absolute w-full h-[780px] top-[7883px] flex justify-center">
         <Footer />
       </div>
-    </div>
+    
     </div>
   );
 }

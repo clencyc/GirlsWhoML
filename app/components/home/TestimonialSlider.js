@@ -9,21 +9,31 @@ const testimonials = [
     location: "India"
   },
   {
-    quote: "\"The project was an enriching journey - from crowdfunding the installation to connecting with brilliant minds and leading workshops. It deepened my understanding of the gaps and misrepresentation in tech and reinforced how essential inclusivity is when designing AI systems\"",
+    quote: "\"The project was an enriching journey - from crowdfunding the installation to connecting with brilliant minds and leading workshops. It deepened my understanding of the gaps and misrepresentation in tech and reinforced how essential inclusivity is when designing AI systems.\"",
     name: "Fatima",
     location: "Pakistan"
   },
   {
-    quote: "\"Eye-opening\" is the word. It's my first time working with such a big, diverse team! I still remember thinking, \"Wow, I'm really part of something global,\" when seeing BSTs, EATs, and ISTs on our tech meeting times. It's eye-opening too to realize that behind AI's dazzling front are women often least recognized in the system. We hope Harang can help change that.",
+    quote: "\"\"Eye-opening\" is the word. It's my first time working with such a big, diverse team! I still remember thinking, \"Wow, I'm really part of something global,\" when seeing BSTs, EATs, and ISTs on our tech meeting times. It's eye-opening too to realize that behind AI's dazzling front are women often least recognized in the system. We hope Harang can help change that.\"",
     name: "Yanni",
     location: "China"
+  },
+  {
+    quote: "\"It highlighted the persistent gaps and misrepresentations in technology, emphasizing the critical role of inclusive design in AI systems.\"",
+    name: "Chae",
+    location: "South Korea"
+  },
+  {
+    quote: "\"Eye-opening\" is the word. It's my first time working with such a big, diverse team! I still remember thinking, \"Wow, I'm really part of something global,\" when seeing BSTs, EATs, and ISTs on our tech meeting times. It's eye-opening too to realize that behind AI's dazzling front are women often least recognized in the system. We hope Harang can help change that.\"",
+    name: "Chae",
+    location: "The UK"
   }
 ];
 
 export default function TestimonialSlider() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [visibleCount, setVisibleCount] = useState(3);
   const sliderRef = useRef(null);
 
   // Intersection observer for animations
@@ -46,120 +56,142 @@ export default function TestimonialSlider() {
     return () => observer.disconnect();
   }, []);
 
-  // Auto-play functionality
+  // Update number of visible cards based on viewport
   useEffect(() => {
-    if (!isAutoPlaying || !isVisible) return;
+    const updateVisibleCount = () => {
+      const cardWidth = 500 + 40; // card width + gap
+      const count = Math.floor((window.innerWidth - 160) / cardWidth); // 80px margin on each side
+      setVisibleCount(Math.max(1, count));
+    };
 
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, [isAutoPlaying, isVisible]);
+    updateVisibleCount();
+    window.addEventListener('resize', updateVisibleCount);
+    return () => window.removeEventListener('resize', updateVisibleCount);
+  }, []);
 
   const goToPrevious = () => {
-    setIsAutoPlaying(false);
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
-    );
-    // Resume auto-play after 10 seconds
-    setTimeout(() => setIsAutoPlaying(true), 10000);
+    setCurrentIndex((prevIndex) => Math.max(0, prevIndex - 1));
   };
 
   const goToNext = () => {
-    setIsAutoPlaying(false);
     setCurrentIndex((prevIndex) =>
-      prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
+      Math.min(prevIndex + 1, testimonials.length - visibleCount)
     );
-    // Resume auto-play after 10 seconds
-    setTimeout(() => setIsAutoPlaying(true), 10000);
   };
 
   const getVisibleTestimonials = () => {
-    const visible = [];
-    for (let i = 0; i < 3; i++) {
-      const index = (currentIndex + i) % testimonials.length;
-      visible.push(testimonials[index]);
-    }
-    return visible;
+    return testimonials.slice(currentIndex, currentIndex + visibleCount);
   };
 
   const visibleTestimonials = getVisibleTestimonials();
 
   return (
     <>
-      {/* reflectionSlider */}
+
+    <div className="w-[1441px] mx-auto overflow-hidden">
+      {/* Slider */}
       <div
         ref={sliderRef}
-        className={`flex flex-row items-center p-0 gap-[40px] absolute w-[1637px] h-[465px] left-[80px] top-[514px] overflow-hidden transition-all duration-1000 ease-out ${
+        className={`flex flex-row items-center justify-start p-0 gap-[40px] w-full overflow-x-hidden transition-all duration-1000 ease-out ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
-        onMouseEnter={() => setIsAutoPlaying(false)}
-        onMouseLeave={() => setIsAutoPlaying(true)}
+        style={{ maxWidth: 'calc(100vw - 160px)' }} // 80px margin on each side
       >
         {visibleTestimonials.map((testimonial, idx) => (
           <div
             key={`${testimonial.name}-${idx}`}
-            className="flex flex-col justify-between items-start p-[40px_32px] w-[519px] h-[465px] bg-[#FFFFFF] rounded-[20px] flex-none transition-all duration-700 ease-out"
-            style={{animationDelay: `${idx * 200}ms`}}
+            className="flex flex-col justify-between items-start p-[40px_32px] w-[500px] h-[465px] bg-[#FFFFFF] rounded-[20px] flex-none transition-all duration-700 ease-out"
+            style={{ animationDelay: `${idx * 200}ms` }}
           >
-            <p className="font-['Inter'] italic text-[24px] leading-[32px] tracking-[-0.02em] text-[#000000] transition-all duration-300 ease-out group-hover:text-[#261033]" style={{fontWeight: 500}}>
+            <p
+              className="font-['Inter'] italic text-[20px] leading-[32px] tracking-[-0.02em] text-[#000000] transition-all duration-300 ease-out group-hover:text-[#261033]"
+              style={{ fontWeight: 500 }}
+            >
               {testimonial.quote}
             </p>
-            <p className="font-['Inter'] text-[28px] leading-[34px] tracking-[-0.02em] text-[#000000] w-full transition-all duration-300 ease-out group-hover:text-[#261033]">
-              <span className="italic transition-all duration-300 ease-out group-hover:text-[#D89EFA]" style={{fontWeight: 700}}>{testimonial.name}</span>
-              <span className="italic" style={{fontWeight: 500}}>, {testimonial.location}</span>
+            <p
+              className="font-['Inter'] text-[24px] leading-[34px] tracking-[-0.02em] text-[#000000] w-full transition-all duration-300 ease-out group-hover:text-[#261033]"
+            >
+              <span
+                className="italic transition-all duration-300 ease-out group-hover:text-[#D89EFA]"
+                style={{ fontWeight: 700 }}
+              >
+                {testimonial.name}
+              </span>
+              <span className="italic" style={{ fontWeight: 500 }}>
+                , {testimonial.location}
+              </span>
             </p>
           </div>
         ))}
       </div>
+      </div>
 
       {/* Navigation arrows */}
       <div
-        className={`flex flex-row items-center gap-[16px] absolute left-[80px] top-[1043px] transition-all duration-1000 ease-out ${
+        className={`flex flex-row items-center gap-[16px] mt-[40px] transition-all duration-1000 ease-out ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
-        style={{animationDelay: '600ms'}}
+        style={{ animationDelay: '600ms' }}
       >
         {/* Left arrow */}
         <button
           onClick={goToPrevious}
-          className="w-[64px] h-[64px] rounded-full border border-[#666666] flex items-center justify-center bg-[#FFFFFF] hover:bg-[#D89EFA] hover:border-[#D89EFA] transition-all duration-300 ease-out hover:scale-110 hover:shadow-lg active:scale-95 cursor-pointer group"
+          disabled={currentIndex === 0}
+          className={`w-[64px] h-[64px] rounded-full border flex items-center justify-center transition-all duration-300 ease-out ${
+            currentIndex === 0
+              ? 'border-gray-300 cursor-not-allowed'
+              : 'border-black cursor-pointer hover:bg-black hover:border-black'
+          }`}
         >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="transition-all duration-300 ease-out group-hover:-translate-x-1">
-            <path d="M19 12H5M5 12L11 6M5 12L11 18" stroke="#666666" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:stroke-white transition-all duration-300 ease-out"/>
-          </svg>
-        </button>
-        {/* Right arrow */}
-        <button
-          onClick={goToNext}
-          className="w-[64px] h-[64px] rounded-full border border-[#000000] flex items-center justify-center bg-[#FFFFFF] hover:bg-[#D89EFA] hover:border-[#D89EFA] transition-all duration-300 ease-out hover:scale-110 hover:shadow-lg active:scale-95 cursor-pointer group"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="transition-all duration-300 ease-out group-hover:translate-x-1">
-            <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:stroke-white transition-all duration-300 ease-out"/>
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            className="transition-all duration-300 ease-out group-hover:-translate-x-1"
+          >
+            <path
+              d="M19 12H5M5 12L11 6M5 12L11 18"
+              stroke={currentIndex === 0 ? '#ccc' : '#000'}
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </button>
 
-        {/* Progress indicators */}
-        {/* <div className="flex gap-[8px] ml-[32px]">
-          {testimonials.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => {
-                setIsAutoPlaying(false);
-                setCurrentIndex(index);
-                setTimeout(() => setIsAutoPlaying(true), 10000);
-              }}
-              className={`w-[12px] h-[12px] rounded-full transition-all duration-300 ease-out hover:scale-125 ${
-                index === currentIndex
-                  ? 'bg-[#D89EFA] shadow-lg'
-                  : 'bg-[#CCCCCC] hover:bg-[#999999]'
-              }`}
+        {/* Right arrow */}
+<button
+  onClick={goToNext}
+  disabled={currentIndex >= testimonials.length - visibleCount}
+  className={`w-[64px] h-[64px] rounded-full border flex items-center justify-center transition-all duration-300 ease-out
+    ${
+      currentIndex >= testimonials.length - visibleCount
+        ? 'border-gray-300 cursor-not-allowed'
+        : 'border-black cursor-pointer hover:bg-black hover:border-black focus:outline-none'
+    }`}
+>
+  {/* button content */} 
+
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            className="transition-all duration-300 ease-out group-hover:translate-x-1"
+          >
+            <path
+              d="M5 12H19M19 12L13 6M19 12L13 18"
+              stroke={
+                currentIndex >= testimonials.length - visibleCount ? '#ccc' : '#000'
+              }
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
-          ))}
-        </div> */}
+          </svg>
+        </button>
       </div>
     </>
   );

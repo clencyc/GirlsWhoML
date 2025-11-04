@@ -23,7 +23,7 @@ export default function Contact() {
   }, []);
   return (
     <div className="relative w-full min-h-screen bg-[#FFFFFF] flex flex-col items-center">
-    <div className="relative w-[1440px] h-[8664px] bg-[#FFFFFF]">
+    <div className="relative w-[1440px] bg-[#FFFFFF]">
       <Header />
 
       {/* Get Involved heading - exact Figma specs */}
@@ -38,7 +38,7 @@ export default function Contact() {
       </p>
 
       {/* contactCards - exact Figma specs */}
-      <div className="flex flex-row items-center p-0 gap-[39px] absolute w-[1077px] h-[325px] left-[calc(50%-1077px/2+0.5px)] top-[585px]">
+      <div className="flex flex-row items-center justify-center gap-[39px] absolute w-full left-0 top-[585px]">
 
         {/* Frame 167 - Help Card */}
         <div className="flex flex-col justify-center items-center p-[40px_32px] gap-[40px] w-[519px] h-[325px] bg-[#FFFFFF] border border-[#E3E3E3] rounded-[20px] order-0 transition-all duration-300 ease-out">
@@ -86,12 +86,12 @@ export default function Contact() {
           </div>
         </div>
       </div>
-
+</div>
       {/* footer */}
-      <div className="absolute w-[1441px] h-[781px] left-[-1px] top-[1050px]">
+      <div className="absolute w-full h-[781px] left-[-1px] top-[1050px] ">
         <Footer />
       </div>
-    </div>
+    
     </div>
   );
 }

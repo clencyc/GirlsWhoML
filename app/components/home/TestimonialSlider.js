@@ -136,30 +136,32 @@ export default function TestimonialSlider() {
       >
         {/* Left arrow */}
         <button
-          onClick={goToPrevious}
-          disabled={currentIndex === 0}
-          className={`w-[64px] h-[64px] rounded-full border flex items-center justify-center transition-all duration-300 ease-out ${
-            currentIndex === 0
-              ? 'border-gray-300 cursor-not-allowed'
-              : 'border-black cursor-pointer hover:bg-black hover:border-black'
-          }`}
-        >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            className="transition-all duration-300 ease-out group-hover:-translate-x-1"
-          >
-            <path
-              d="M19 12H5M5 12L11 6M5 12L11 18"
-              stroke={currentIndex === 0 ? '#ccc' : '#000'}
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </button>
+  onClick={goToPrevious}
+  disabled={currentIndex === 0}
+  className={`w-[64px] h-[64px] rounded-full border flex items-center justify-center transition-all duration-300 ease-out
+    ${
+      currentIndex === 0
+        ? 'border-gray-300 cursor-not-allowed'
+        : 'border-black cursor-pointer hover:bg-black hover:border-black focus:outline-none'
+    }`}
+>
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    className="transition-all duration-300 ease-out group-hover:-translate-x-1"
+  >
+    <path
+      d="M19 12H5M5 12L11 6M5 12L11 18"
+      stroke={currentIndex === 0 ? '#ccc' : 'currentColor'}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+</button>
+
 
         {/* Right arrow */}
 <button

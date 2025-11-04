@@ -128,12 +128,37 @@ return (
 
         {/* liveBadge */}
         <div
-          ref={el => sectionRefs.current['live-badge'] = el}
-          className={getSectionClass('live-badge', "box-border flex flex-row justify-center items-center p-[8px_16px] gap-[8px] absolute w-[83px] h-[35px] left-[calc(50%-83px/2)] top-[618px] border border-[#DBDBDB] rounded-[100px]")}
-        >
-          <div className="w-[9px] h-[9px] bg-[#F06464] rounded-full flex-none order-0 flex-grow-0 animate-pulse"></div>
-          <span className="w-[34px] h-[19px] font-['Inter'] text-[16px] leading-[19px] tracking-[-0.02em] text-[#000000] flex-none order-1 flex-grow-0" style={{fontWeight: 600}}>LIVE</span>
-        </div>
+  ref={el => (sectionRefs.current['live-badge'] = el)}
+  className={getSectionClass(
+    'live-badge',
+    "box-border flex flex-row justify-center items-center p-[8px_16px] gap-[8px] absolute w-[83px] h-[35px] left-[calc(50%-83px/2)] top-[618px] border border-[#DBDBDB] rounded-[100px]"
+  )}
+>
+  <style jsx>{`
+    @keyframes smooth-blink {
+      0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.4;
+        transform: scale(0.8);
+      }
+    }
+    .animate-smooth-blink {
+      animation: smooth-blink 1.2s ease-in-out infinite;
+    }
+  `}</style>
+
+  <div className="w-[9px] h-[9px] bg-[#F06464] rounded-full animate-smooth-blink"></div>
+
+  <span
+    className="w-[34px] h-[19px] font-['Inter'] text-[16px] leading-[19px] tracking-[-0.02em] text-[#000000] font-semibold"
+  >
+    LIVE
+  </span>
+</div>
+
 
         {/* Rectangle 24 */}
         <div

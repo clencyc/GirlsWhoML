@@ -59,7 +59,7 @@ Set these in your websitetrack environment:
 
 ## TODO 
 
-- [ ] Finish integration.py (3->5)
+- [X] Finish integration.py (3->5)
 - [ ] Add __init__.py inside scene3/ so imports like from scene3.main_script import create_complete_souvenir work.
 - [ ] Confirm Scene 3 returns result["series_id"] and result["mosaic"]["local_path"] from create_complete_souvenir.
 - [ ] Verify backendTask /contributors/ accepts files=mosaic/screenshot and form fields name, country, series_id.

@@ -22,10 +22,14 @@ export default function Contact() {
     };
   }, []);
   return (
-    <div className="relative w-full min-h-screen bg-[#FFFFFF] flex flex-col items-center">
-    <div className="relative w-[1440px] bg-[#FFFFFF]">
+   <div className="w-full min-h-screen bg-white flex flex-col items-center">
+  {/* Sticky header */}
+  <div className="sticky top-0 z-50 w-full bg-white flex justify-center">
+    <div className="max-w-[1440px] w-full px-8">
       <Header />
+    </div>
 
+ 
       {/* Get Involved heading - exact Figma specs */}
       <h1 className="absolute w-[915px] h-[87px] left-[calc(50%-915px/2+0.5px)] top-[296px] font-['Inter'] text-[72px] leading-[87px] text-center tracking-[-0.04em] text-[#000000] order-0" style={{fontWeight: 500}}>
         Get Involved
@@ -87,6 +91,7 @@ export default function Contact() {
         </div>
       </div>
 </div>
+
       {/* footer */}
       <div className="absolute w-full h-[781px] left-[-1px] top-[1050px] ">
         <Footer />

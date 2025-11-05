@@ -14,19 +14,19 @@ const testimonials = [
     location: "Pakistan"
   },
   {
-    quote: "\"\"Eye-opening\" is the word. It's my first time working with such a big, diverse team! I still remember thinking, \"Wow, I'm really part of something global,\" when seeing BSTs, EATs, and ISTs on our tech meeting times. It's eye-opening too to realize that behind AI's dazzling front are women often least recognized in the system. We hope Harang can help change that.\"",
+    quote: "\"\"Eye-opening\" is the word. It's my first time working with such a big, diverse team! I still remember thinking, \"Wow, I'm really part of something global,\" when seeing BSTs, EATs, and ISTs on our tech meeting times. It's eye-opening too to realize that behind AI's dazzling front are women often least recognized in the system. We hope Harange can help change that.\"",
     name: "Yanni",
     location: "China"
   },
   {
-    quote: "\"It highlighted the persistent gaps and misrepresentations in technology, emphasizing the critical role of inclusive design in AI systems.\"",
+    quote: "\"It highlighted the persistent gaps and misrepresentations in technology, emphasising the critical role of inclusive design in AI systems.\"",
     name: "Chae",
     location: "South Korea"
   },
   {
-    quote: "\"Eye-opening\" is the word. It's my first time working with such a big, diverse team! I still remember thinking, \"Wow, I'm really part of something global,\" when seeing BSTs, EATs, and ISTs on our tech meeting times. It's eye-opening too to realize that behind AI's dazzling front are women often least recognized in the system. We hope Harang can help change that.\"",
-    name: "Chae",
-    location: "The UK"
+    quote: "\"hello\"",
+    name: "Megha",
+    location: "India"
   }
 ];
 
@@ -88,7 +88,7 @@ export default function TestimonialSlider() {
   return (
     <>
 
-    <div className="w-[1441px] mx-auto overflow-hidden">
+    <div className="relative overflow-hidden">
       {/* Slider */}
       <div
         ref={sliderRef}

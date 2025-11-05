@@ -53,7 +53,7 @@ export default function AboutUs() {
 
             {/* GirlsWhoML Logo */}
             <div className="w-[174px] h-[174px] order-4">
-              <img src="/images/about/logo3.png" alt="GirlsWhoML logo" className="w-full h-full object-contain" />
+              <img src="/images/about/logo3.jpeg" alt="GirlsWhoML logo" className="w-full h-full object-contain" />
             </div>
           </div>
         </div>

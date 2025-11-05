@@ -1,85 +1,73 @@
 # Digital Souvenir Platform - README
-🌟 Overview
-A web application that allows users to create digital souvenirs, reflect on their experiences, and contribute to the Girls Who ML database. Perfect for community events, exhibitions, and AI awareness campaigns.
 
-🚀 Features
-🎨 Visual Components
-2×2 Digital Mosaic: Interactive visual representation
+## 🌟 Overview
+- A web application that allows users to create digital souvenirs, reflect on their experiences, and contribute to the Girls Who ML database.
+- Perfect for community events, exhibitions, and AI awareness campaigns.
 
-Animated Water Tank: Visual contribution indicator
+## 🚀 Features
 
-Responsive Design: Works on all devices
+### 🎨 Visual Components
+- 2×2 Digital Mosaic: Interactive visual representation
+- Animated Water Tank: Visual contribution indicator
+- Responsive Design: Works on all devices
 
-📝 User Interaction
-User Information Collection: Name, country, and AI narrative
+### 📝 User Interaction
+- User Information Collection: Name, country, and AI narrative
+- Reflective Questions:
+  - Feeling word about AI future
+  - Key insight/learning
+- Auto-save: Responses saved automatically
 
-Reflective Questions:
+### 🔗 API Integration
+- Girls Who ML Database: Connects to https://girlswhoml.onrender.com
+- Real-time Submission: POST to /contributors/ endpoint
+- Error Handling: Fallback to localStorage
 
-Feeling word about AI future
+### 📱 Social Features
+- Social Media Sharing: Instagram, Twitter, Facebook, LinkedIn
+- QR Code Generation: Links to community gallery
+- Download Option: Export contribution data
 
-Key insight/learning
+## 🛠 Installation
 
-Auto-save: Responses saved automatically
+### Quick Start
+- Download the HTML file
+- Open in any modern web browser
 
-🔗 API Integration
-Girls Who ML Database: Connects to https://girlswhoml.onrender.com
-
-Real-time Submission: POST to /contributors/ endpoint
-
-Error Handling: Fallback to localStorage
-
-📱 Social Features
-Social Media Sharing: Instagram, Twitter, Facebook, LinkedIn
-
-QR Code Generation: Links to community gallery
-
-Download Option: Export contribution data
-
-🛠 Installation
-Quick Start
-Download the HTML file
-
-Open in any modern web browser
-
-File Structure
-text
+### File Structure
+```
 digital-souvenir/
 ├── index.html (main file)
 └── assets/ (optional)
     ├── images/
     └── styles/
-📋 Usage
-For Participants
-Enter Information
+```
 
-Fill name, country, and AI narrative (required)
+## 📋 Usage
 
-Complete reflection questions
+### For Participants
 
-Submit Contribution
+#### Enter Information
+- Fill name, country, and AI narrative (required)
+- Complete reflection questions
 
-Click "Submit to Girls Who ML"
+#### Submit Contribution
+- Click "Submit to Girls Who ML"
+- Get unique contribution ID
+- Data sent to API database
 
-Get unique contribution ID
+#### Share & Download
+- Share on social media
+- Download JSON backup
+- Scan QR code for community gallery
+- Monitor API submissions
 
-Data sent to API database
+## 🔧 Technical Details
 
-Share & Download
-
-Share on social media
-
-Download JSON backup
-
-Scan QR code for community gallery
-
-Monitor API submissions
-
-🔧 Technical Details
-API Integration
-javascript
+### API Integration
+```javascript
 const API_BASE_URL = 'https://girlswhoml.onrender.com';
 const endpoint = '/contributors/';
-
 // Data structure sent to API
 {
   "contribution_id": "GWM-timestamp-random",
@@ -92,128 +80,102 @@ const endpoint = '/contributors/';
   "water_tank_image": "visual.jpg",
   "submitted_at": "ISO timestamp"
 }
-Data Storage
-Primary: Girls Who ML API
+```
 
-Fallback: Browser localStorage
+### Data Storage
+- Primary: Girls Who ML API
+- Fallback: Browser localStorage
+- Export: JSON file download
 
-Export: JSON file download
+### Dependencies
+- Font Awesome 6.4.0 (icons)
+- QRCode.js (QR generation)
+- Modern browser with ES6+ support
 
-Dependencies
-Font Awesome 6.4.0 (icons)
+## 🎨 Customization
 
-QRCode.js (QR generation)
-
-Modern browser with ES6+ support
-
-🎨 Customization
-Styling
-Modify CSS variables for branding:
-
-css
+### Styling
+- Modify CSS variables for branding:
+```css
 --primary-color: #667eea;
 --secondary-color: #764ba2;
-Content
-Update:
+```
 
-Header titles and subtitles
+### Content
+- Update:
+  - Header titles and subtitles
+  - Reflection questions
+  - Social sharing messages
+  - QR code destination
 
-Reflection questions
-
-Social sharing messages
-
-QR code destination
-
-Images
-Replace mosaic placeholders with actual images:
-
-html
+### Images
+- Replace mosaic placeholders with actual images:
+```html
 <div class="mosaic-item" style="background: url('your-image.jpg');">
-🔄 Workflow
-User Input → Form validation
+```
 
-Data Preparation → JSON formatting
+## 🔄 Workflow
+- User Input → Form validation
+- Data Preparation → JSON formatting
+- API Submission → POST to Girls Who ML
+- Fallback Handling → localStorage + download
+- User Feedback → Status messages
+- Sharing → Social media + QR code
 
-API Submission → POST to Girls Who ML
+## 🐛 Troubleshooting
 
-Fallback Handling → localStorage + download
+### Common Issues
+- API Connection Failed: Uses localStorage fallback
+- Form Validation: Required fields highlighted
+- Social Sharing: Pre-filled messages provided
 
-User Feedback → Status messages
-
-Sharing → Social media + QR code
-
-🐛 Troubleshooting
-Common Issues
-API Connection Failed: Uses localStorage fallback
-
-Form Validation: Required fields highlighted
-
-Social Sharing: Pre-filled messages provided
-
-Debug Mode
-Add to browser console:
-
-javascript
+### Debug Mode
+- Add to browser console:
+```javascript
 localStorage.setItem('debug', 'true');
-📊 Monitoring
-Success Indicators
-API status messages
+```
 
-Contribution ID generation
+## 📊 Monitoring
 
-Local storage confirmation
+### Success Indicators
+- API status messages
+- Contribution ID generation
+- Local storage confirmation
+- Download file creation
 
-Download file creation
+### Analytics (Optional)
+- Add Google Analytics or similar for:
+  - Submission counts
+  - Country distribution
+  - Popular reflection words
 
-Analytics (Optional)
-Add Google Analytics or similar for:
+## 🌍 Deployment
 
-Submission counts
+### Simple Hosting
+- Upload to any web server
+- GitHub Pages
+- Netlify/Vercel
 
-Country distribution
+### Advanced Setup
+- Custom domain
+- SSL certificate
+- API monitoring
+- Database backups
 
-Popular reflection words
+## 🤝 Contributing
+- Fork repository
+- Create feature branch
+- Test changes
+- Submit pull request
 
-🌍 Deployment
-Simple Hosting
-Upload to any web server
+## 📞 Support
 
-GitHub Pages
+### For Technical Issues
+- Check browser console for errors
+- Verify API endpoint availability
+- Test with different browsers
 
-Netlify/Vercel
-
-Advanced Setup
-Custom domain
-
-SSL certificate
-
-API monitoring
-
-Database backups
-
-🤝 Contributing
-Fork repository
-
-Create feature branch
-
-Test changes
-
-Submit pull request
-
-📞 Support
-For Technical Issues
-Check browser console for errors
-
-Verify API endpoint availability
-
-Test with different browsers
-
-For Users
-Clear form validation messages
-
-Auto-save indicators
-
-Download fallback option
-
-
-
+### For Users
+- Clear form validation messages
+- Auto-save indicators
+- Download fallback option

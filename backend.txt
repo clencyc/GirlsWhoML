@@ -1,0 +1,28 @@
+SCENE 4 BACKEND: NOT REQUIRED
+
+Reason : Scene 4 is already implemented in the existing backend infrastructure.
+
+Location: src/endpoints/contributor.py (line 53-end)
+          Line 56-58: Retrieves contributor from database
+          Line 60: Gets frontend URL from environment
+          Line 61: Generates share URL
+          Line 62: Generates QR code data URI
+          Line 65-106: HTML template with mosaic, QR, social sharing
+Endpoint: GET /contributors/{id}/share
+Branch: backendTask (already merged)
+
+What it does:
+- Retrieves contributor data from database
+- Generates HTML page with mosaic, QR code, user info
+- Serves social sharing buttons
+- Returns complete conclusion page
+
+Data flow:
+  Scene 3 → uploads to POST /contributors/ → returns share_url
+  User → redirects to GET /contributors/{id}/share (Scene 4)
+  Scene 4 → displays final souvenir page
+
+Current work:
+- Backend: Complete (no work needed)
+
+No backend development required. Integration point already exists.

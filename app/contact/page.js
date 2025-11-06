@@ -22,31 +22,57 @@ export default function Contact() {
     };
   }, []);
   return (
-   <div className="w-full min-h-screen bg-white flex flex-col items-center">
-  {/* Sticky header */}
-  <div className="sticky top-0 z-50 w-full bg-white flex justify-center">
- <div className="relative w-full min-h-screen bg-[#FFFFFF] flex flex-col items-center">
+    <div className="relative w-full min-h-full bg-[#FFFFFF] flex flex-col items-center">
+  
     
       <Header />
-    </div>
+     
+    
+<div className="relative w-full max-w-[1440px] flex flex-col items-center top-[100px] pt-24 md:pt-32">
 
- 
-      {/* Get Involved heading - exact Figma specs */}
-      <h1 className="absolute w-[915px] h-[87px] left-[calc(50%-915px/2+0.5px)] top-[296px] font-['Inter'] text-[72px] leading-[87px] text-center tracking-[-0.04em] text-[#000000] order-0" style={{fontWeight: 500}}>
-        Get Involved
-      </h1>
+    {/* Title */}
+        <h1
+          className="
+            absolute
+            left-1/2 -translate-x-1/2
+            top-[180px] sm:top-[240px] md:top-[296px]
+            w-[90%] sm:w-4/5 md:w-3/4 lg:w-[915px]
+            font-['Inter']
+            text-[clamp(2.8rem,6vw,4.5rem)]
+            leading-tight
+            text-center
+            tracking-[-0.04em]
+            text-[#000000] 
+          " style={{ fontWeight: 500 }}
+        >
+          Get Involved
+        </h1>
 
-      {/* Description - exact Figma specs */}
-      <p className="absolute w-[1281px] h-[78px] left-[calc(50%-1281px/2+0.5px)] top-[445px] font-['Inter'] text-[32px] leading-[39px] text-center tracking-[-0.04em] text-[#000000] order-1" style={{fontWeight: 500}}>
-        Your voice and generosity drive our mission forward.<br />
+
+
+      <p
+  className="
+    absolute 
+    left-1/2 -translate-x-1/2
+    top-[360px] sm:top-[410px] md:top-[445px]
+    w-[80%] sm:w-[85%] md:w-[80%] lg:w-[70%]
+    font-['Inter']
+    text-[clamp(1.5rem,2.5vw,2rem)]
+    leading-[1.3]
+    text-center
+    tracking-[-0.04em]
+    text-[#000000]
+  "
+  style={{ fontWeight: 500 }}
+> Your voice and generosity drive our mission forward.<br />
         Contact us to collaborate or donate to help us make lasting change.
-      </p>
+</p>
 
       {/* contactCards - exact Figma specs */}
-      <div className="flex flex-row items-center justify-center gap-[39px] absolute w-full left-0 top-[585px]">
+      <div className="flex flex-row items-center justify-center gap-[24px] md:gap-[39px]  absolute w-full left-0 top-[585px]">
 
         {/* Frame 167 - Help Card */}
-        <div className="flex flex-col justify-center items-center p-[40px_32px] gap-[40px] w-[519px] h-[325px] bg-[#FFFFFF] border border-[#E3E3E3] rounded-[20px] order-0 transition-all duration-300 ease-out">
+        <div className="flex flex-col justify-center items-center p-[32px_24px] md:p-[40px_32px] gap-[32px] md:gap-[40px] w-full max-w-[519px] md:w-[519px] min-h-[325px] bg-[#FFFFFF] border border-[#E3E3E3] rounded-[20px] order-0 transition-all duration-300 ease-out">
           {/* helpIcon - heart */}
           <div className="w-[64px] h-[64px] relative flex-none order-0">
             <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -91,11 +117,13 @@ export default function Contact() {
           </div>
         </div>
       </div>
-</div>
+ 
 
       {/* footer */}
 <div className="absolute w-full h-[780px] top-[1050px] flex justify-center">
   <Footer />
+</div>
+
 </div>
     
     </div>

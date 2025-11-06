@@ -3,6 +3,10 @@ import { useState, useEffect, useRef } from 'react';
 import Header from '../components/shared/Header';
 import Footer from '../components/shared/Footer';
 
+import { Inter } from 'next/font/google'
+const inter = Inter({ subsets: ['latin'], weight: ['300', '400', '500', '600'] })
+
+
 export default function MosaicOfVoices() {
   // Color palette for tiles
   const colorPalette = [
@@ -111,20 +115,52 @@ export default function MosaicOfVoices() {
     
       <Header />
 
-<div className="relative w-[1440px]">
+  {/* Text container */}
+  <div className="relative w-full max-w-[1440px] flex flex-col items-center top-[100px] pt-24 md:pt-32">
+
+{/* <div className="relative w-[1440px]">  */}
       {/* Mosaic of Voices heading - exact Figma specs */}
-      <h1 className="absolute w-[915px] h-[87px] left-[calc(50%-915px/2+0.5px)] top-[296px] font-['Inter'] text-[72px] leading-[87px] text-center tracking-[-0.04em] text-[#000000] order-0" 
-      style={{fontWeight: 500,     
-      }}>
-        Mosaic of Voices
-      </h1>
+{/* Title */}
+    <h1
+      className="
+        absolute
+        left-1/2 -translate-x-1/2
+        top-[180px] sm:top-[240px] md:top-[296px]
+        w-[90%] sm:w-4/5 md:w-3/4 lg:w-[915px]
+        font-['Inter']
+        text-[clamp(2.8rem,6vw,4.5rem)]
+        leading-tight
+        text-center
+        tracking-[-0.04em]
+        text-[#000000] 
+      " style={{ fontWeight: 500 }}
+    >
+      Mosaic of Voices
+    </h1>
 
 
 
       {/* Description - exact Figma specs */}
-      <p className="absolute w-[1281px] h-[78px] left-[calc(50%-1281px/2+0.5px)] top-[445px] font-['Inter'] text-[32px] leading-[39px] text-center tracking-[-0.04em] text-[#000000] order-1" style={{fontWeight: 500}}>
-        Every 2×2 tile here was chosen by a visitor — a fragment of resonance, representing voices lifted from invisibility into shared reflection.
-      </p>
+<p
+  className="
+    absolute 
+    left-1/2 -translate-x-1/2
+    top-[360px] sm:top-[410px] md:top-[445px]
+    w-[80%] sm:w-[85%] md:w-[80%] lg:w-[70%]
+    font-['Inter']
+    text-[clamp(1.5rem,2.5vw,2rem)]
+    leading-[1.3]
+    text-center
+    tracking-[-0.04em]
+    text-[#000000]
+  "
+  style={{ fontWeight: 500 }}
+>
+  Every 2×2 tile here was chosen by a visitor — a fragment of resonance, representing
+  voices lifted from invisibility into shared reflection.
+</p>
+
+
 
       {/* tiles - Row 1 */}
       <div

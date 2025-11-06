@@ -17,18 +17,19 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="absolute w-[1440px] h-[156px] left-0 top-0 z-50">
+    <header className="fixed top-0 left-0 w-full h-[156px] z-50 bg-transparent">
+    
       {/* Frame 52 - exact Figma specs */}
       <div
         className={`box-border flex flex-row justify-between items-center p-[16px_32px] gap-[36px] absolute w-[808px] h-[88px] left-[calc(50%-808px/2)] rounded-[100px] backdrop-blur-sm transition-all duration-700 ease-out ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
         }`}
         style={{
-          top: `${38 + scrollY * 0.1}px`,
-          backgroundColor: `rgba(255,255,255,${0.4 + Math.min(scrollY * 0.001, 0.3)})`,
-          border: '1px solid rgba(0,0,0,0.1)',
-          boxShadow: scrollY > 50 ? '0 10px 25px rgba(0,0,0,0.1)' : 'none'
-        }}
+  top: '38px',
+  backgroundColor: `rgba(255,255,255,${0.4 + Math.min(scrollY * 0.001, 0.3)})`,
+  border: '1px solid rgba(0,0,0,0.1)',
+  boxShadow: scrollY > 50 ? '0 10px 25px rgba(0,0,0,0.1)' : 'none'
+}}
       >
 
         {/* Frame 155 - Logo */}

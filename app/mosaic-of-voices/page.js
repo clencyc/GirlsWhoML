@@ -118,8 +118,6 @@ export default function MosaicOfVoices() {
   {/* Text container */}
   <div className="relative w-full max-w-[1440px] flex flex-col items-center top-[100px] pt-24 md:pt-32">
 
-{/* <div className="relative w-[1440px]">  */}
-      {/* Mosaic of Voices heading - exact Figma specs */}
 {/* Title */}
     <h1
       className="
@@ -255,9 +253,9 @@ export default function MosaicOfVoices() {
       ></div>
 
       {/* Additional tiles - shown when "View more" is clicked */}
-      {showMore && (
+      {/* {showMore && (
         <>
-          {/* tiles - Row 5 */}
+        
           <div
             ref={el => tileRefs.current['tile-12'] = el}
             className={getTileClass('tile-12', "absolute w-[400px] h-[400px] left-[80px] top-[2423px] rounded-[20px]")}
@@ -280,7 +278,7 @@ export default function MosaicOfVoices() {
             onMouseLeave={() => setHoveredTile(null)}
           ></div>
 
-          {/* tiles - Row 6 */}
+           
           <div
             ref={el => tileRefs.current['tile-15'] = el}
             className={getTileClass('tile-15', "absolute w-[400px] h-[400px] left-[80px] top-[2873px] rounded-[20px]")}
@@ -303,7 +301,7 @@ export default function MosaicOfVoices() {
             onMouseLeave={() => setHoveredTile(null)}
           ></div>
 
-          {/* tiles - Row 7 */}
+           
           <div
             ref={el => tileRefs.current['tile-18'] = el}
             className={getTileClass('tile-18', "absolute w-[400px] h-[400px] left-[80px] top-[3323px] rounded-[20px]")}
@@ -326,7 +324,7 @@ export default function MosaicOfVoices() {
             onMouseLeave={() => setHoveredTile(null)}
           ></div>
 
-          {/* tiles - Row 8 */}
+          
           <div
             ref={el => tileRefs.current['tile-21'] = el}
             className={getTileClass('tile-21', "absolute w-[400px] h-[400px] left-[80px] top-[3773px] rounded-[20px]")}
@@ -349,10 +347,10 @@ export default function MosaicOfVoices() {
             onMouseLeave={() => setHoveredTile(null)}
           ></div>
         </>
-      )}
+      )} */}
 
       {/* viewMoreButton - exact Figma specs */}
-      {!showMore && (
+      {/* {!showMore && (
         <button
           onClick={handleViewMore}
           className="flex flex-col items-center p-0 gap-[4px] absolute w-[157px] h-[82px] left-[calc(50%-157px/2+0.5px)] top-[2492px] opacity-50 hover:opacity-75 transition-all duration-300 ease-out cursor-pointer border-none outline-none bg-transparent hover:scale-110 hover:translate-y-2"
@@ -364,7 +362,7 @@ export default function MosaicOfVoices() {
             <path d="M10 15L20 25L30 15" stroke="#000000" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </button>
-      )}
+      )} */}
 </div>
 </div>
       {/* footer */}

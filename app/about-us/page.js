@@ -3,19 +3,25 @@ import Footer from '../components/shared/Footer';
 
 export default function AboutUs() {
   return (
-    <div className="flex flex-col min-h-screen bg-[#FFFFFF]">
-      <Header />
+  <div className="relative w-full min-h-screen bg-[#FFFFFF] flex flex-col items-center">
+    
+      <div className="sticky top-0 z-50 bg-white w-full flex justify-center">
+        
+        <Header />
+        
+      </div>
 
       {/* Content */}
-      <main className="flex-grow flex flex-col items-center overflow-x-hidden">
+      <main className="flex-grow flex flex-col items-center overflow-x-hidden ">
         
         {/* Top Section */}
-        <section className="w-full flex flex-col items-center justify-center mt-[156px] px-6 sm:px-12 lg:px-20">
-          <div className="flex flex-col items-center gap-[93px] max-w-[1065px] text-center">
+        <section className="w-full flex flex-col items-center justify-center mt-[156px] px-6 sm:px-12 lg:px-20 ">
+          <div className="flex flex-col items-center gap-[93px] max-w-[1065px] text-center ">
             
-            {/* Heading */}
+            
             <h1
-              className="font-['Inter'] text-[72px] leading-[87px] tracking-[-0.04em] text-[#000000]"
+              className="font-['Inter'] text-[72px] leading-[87px] tracking-[-0.04em] text-[#000000]
+              mt-[120px]"
               style={{ fontWeight: 500 }}
             >
               About us
@@ -72,10 +78,8 @@ export default function AboutUs() {
         {/* Bottom Section (Quote) */}
         <section className="w-full bg-[#F5F3ED] flex flex-col items-center justify-center py-[200px] px-6 md:px-12 mt-[200px] gap-[80px] text-center">
           {/* Quote */}
-          <p
-            className="max-w-[1077px] font-['Inter'] text-[58px] leading-[70px] tracking-[-0.04em] text-[#000000]"
-            style={{ fontWeight: 500 }}
-          >
+          <p className="w-[70%] font-['Inter'] text-[58px] leading-[70px] tracking-[-0.04em] text-[#000000]" style={{ fontWeight: 500 }}>
+
             "If we don't get women and people of colour at the table – real technologists doing the real work – we will bias systems. Trying to reverse that a 
             decade or two from now will be so much more difficult, if not close to impossible."
           </p>
@@ -92,6 +96,6 @@ export default function AboutUs() {
 
       {/* Footer (fully visible) */}
       <Footer />
-    </div>
+    </div> 
   );
 }

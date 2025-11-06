@@ -24,7 +24,7 @@ const testimonials = [
     location: "South Korea"
   },
   {
-    quote: "\"hello\"",
+    quote: "\"It underscored the ongoing disparities and inaccuracies within technological development, stressing the essential importance of equity and inclusivity in AI design.\"",
     name: "Megha",
     location: "India"
   }

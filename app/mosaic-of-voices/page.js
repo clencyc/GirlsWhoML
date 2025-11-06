@@ -107,7 +107,8 @@ export default function MosaicOfVoices() {
 
   return (
     <div className="relative w-full min-h-full bg-[#F5F3ED] flex flex-col items-center">
-    <div className="relative w-[1440px]">
+ <div className="relative w-full min-h-screen bg-[#FFFFFF] flex flex-col items-center">
+    
       <Header />
 
       {/* Mosaic of Voices heading - exact Figma specs */}

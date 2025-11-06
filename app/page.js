@@ -78,11 +78,15 @@ return (
   <div className="relative w-full min-h-screen bg-[#FFFFFF] flex flex-col items-center">
     <div className="relative w-[1440px]  bg-[#FFFFFF]">
       <div className="sticky top-0 z-50 bg-white w-full flex justify-center">
-        <div className="w-[1440px]">
+        
         <Header />
-        </div>
+        
       </div>
       {/* rest of your content */}
+
+
+
+     
 
 
     {/* Main content */}

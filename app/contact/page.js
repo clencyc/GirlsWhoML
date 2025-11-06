@@ -25,7 +25,8 @@ export default function Contact() {
    <div className="w-full min-h-screen bg-white flex flex-col items-center">
   {/* Sticky header */}
   <div className="sticky top-0 z-50 w-full bg-white flex justify-center">
-    <div className="max-w-[1440px] w-full px-8">
+ <div className="relative w-full min-h-screen bg-[#FFFFFF] flex flex-col items-center">
+    
       <Header />
     </div>
 

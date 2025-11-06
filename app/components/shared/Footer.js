@@ -1,5 +1,8 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
+import { Inter } from 'next/font/google'
+const inter = Inter({ subsets: ['latin'], weight: ['300', '400', '500', '600'] })
+
 
 export default function Footer() {
   const [isVisible, setIsVisible] = useState(false);
@@ -25,27 +28,36 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer ref={footerRef} className="w-full h-[781px] bg-[#393939] order-4"> 
+    <footer ref={footerRef} className="w-full bg-[#393939] py-20 px-6 md:px-16 lg:px-32 relative overflow-hidden"> 
       {/* Empowering women in ML and AI - exact Figma specs */}
+
+      <div className="relative flex flex-col items-start md:items-start md:pl-[6vw] pt-24 md:pt-32">
+  
       <h2
-        className={`absolute w-[706px] h-[174px] left-[calc(50%-706px/2-288.5px)] top-[102px] font-['Inter'] text-[72px] leading-[87px] tracking-[-0.04em] text-[#FFFFFF] transition-all duration-1000 ease-out ${
+        className={`text-[#FFFFFF] font-['Inter'] font-normal max-w-[706px] leading-tight tracking-[-0.04em] transition-all duration-1000 ease-out mx-auto text-[clamp(2.3rem,5vw,4.5rem)]    ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
-        style={{fontWeight: 500, animationDelay: '200ms'}}
+        style={{marginTop: '102px',               // replaces top-[102px]
+    marginLeft: 'clamp(1rem,10vw,288px)', // replaces left-[calc(50%-706px/2-288.5px)]
+    marginRight: 'clamp(1rem,10vw,288px)'
+  }}
       >
         Empowering women in ML and AI
       </h2>
 
+      </div>
+
       {/* cta - exact Figma specs */}
       <a
         href="/mosaic-of-voices"
-  className={`group flex flex-row justify-center items-center p-[20px_28px] gap-[8px] absolute w-[257px] h-[64px] left-[calc(50%-257px/2-513px)] top-[327px] bg-[#D89EFA] rounded-[100px] transition-all duration-700 ease-out hover:bg-[#000000] ${
+  className={`group flex flex-row justify-center items-center p-[20px_28px] gap-[8px] absolute w-[257px] h-[64px] top-[327px] bg-[#D89EFA] rounded-[100px] transition-all duration-700 ease-out hover:bg-[#000000] ${
     isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
   }`}
-  style={{animationDelay: '400ms'}}
+  style={{animationDelay: '400ms', marginLeft: 'clamp(1rem,10vw,288px)'}}
   onMouseEnter={(e) => {
     e.currentTarget.querySelector('span').style.color = '#ffffff';
     e.currentTarget.querySelector('svg').style.color = '#ffffff';
+    
   }}
   onMouseLeave={(e) => {
     e.currentTarget.querySelector('span').style.color = '#000000';
@@ -61,29 +73,36 @@ export default function Footer() {
 </a>
 
       {/* divider */}
-      <div
-        className={`absolute w-[1275px] h-0 left-[calc(50%-1275px/2-4px)] top-[456px] border border-[#8A8A8A] transition-all duration-700 ease-out ${
-          isVisible ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
-        }`}
-        style={{animationDelay: '600ms'}}
-      ></div>
+<div
+  className={`absolute border-t border-[#8A8A8A] transition-all duration-700 ease-out ${
+    isVisible ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
+  }`}
+  style={{ 
+    animationDelay: '600ms',
+    top: '471px',
+    left: 'clamp(1rem,10vw,288px)',
+    right: 'clamp(1rem,10vw,288px)'
+  }}
+></div>
+
+
 
       {/* harangè logo */}
       <span
-        className={`absolute w-[275px] h-[24px] left-[calc(50%-1275px/2-4px)]  top-[521px] font-alata font-normal text-[56px] leading-[20px] tracking-[-0.05em] text-[#FFFFFF] transition-all duration-700 ease-out  ${
+        className={`absolute w-[275px] h-[24px] top-[521px] font-alata font-normal text-[56px] leading-[20px] tracking-[-0.05em] text-[#FFFFFF] transition-all duration-700 ease-out  ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
-        style={{animationDelay: '800ms'}}
+        style={{animationDelay: '800ms', marginLeft: 'clamp(1rem,10vw,288px)'}}
       >
         harangè
       </span>
 
       {/* socialMedia - exact Figma specs */}
       <div
-        className={`flex flex-row items-center p-0 gap-[16px] absolute w-[218px] h-[62px] left-[calc(50%-1275px/2-4px)]  top-[614px] transition-all duration-700 ease-out ${
+        className={`flex flex-row items-center p-0 gap-[16px] absolute w-[218px] h-[62px] top-[614px] transition-all duration-700 ease-out ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
-        style={{animationDelay: '1000ms'}}
+        style={{animationDelay: '1000ms', marginLeft: 'clamp(1rem,10vw,288px)'}}
       >
         {/* Frame 109 - Instagram */}
         <a

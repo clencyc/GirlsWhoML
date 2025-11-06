@@ -93,9 +93,9 @@ export default function Contact() {
 </div>
 
       {/* footer */}
-      <div className="absolute w-full h-[781px] left-[-1px] top-[1050px] ">
-        <Footer />
-      </div>
+<div className="absolute w-full h-[780px] top-[1050px] flex justify-center">
+  <Footer />
+</div>
     
     </div>
   );

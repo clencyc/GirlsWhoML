@@ -111,9 +111,15 @@ export default function MosaicOfVoices() {
       <Header />
 
       {/* Mosaic of Voices heading - exact Figma specs */}
-      <h1 className="absolute w-[915px] h-[87px] left-[calc(50%-915px/2+0.5px)] top-[296px] font-['Inter'] text-[72px] leading-[87px] text-center tracking-[-0.04em] text-[#000000] order-0" style={{fontWeight: 500}}>
+      <h1 className="absolute w-[915px] h-[87px] left-[calc(50%-915px/2+0.5px)] top-[296px] font-['Inter'] text-[72px] leading-[87px] text-center tracking-[-0.04em] text-[#000000] order-0" 
+      style={{fontWeight: 500,     
+
+
+      }}>
         Mosaic of Voices
       </h1>
+
+
 
       {/* Description - exact Figma specs */}
       <p className="absolute w-[1281px] h-[78px] left-[calc(50%-1281px/2+0.5px)] top-[445px] font-['Inter'] text-[32px] leading-[39px] text-center tracking-[-0.04em] text-[#000000] order-1" style={{fontWeight: 500}}>
@@ -325,10 +331,13 @@ export default function MosaicOfVoices() {
       )}
 </div>
       {/* footer */}
-      <div className={`absolute w-full h-[781px] left-[-1px] ${showMore ? 'top-[4473px]' : 'top-[2728px]'}`}>
+      {/* <div className={`absolute w-full h-[781px] left-[-1px] ${showMore ? 'top-[4473px]' : 'top-[2728px]'}`}>
+        <Footer />
+      </div> */}
+      <div className="absolute w-full h-[780px] top-[2728px] flex justify-center">
         <Footer />
       </div>
     
     </div>
   );
-}
+}      

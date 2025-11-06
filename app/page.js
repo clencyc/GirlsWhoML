@@ -238,7 +238,7 @@ return (
               Tiles of Reflection — Let Women's Voices Be Heard
             </h3>
             <p className="w-[555px] h-[360px] font-['Inter'] text-[24px] leading-[36px] tracking-[-0.02em] text-[#000000] flex-none order-1 self-stretch flex-grow-0" style={{fontWeight: 500}}>
-              Through our survey, we collected <span className="text-[#F06464]">[insert number]</span> reflections from women working across AI — their words revealing resilience, isolation, and hope. Each response became one of <span className="text-[#F06464]">[insert number]</span> digital tiles within the installation, glowing softly as visitors engaged. Guests were invited to select up to four tiles that resonated with them most — a simple act that amplified these women's voices. In doing so, the installation turned listening into participation, and participation into recognition.
+              Through our survey, we collected more than 200 reflections from women working across AI — their words revealing resilience, isolation, and hope. Each response became one of <span className="text-[#F06464]">[insert number]</span> digital tiles within the installation, glowing softly as visitors engaged. Guests were invited to select up to four tiles that resonated with them most — a simple act that amplified these women's voices. In doing so, the installation turned listening into participation, and participation into recognition.
             </p>
             <a
               href="/mosaic-of-voices"
@@ -265,7 +265,7 @@ return (
               <p className="mb-[24px]">At the end of the experience, visitors encountered two open questions:</p>
               <p className="mb-[24px]">1. What word best describes how you feel after exploring this installation?</p>
               <p className="mb-[36px]">2. What is one insight or reflection you'll take away with you?</p>
-              <p>We expect to engage around <span className="text-[#F06464]">[insert number]</span> visitors and have already received <span className="text-[#F06464]">[insert number]</span> reflections. Together, these responses form a living archive of empathy and awareness — the first of its kind to document how people feel when confronted with the gendered invisibility embedded in AI. It is both a mirror and a measure of change, reminding us that visibility is not given — it is created, collectively.</p>
+              <p>We expect to engage around more than 1,000 visitors and receive 100+ reflections. Together, these responses form a living archive of empathy and awareness — the first of its kind to document how people feel when confronted with the gendered invisibility embedded in AI. It is both a mirror and a measure of change, reminding us that visibility is not given — it is created, collectively.</p>
             </div>
           </div>
 

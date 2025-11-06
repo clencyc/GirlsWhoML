@@ -73,9 +73,10 @@ export default function AboutUs() {
       </section>
  
       {/* footer */}
-      <div className="absolute w-full h-[781px] left-[-1px] top-[2156px]">
-        <Footer />
-      </div>
+
+<div className="absolute w-full h-[780px] top-[2100px] flex justify-center">
+  <Footer />
+</div>
     
     </div>
   );

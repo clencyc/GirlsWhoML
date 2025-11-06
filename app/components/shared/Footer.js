@@ -28,7 +28,11 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer ref={footerRef} className="w-full bg-[#393939] py-20 px-6 md:px-16 lg:px-32 relative overflow-hidden"> 
+    <footer
+  ref={footerRef}
+  className="w-full bg-[#393939] py-20 px-6 md:px-16 lg:px-32 relative overflow-hidden min-h-[800px] md:min-h-[900px]"
+>
+
       {/* Empowering women in ML and AI - exact Figma specs */}
 
       <div className="relative flex flex-col items-start md:items-start md:pl-[6vw] pt-24 md:pt-32">

@@ -1,3 +1,19 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+  background: #fff;
+  color: #000;
+}
+
+
 /* Root Variables */
 :root {
   --primary-purple: #261033;
@@ -48,12 +64,12 @@
 
 @media (min-width: 640px) {
   .header-content {
-    width: 80%;
+    width: 90%;
     padding: 12px 24px;
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 960px) {
   .header-content {
     width: 70%;
     padding: 12px 32px;
@@ -79,8 +95,7 @@
   height: 32px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding-right: 8px;
+  justify-content: center; 
 }
 
 .logo-text {
@@ -110,7 +125,7 @@
   gap: 24px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 960px) {
   .nav-desktop {
     display: flex;
   }
@@ -130,7 +145,6 @@
 
 .nav-link:hover {
   color: var(--text-gray);
-  font-weight: 700;
 }
 
 @media (min-width: 1024px) {
@@ -161,14 +175,9 @@
 }
 
 .nav-button:hover {
-  background: #F5F5F5;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  font-weight: 700;
+  background: #F5F5F5; 
 }
 
-.nav-button:active {
-  transform: scale(0.95);
-}
 
 .nav-button svg {
   color: var(--text-black);
@@ -202,7 +211,7 @@
   padding: 0;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 960px) {
   .hamburger {
     display: none;
   }
@@ -248,7 +257,7 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 960px) {
   .mobile-menu {
     display: none;
   }
@@ -274,7 +283,7 @@
 }
 
 .mobile-link:hover {
-  background: #F5F5F5;
+  color: var(--text-gray);
 }
 
 .mobile-link-button {

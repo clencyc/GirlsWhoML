@@ -47,11 +47,11 @@ a {
   }
 
   /* Enhanced focus styles */
-  *:focus {
+  /* *:focus {
     outline: 2px solid #D89EFA;
     outline-offset: 2px;
     border-radius: 4px;
-  }
+  } */
 
   /* Loading animations */
   @keyframes pulse-glow {

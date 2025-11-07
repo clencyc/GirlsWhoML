@@ -133,7 +133,7 @@ A mother of two, our house help & a regular beneficiary of the scheme, Lakshmi, 
 As these algorithmic systems shape life-changing resources (old-age pensions, scholarships, housing), In parallel, studies show that algorithmic governance without proper design may replicate and amplify inequalities. The chief justice of India warned that the use of AI in policing may disproportionately target marginalised communities. In India, technology experts warn that the rapid rollout of AI in welfare and justice may reinforce caste, class, and gender discrimination. 
 
 From the district offices to village panchayats, there is an emerging demand among citizens for consent, transparency and bias removal while designing these systems.`},
-{ id: "r13", theme:'Governance', answer: `Do you also have an AI-generated Ghibli profile picture? Study on Data Theft and Reverse-Engineered Identity`, name: "Saima Malik", occupation: "Technology Activist, Bangladesh" , 'image': 'saima_malik.jpg',
+{ id: "r13", theme:'Governance', answer: `Do you also have an AI-generated Ghibli profile picture? `, name: "Saima Malik", occupation: "Technology Activist, Bangladesh" , 'image': 'saima_malik.jpg',
   'story': `“ The conversion of human culture into machine capital: Loss of control over identity and creative work”, Nisha from Pune, a Fashion design student
 I am Nisha, a 19-year-old & a design college student in Pune. I uploaded my digital art portfolio online, portraits I drew to showcase my style to potential clients. Later, I discovered AI-generated artwork on the web mimicking my brushstrokes, signed by a machine(via watermark).
 My mother sees a photo of me being used in a foreign language advertisement for a beauty brand I have never heard of. I did try to convince my mom that I never shared the picture, but then how did it respawn there? Perhaps I participated in the Instagram trend of enhancing your pictures with a prompt. My techie brother explains well, “Your output images can be very well reverse engineered, especially when there is  a dire need for real raw data in this era of training-data scarcity!”
@@ -317,17 +317,20 @@ Still, her vision is tender and fierce: AI that “assists like a friend,” tha
       overflow: hidden;
       ${frontStyle}
   ">
-        <button class="theme-btn absolute top-3 left-3 text-xs bg-white/70 text-gray-900 px-2 py-1 rounded-full font-medium shadow-sm">
-      ${response.theme }
-    </button>
+     
+
     <div style="
         position: absolute;
         top: 0; left: 0;
         width: 100%; height: 100%;
         background: rgba(0, 0, 0, 0.4);
         z-index: 1;
-    "></div>
-
+    ">
+    <button class="theme-btn absolute top-6 left-4 text-xs bg-transparent border border-white text-white px-2 py-1 rounded-md font-medium">
+  ${response.theme}
+</button>
+    </div>
+   
     <!-- Front content -->
     <div style=" height:100%; position: relative; z-index: 2; padding: 1rem; display:flex; flex-direction:column; align-content:space-between; ">
    

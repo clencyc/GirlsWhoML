@@ -138,11 +138,107 @@ From the district offices to village panchayats, there is an emerging demand amo
 I am Nisha, a 19-year-old & a design college student in Pune. I uploaded my digital art portfolio online, portraits I drew to showcase my style to potential clients. Later, I discovered AI-generated artwork on the web mimicking my brushstrokes, signed by a machine(via watermark).
 My mother sees a photo of me being used in a foreign language advertisement for a beauty brand I have never heard of. I did try to convince my mom that I never shared the picture, but then how did it respawn there? Perhaps I participated in the Instagram trend of enhancing your pictures with a prompt. My techie brother explains well, “Your output images can be very well reverse engineered, especially when there is  a dire need for real raw data in this era of training-data scarcity!”
 While AI promises creativity and convenience, its hunger for data has turned the internet into an unregulated training ground- absorbing faces, bodies, art, voices, and personal photos. Reverse-engineering technologies now allow reconstruction of identifiable faces from low-resolution images and even from blurred or pixelated datasets.. a process documented in recent studies by Stanford (2024) and MIT CSAIL (2023). These tools, meant for restoration or security, are increasingly weaponised for stalking, doxxing, and impersonation.`},
-{ id: "r13", answer: `“Do you also have an AI-generated Ghibli profile picture? Study on Data Theft and Reverse-Engineered Identity”`, name: "Saima Malik", occupation: "Technology Activist, Bangladesh" , 'image': 'saima_malik.jpg',
-  'story': `“ The conversion of human culture into machine capital: Loss of control over identity and creative work”, Nisha from Pune, a Fashion design student
-I am Nisha, a 19-year-old & a design college student in Pune. I uploaded my digital art portfolio online, portraits I drew to showcase my style to potential clients. Later, I discovered AI-generated artwork on the web mimicking my brushstrokes, signed by a machine(via watermark).
-My mother sees a photo of me being used in a foreign language advertisement for a beauty brand I have never heard of. I did try to convince my mom that I never shared the picture, but then how did it respawn there? Perhaps I participated in the Instagram trend of enhancing your pictures with a prompt. My techie brother explains well, “Your output images can be very well reverse engineered, especially when there is  a dire need for real raw data in this era of training-data scarcity!”
-While AI promises creativity and convenience, its hunger for data has turned the internet into an unregulated training ground- absorbing faces, bodies, art, voices, and personal photos. Reverse-engineering technologies now allow reconstruction of identifiable faces from low-resolution images and even from blurred or pixelated datasets.. a process documented in recent studies by Stanford (2024) and MIT CSAIL (2023). These tools, meant for restoration or security, are increasingly weaponised for stalking, doxxing, and impersonation.`},
+{ id: "r14", answer: `Recipes, Relief, and Resonance: AI as a Bridge between Past and Future`, name: "Saima Malik", occupation: "Technology Activist, Bangladesh" , 'image': 'saima_malik.jpg',
+  'story': `"I Never Thought I'd Use the Internet. Now I'm Teaching Others."
+In Saharanpur's women's center, Meena's fingers hover nervously over a donated tablet. Six months ago, she'd never touched the internet. Today, she logs in every evening to attend Hindi-language classes that are reshaping her world.
+Across the room, her friend Shabnam grins proudly. "I sell my hand-embroidered dupattas to women in other towns now—all through WhatsApp!" she laughs. "I even taught my neighbors how to receive payments safely."
+But their stories aren't just about individual triumph. They expose critical gaps in India's digital revolution.
+"Some days, the network disappears during class," Shabnam sighs. Meena adds, "Banking websites are full of English words we don't understand. And women with disabilities can't even reach our center."
+Their voices are being heard. Platforms like SWAYAM and DIKSHA now offer courses in regional languages. Campaigns like Yashoda AI are training lakhs of women in digital literacy. Young fintech engineers like Aarav are partnering with banks to design simpler, safer interfaces for women entrepreneurs.
+As sunset paints Saharanpur gold, Meena taps her screen with newfound confidence. "Earlier, I didn't believe I could learn this," she says quietly. "Now I'm teaching others."
+She pauses, then looks up. "My daughter will grow up knowing she can do business, study, and manage money—just like anyone, anywhere."
+The question for policymakers isn't whether technology can empower women. It's whether we'll design it to.
+`},
+{ id: "r15", answer: `Grandma Turned Bhajan Streamer`, name: "Saima Malik", occupation: "Technology Activist, Bangladesh" , 'image': 'saima_malik.jpg',
+  'story': `"She Thought One Wrong Click Would Call the Prime Minister. Now She Can't Stop Streaming."
+My grandmother was terrified of computers. She genuinely believed if she pressed the wrong button, she'd accidentally call the Prime Minister or break something important. So she avoided them for years.
+Then someone showed her YouTube. Specifically, bhajans. Endless devotional songs from her favorite singers.
+Everything changed.
+"I never thought I could find peace through this jadui dibba," she laughs now, calling her laptop the magical box. "It feels like prayers travel through it." For her, technology was never about innovation or algorithms. It was about connection.
+She's not alone. Across India, women are quietly rewriting what technology means to them.
+Shila, a weaver from Odisha, remembers her first smartphone. The buttons felt strange. Her neighbors laughed when she struggled to send a message. But local workshops taught her in Odia, NGOs gave free data, and her daughter patiently guided her through apps.
+Now? She posts her handwoven saris on Instagram. Her first online order made her eyes light up like a child's.
+Razia from Bihar learned UPI payments for groceries, joined WhatsApp groups with other artisans, then started selling her embroidery. "At first I just watched," she says. "Then I shared my work. People started calling to buy."
+These women who once felt technology wasn't for them are now creators, businesswomen, digital safety advisors. Razia warns others about online scams in village group chats. Shila hosts live sessions teaching weaving techniques to people she'll never meet.
+They've built something beautiful: trust and solidarity in digital spaces where they feel seen, heard, valued.
+But the statistics tell a harder truth. Globally, women hold just 14% of tech leadership roles. Fifty percent quit by age 35, burned out, discriminated against, passed over for growth.
+"We want online spaces where we can be ourselves," Shila says. "Safe from harassment. Where our voices matter."
+Razia adds, "Technology should help us trust, bond, and grow together. Not just survive, but truly thrive."
+The women building technology's future aren't asking for permission anymore. They're asking why the industry still isn't built for them to stay.
+
+`},
+{ id: "r16", answer: `She Runs a Business on a Nokia. But Has No Bank Account in Her Name.`, name: "Saima Malik", occupation: "Technology Activist, Bangladesh" , 'image': 'saima_malik.jpg',
+  'story': `Every day, millions of women lose hours to unpaid care work worth 8% of India's GDP. Nobody's paying them. Nobody's counting it. And nobody's helping them build wealth from what they create.
+This is where AI can be leveraged.
+When Hitaeshi's mother taught herself Zoom during lockdown, it wasn't curiosity. It was reclaiming time. When Nilancy's mother learned online payments, it was about control over her own money. Time poverty keeps 53% of Indian women out of formal work. They're not lacking ambition. They're lacking hours to build financial independence.
+AI could change this. Not as another tool, but as the time equalizer women desperately need. Automating household tasks. Reclaiming hours lost to care work. Creating space for women to earn, save, and grow wealth.
+Mazyopa's mother runs her business from a Nokia. Nilancy's community sells handmade goods on social media, building digital independence one transaction at a time. They're creating income streams, managing customers, building micro-enterprises with creativity and grit.
+But financial systems don't recognize their work. No formal documentation. Language barriers. Banking apps in English. Payment systems that intimidate rather than empower.
+AI could be their financial co-founder. Teaching money management in their language. Helping them track income and savings. Building confidence in digital payments. Turning side hustles into sustainable wealth.
+The question isn't whether AI can empower women financially. It's whether we'll build it before another generation earns money they never learn to keep.
+
+`},
+{ id: "r17", answer: `Aunties, Reels, and Revenue`, name: "Saima Malik", occupation: "Technology Activist, Bangladesh" , 'image': 'saima_malik.jpg',
+  'story': `“What began as a few casual posts about her roses soon turned into something bigger… collaborating with local businesses… Now she is the one giving me advice on how to grow an audience.” - Student, Vishakapatnam, India
+
+
+The family’s social feed became a storefront. In Assam an aunt “runs a small online business and manages social media better than most young people.” In Mekelle, the “family’s social media manager” wasn’t hired, she emerged. And in Gurgaon, the aunt who once laughed at Instagram “trended… with her own background commentary: ‘Arre, yeh kaunsa filter lag gaya? Main toh aloo ban gayi!’”
+Women entrepreneurs still run uphill, costly data, patchy access, safety risks, but when the rails exist, the trains move. The Cherie Blair Foundation (2025) reports 45% of women entrepreneurs across 96 developing countries lack regular internet due to cost, 57% faced online harassment, yet 92% own smartphones for business. The Guardian Targeted digital-payments programs are shifting this, Women’s World Banking’s 2024 work with UPI details pathways for women-led microbusinesses to adopt safer, traceable transactions. Women's World Banking
+Sometimes the economy appears to be a garden page that pays the bills rather than a factory.
+
+
+`},
+{ id: "r18", answer: `Rewriting Systems, Not Just Code`, name: "Saima Malik", occupation: "Technology Activist, Bangladesh" , 'image': 'saima_malik.jpg',
+  'story': `In Ethiopia, Meron works at the intersection of technology, gender, and policy. Her definition of entrepreneurship is simple: “It’s rewriting systems that were never built for us.” She’s seen women use online platforms to start businesses, find independence, and connect globally. Yet, she also sees the barriers — limited access, digital harassment, and funding gaps that silence women’s ideas before they start.
+“If we don’t participate in shaping AI,” she warns, “we risk being shaped by it.” Her advocacy focuses on ensuring women are not just users of technology but co-authors of its future. She works with governments and startups to bring inclusion into every layer of AI design - from data collection to deployment.
+For Meron, success isn’t measured in profit or patents. It’s measured in voices. Every woman who learns, leads, or builds because of her efforts is a data point of progress - proof that systems can be reprogrammed, not just run.
+
+`},
+{ id: "r19", answer: `Building Bridges Out of Necessity`, name: "Saima Malik", occupation: "Technology Activist, Bangladesh" , 'image': 'saima_malik.jpg',
+  'story': `“I never set out to be an entrepreneur,” Sarah says. “I just kept finding problems no one else wanted to solve.” Her first project was a simple payment system for small vendors who couldn’t afford complex tools. It wasn’t glamorous, but it worked and it mattered.
+Sarah had watched too many people shut out of technology because they believed it wasn’t “for them.” “When women say, ‘I’m not a tech person,’ I ask, who made you believe that?” she says. Her approach to entrepreneurship is rooted in empathy: identify what’s broken, then build something useful enough to heal it.
+She often imagines AI as a mentor rather than a machine, a quiet voice reminding people they belong in spaces once closed to them. Her story is not about disruption or ambition; it’s about care. Sarah doesn’t just design software; she designs access. For her, entrepreneurship is not invention for profit, it’s creation for connection.
+
+`},
+{ id: "r20", answer: `The Circle of Light: Learning Together`, name: "Saima Malik", occupation: "Technology Activist, Bangladesh" , 'image': 'saima_malik.jpg',
+  'story': `When you step in, the light feels different. It flickers above us, but what shines is within each of us, says Miriam, a young mother from Lusaka. On Sunday evenings, women gather beneath a single roof, some just learning to type, others showing nervous laughter before pressing a key. They call themselves The Circle of Light.
+“For me, using a laptop was always something only teachers or big officials did. Now, I can send pictures of what I make—bracelets, mats—to other women in the group. They teach me, I teach them. Sometimes we forget who’s the student and who’s the teacher.”
+In a region where only one in four women has steady internet, the act of learning basic digital skills is revolutionary. Miriam and her peers have begun forming WhatsApp groups to sell crafts, draft messages, and upload photos. The small triumphs add up—a new sale, a message typed without hesitation.
+“As we learn together, the fear goes.” The settlement echoes with laughter and the beeping of keys. “This computer,” she says, “is not just a box—it’s a mirror. We see what we might become.”
+Government programs like India’s PMGDISHA and the Smart Village Initiative in Zambia are bringing digital tools to women at local levels, but Miriam believes the real change comes from within communities. “You have to trust us to lead. These gatherings are the start of something big, if only others would listen.”
+Her hope is shared: that officials and organisations see small digital circles not just as learners, but as leaders—pioneers of digital democracy, where every woman grows strong and helps others do the same.
+
+`},
+{ id: "r21", answer: `Seeds of Connection: Digital Agriculture for Women Farmers`, name: "Saima Malik", occupation: "Technology Activist, Bangladesh" , 'image': 'saima_malik.jpg',
+  'story': `Afiwa Mensah rises before sunrise in her village in northern Ghana. Every evening, as the sky dims and the heat fades, she gathers with her daughter and neighbours beneath an old acacia tree. The sound of children’s laughter mixes with the quiet tap of solar-powered tablets waking up to life. Before, seasons were ruled by guessing at the sky, by the wisdom passed down in stories and long meetings.
+The first time Afiwa touched the weather mapping app, her hands shook. She worried she’d break something. But her daughter grinned, showed her how to swipe, how to open the rainfall map. “Now, the land talks to me through data,” Afiwa says. The meetings under the tree transformed. “We plan together: planting, how much water, sharing updates by message with women in other villages. Some nights, even my mother—who never learned to read—sends voice notes to her sisters. The children listen, sometimes helping with the buttons.”
+Harvests grew steadier. Losses from droughts became rare. Everyone in the group has a story—the neighbour who saved her yams after a surprise storm, the grandmother who now tells stories while sending messages on her tablet. “We aren’t alone with technology. We use old stories and new screens together,” Afiwa smiles. “People help each other with both.”
+It’s more than farming; it’s survival and solidarity. Community rituals mixed with something new—a confidence that tomorrow can be planned, not just prayed for. “Digital connection is our seed, and community is our rain,” Afiwa says.
+Their wish is clear: “Let governments and organizations come listen to us before they drop off devices and leave. We want training, apps that speak our languages, tools that fit our real lives.” In this village, the future of agriculture is as much about heart and togetherness as about data and screens.
+`},
+{ id: "r22", answer: `Designing Belonging: Women and AI Ethics`, name: "Saima Malik", occupation: "Technology Activist, Bangladesh" , 'image': 'saima_malik.jpg',
+  'story': `“When women build the systems, technology listens better,” says Sarah Forrest, an AI advisor and computer science graduate student from Massachusetts. Her earliest tech memories are shaped by helping her grandmother with college assignments at age 50 and teaching herself to troubleshoot family finances. “Technology became my entry point to a wider world—a way to connect beyond what we could see.”
+Sarah spends evenings running community workshops for women and caregivers, where the aim is not just to teach code, but to build digital confidence. “Bias isn’t a bug—it’s who’s not in the room. When women, people from marginalised backgrounds, or those with caregiving roles co-design digital safety and privacy, the whole system shifts.”
+Across stories in your research, women echo this: empathy is as essential as intelligence. “I want AI to act as a bridge, not a barrier—detecting harassment, amplifying unheard stories, and ensuring everyone can find mentorship, care, and opportunity,” writes Kangkana Barman from Assam. OECD findings show that diverse design teams reduce AI bias by 25% and drive greater user trust. “True innovation isn’t just efficiency—it’s belonging, rooted in care,” Sarah adds.
+Sarah’s hope: “The next generation of AI must remember what makes us human. Our belonging starts with who holds a seat at the table. That’s what transforms technology from a tool into an ally.”
+`},
+{ id: "r23", answer: `Lessons from a Library and a Grandmother’s Hands`, name: "Saima Malik", occupation: "Technology Activist, Bangladesh" , 'image': 'saima_malik.jpg',
+  'story': `Kimberly’s story begins in the soft hum of a library computer lab, long before Wi-Fi was everywhere. “I used to spend hours printing pages to take home,” she says. Her grandmother, who started college at fifty, would wait patiently beside her, asking how to type her name. Those evenings were full of laughter and learning, two generations discovering technology together.
+For Kimberly, that space became her first classroom in self-reliance. As a first-generation college student, she soon found herself fixing neighbours’ laptops, teaching others how to send emails, and setting up online accounts for those who feared “breaking the internet.” These small acts were more than technical help - they were steps toward empowerment.
+Now, Kimberly teaches AI literacy to women in underserved communities. To her, entrepreneurship isn’t just about creating businesses; it’s about creating access. It’s about using what you know to lift others higher. The same girl who once helped her grandmother type essays now helps others find their digital voice. What started as love became a legacy.
+
+`},
+{ id: "r24", answer: `The Voice That Answered Back`, name: "Saima Malik", occupation: "Technology Activist, Bangladesh" , 'image': 'saima_malik.jpg',
+  'story': `She remembers the first time her mother spoke to a phone — not to someone on the other end, but to the device itself.
+
+ “Show me pictures,” her mother said, and the phone obeyed. It was a quiet moment, but something shifted. A woman who once waited for help to search or scroll suddenly realised she could ask, and the world would answer back.
+Years later, her daughter is studying computer science, designing the very systems that now listen to millions of voices. For her, technology isn’t just convenience, it’s confidence made visible.
+
+She sees how AI gives women in her community access to education, safety, and independence, but she also feels the shadows of privacy breaches and deepfakes.
+Still, her vision is tender and fierce: AI that “assists like a friend,” that motivates, listens, and gives comfort. A world where no one is divided by wealth or class, where compassion sits at the core of every algorithm.
+ When she codes, she remembers that first voice command, the courage it took to ask a question out lou,d and she builds for that same courage in others.
+
+`},
   ];
 
   (function(){
@@ -193,6 +289,8 @@ While AI promises creativity and convenience, its hunger for data has turned the
                   s.textContent = '';
               }
           });
+
+        
           
       }
       
@@ -251,13 +349,13 @@ While AI promises creativity and convenience, its hunger for data has turned the
   <!-- BACK FACE -->
 <div class="face back" style="${backStyle}" id="back-face-${response.id}">
   <div style="text-align:center;">
-    <h3 style="margin:0 0 .25rem; color:var(--soft-light);">${response.name}</h3>
-    <p style="margin:0 0 1rem; color:var(--water-silver); font-size:.9rem;">${response.occupation}</p>
+    <!-- <h3 style="margin:0 0 .25rem; color:var(--soft-light);">${response.name}</h3>
+     <p style="margin:0 0 1rem; color:var(--water-silver); font-size:.9rem;">${response.occupation}</p> -->
     
     <!-- Story text (short preview + View More button) -->
-    <p class="story-text" style="color:var(--water-silver); font-size:.9rem;">
-      ${response.story.length > 120 ? response.story.substring(0, 120) + "..." : response.story}
-      ${response.story.length > 120 ? `<br><a href="#" class="view-more" style="color: var(--accent-glow); font-size: .85rem; text-decoration: underline;">View More</a>` : ""}
+    <p id="story-${response.id}" class="story-text" style="color:var(--water-silver); font-size:.9rem;">
+      ${response.story.length > 300 ? response.story.substring(0, 300) + "..." : response.story}
+      ${response.story.length > 300 ? `<br><a href="#" class="view-more" style="color: var(--accent-glow); font-size: .85rem; text-decoration: underline;">View More</a>` : ""}
     </p>
   </div>
 
@@ -342,12 +440,13 @@ While AI promises creativity and convenience, its hunger for data has turned the
                   }
                   response = MOCK_RESPONSES.find(r => r.id === card.id);
                   collected.push(response);
+               
                   card.classList.add('collected');
                   card.getElementsByClassName('is-collected')[0].textContent = '✓ Collected';
                   btn.disabled = true;
                   btn.innerHTML = '<span class="flex items-center justify-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check w-4 h-4" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Collected</span>';
                   card.classList.add('is-flipped');
-                  // Store collection in localStorage whenever it changes
+                  
                   localStorage.setItem('girlswhoml_collection', JSON.stringify(collected));
                   updateUI();
                   console.log('Collected:', collected);

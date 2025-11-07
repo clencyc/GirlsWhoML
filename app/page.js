@@ -84,32 +84,28 @@ return (
 
 
      
+{/* topSection */}
+<section className="relative w-full max-w-[1440px] flex flex-col 
+items-center top-[100px] pt-24 md:pt-32"  >
 
-      {/* topSection */}
-      <section className="relative w-full max-w-[1440px] flex flex-col 
-      items-center top-[100px] pt-24 md:pt-32"  >
-
-
-
-        {/* heroText */}
-       <div ref={el => sectionRefs.current['hero'] = el} className={getSectionClass(
+{/* heroText */}
+ <div ref={el => sectionRefs.current['hero'] = el} className={getSectionClass(
     'hero',
     'flex flex-col items-center gap-[52px] relative w-full max-w-[881px] mx-auto mt-[120px]'
-  )}
->
+  )}>
 
-  {/* Heading */}
-  <div className="flex flex-col items-center gap-[40px] text-center w-full px-4 sm:px-0">
+{/* Heading */}
+  <div className="flex flex-col items-center gap-[40px] text-center w-[90%] px-4 sm:px-10">
   <h1
-    className="font-['Inter'] text-[72px] w-full sm:w-4/5 md:w-3/4 lg:w-[915px]
-      leading-[87px] tracking-[-0.04em] text-black"
-    style={{ fontWeight: 500 }}
+    className="font-['Inter'] text-[72px] w-full text-[clamp(3.2rem,5.5vw,4rem)] sm:w-4/5 md:w-3/4 lg:w-[915px]
+      leading-[87px] tracking-[-0.04em] text-black "
+    style={{ fontWeight: 500, lineHeight: 'clamp(4rem, 6vw, 5.4rem)' }}
   >
       An Ecosystem to enable gender parity in ML and AI
     </h1>
     <p
-      className="font-['Inter'] text-[36px] leading-[60px] tracking-[-0.04em] text-black mt-[10px] px-4 sm:px-0"
-      style={{ fontWeight: 450 }}
+      className="font-['Inter'] text-[36px] text-[clamp(1rem,5vw,2rem)] leading-[60px] tracking-[-0.04em] text-black mt-[10px] px-4 sm:px-0"
+      style={{ fontWeight: 450,  lineHeight: 'clamp(3rem, 7vw, 5.4rem)' }}
     >
       GirlsWhoML x Mozilla Festival 2025
     </p>
@@ -139,7 +135,8 @@ return (
       height="24"
       viewBox="0 0 24 24"
       fill="none"
-      className="transition-all duration-700 ease-out group-hover:translate-x-1 text-[#231F20]"
+      className="transition-all duration-700 ease-out group-hover:translate-x-1 
+      text-[#231F20]"
     >
       <path
         d="M3 12H21M21 12L14 5M21 12L14 19"
@@ -150,56 +147,51 @@ return (
       />
     </svg>
   </a>
+
+
+{/* liveBadge - REVISED: Removed absolute positioning for flow-based layout and reduced top margin */}
+  <div
+  ref={el => (sectionRefs.current['live-badge'] = el)}
+  // Removed 'absolute' and 'top-[618px]', replaced with flow positioning
+  className={getSectionClass(
+    'live-badge',
+    "box-border flex flex-row justify-center items-center p-[8px_16px] gap-[8px] w-[83px] h-[35px] left-[calc(50%-83px/2)] border border-[#DBDBDB] rounded-[100px]"
+  )}
+  style={{ marginTop: '4rem' }} // 👈 adds ~32px space above
+>
+  <style jsx>{`
+    @keyframes smooth-blink {
+      0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.4;
+        transform: scale(0.8);
+      }
+    }
+    .animate-smooth-blink {
+      animation: smooth-blink 1.2s ease-in-out infinite;
+    }
+  `}</style>
+  
+  <div className="w-[9px] h-[9px] bg-[#F06464] rounded-full animate-smooth-blink"></div>
+  <span className="w-[34px] h-[19px] font-['Inter'] text-[16px] leading-[19px] tracking-[-0.02em] text-[#000000] font-semibold">
+    LIVE
+  </span>
 </div>
 
 
 
+  {/* rectangle */}
+  <div
+    className="w-[90%] lg:w-[1056px] aspect-[1056/608] bg-[#000] rounded-[20px]"
+    style={{
+      transform: `translateY(${scrollY * -0.02}px)`,
+    }}
+  ></div>
 
 
-
-        
-
-
-
-
-        {/* liveBadge */}
-        <div
-        ref={el => (sectionRefs.current['live-badge'] = el)}
-        className={getSectionClass(
-          'live-badge',
-          "box-border flex flex-row justify-center  mt-[20px] items-center p-[8px_16px] gap-[8px] absolute w-[83px] h-[35px] left-[calc(50%-83px/2)] top-[618px] border border-[#DBDBDB] rounded-[100px]"
-        )}
-      >
-        <style jsx>{`
-          @keyframes smooth-blink {
-            0%, 100% {
-              opacity: 1;
-              transform: scale(1);
-            }
-            50% {
-              opacity: 0.4;
-              transform: scale(0.8);
-            }
-          }
-          .animate-smooth-blink {
-            animation: smooth-blink 1.2s ease-in-out infinite;
-          }
-        `}</style>
-
-  <div className="w-[9px] h-[9px] bg-[#F06464] rounded-full animate-smooth-blink"></div>
-  <span className="w-[34px] h-[19px] font-['Inter'] text-[16px] leading-[19px] tracking-[-0.02em] text-[#000000] font-semibold"
-  >LIVE</span>
-      </div>
-
-
-        {/* Rectangle 24 */}
-        <div
-          className="absolute w-[90%] lg:w-[1056px] aspect-[1056/608] bg-[#000000] rounded-[20px] transition-transform duration-100 ease-out left-1/2"
-          style={{
-            top: `${681 + scrollY * 0.05}px`,
-            transform: `translate(-50%, ${scrollY * -0.02}px)`,
-          }}
-        ></div>
 
 
         {/* description */} 
@@ -207,35 +199,24 @@ return (
           ref={el => sectionRefs.current['description'] = el}
           // REVISED: Removed absolute positioning (absolute, left-[...], top-[...]).
           // Used responsive max-width, horizontal centering (mx-auto), and large top margin (mt-[1000px]) to push it below the parallax area.
-          className="relative mt-[1000px] lg:mt-[1600px] w-full max-w-5xl mx-auto px-4 text-center text-[32px] leading-tight sm:leading-[39px] text-[#000000]"
+          className="relative lg:mt-[1600px] w-[90%] max-w-5xl leading-[40px] mx-auto px-4 text-center text-[28px] sm:leading-[39px] text-[#000000]"
           style={{fontFamily: 'var(--font-inter)', fontWeight: 500, letterSpacing: '-0.04em'}} // Corrected letter-spacing to match original style
         >
           {/* REVISED: Replaced fixed whitespace with a simple div for readability and flow. */}
-<div className="mx-auto space-y-8"> {/* Added space-y-8 here */}
-  <div> {/* Removed the mb-8 from this div */}
-    On November 7th, 2025, GirlsWhoML and Oeuvre unveiled "Below the Surface",
-  </div>
-  <div>
-    an installation that transforms a quiet gesture into an act of visibility.
-  </div>
-</div>
-          
-          {/* Empty div for spacing, replaced '&nbsp;' */}
-          <div className="h-8"></div>
+          <div className="mx-auto" style={{ marginBottom: '2rem' }} >
+            <div className="mb-8">On November 7th, 2025, GirlsWhoML and Oeuvre unveiled "Below the Surface",
+            an installation that transforms a quiet gesture into an act of visibility.</div>
+          </div>
           
           <div className="mx-auto">
-            <div>Visitors tap on our NFC chips, and each touch reveals faces and voices of real</div>
-            <div>women whose presence in technology is too often unseen, creating a shared act</div>
-            <div>of recognition and emergence.</div>
+            <div>Visitors tap on our NFC chips, and each touch reveals faces and voices of real 
+            women whose presence in technology is too often unseen, creating a shared act 
+            of recognition and emergence.</div>
           </div>
         </div>
-      </section>
-
-
-
-
-
-
+        
+</div>
+</section>
 
 
 
@@ -250,12 +231,14 @@ return (
 
 
       {/* secondSection */}
-      <section className="absolute w-[1441px] h-[3642px] left-[calc(50%-1441px/2+0.5px)] top-[1925px]">
-        <h2 className="absolute w-[915px] h-[87px] left-[calc(50%-915px/2+1px)] top-[179px] font-['Inter'] text-[72px] leading-[87px] text-center tracking-[-0.04em] text-[#000000]" style={{fontWeight: 500}}>
+      <section className="relative w-full max-w-[1440px] flex flex-col items-center top-[360px] pt-24 md:pt-32"  >
+      <div className="flex flex-col gap-[40px] w-[90%] px-4 sm:px-10">
+      <h2
+        className="font-['Inter'] text-[72px] text-center w-full text-[clamp(3.2rem,5.5vw,4rem)] sm:w-4/5 md:w-3/4 lg:w-[915px]
+          leading-[87px] tracking-[-0.04em] text-black "
+        style={{ fontWeight: 500, lineHeight: 'clamp(4rem, 6vw, 5.4rem)' }}      >
           The Change We're Making
         </h2>
-
-
 
         {/* change1 */}
         <div
@@ -469,7 +452,18 @@ return (
 
           </div>
         </div>
-      </section>
+</div>
+</section>
+
+
+
+
+
+
+
+
+</div>
+
 
       {/* thirdSection */}
       <section className="absolute w-[1441px] h-[985px] left-[calc(50%-1441px/2+0.5px)] top-[5567px]">
@@ -498,7 +492,7 @@ return (
           </div>
         </div>
       </section>
-</div>
+
 
       {/* forthSection */}
       <section

@@ -73,6 +73,8 @@
 
   
   if (e.target.id === "close-modal") {
+    const storyID = document.getElementById("modal-content").dataset.storyId;
+    document.getElementsByClassName('card')[`${storyID}`].classList.add('is-flipped');
     document.getElementById("story-modal").style.display = "none";
     updateUI();
   }

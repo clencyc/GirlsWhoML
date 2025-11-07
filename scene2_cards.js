@@ -31,7 +31,7 @@ Across the ocean in Portland, Ann Marie uses AI for art and storytelling, but he
 From Manila to Mumbai, from coding labs to rural clinics, women aren't waiting for permission anymore.
 Because inclusion isn't a feature to be added later. It's the foundational code that everything else is built on. And we're rewriting it whether you're ready or not.
   `},
-    { id: "r3", answer: `"When AI Finally Learns What Women's Bodies Have Been Saying All Along"`, name: "Fatima Khan", occupation: "Machine Learning Engineer, Pakistan", 'image': 'fatima_khan.jpg', 
+    { id: "r3", answer: `When AI Finally Learns What Women's Bodies Have Been Saying All Along`, name: "Fatima Khan", occupation: "Machine Learning Engineer, Pakistan", 'image': 'fatima_khan.jpg', 
       'story': `
       For decades, conditions like endometriosis and uterine fibroids were medical afterthoughts. Mental health and reproductive care? Even further behind. Women's pain was dismissed, their cycles ignored, and their maternal needs sidelined.
 But technology is beginning to listen.
@@ -118,7 +118,7 @@ Safety isn’t a feature request; it is the precondition. When women feel protec
 Weeks pass, and change emerges. Group discussion grows, students show confidence answering questions, and they eagerly try the new digital reading exercises. Little Ananya, once silent at the back, now answers aloud, sometimes even correcting Meera’s Tamil translations. “Technology didn’t replace me,” Meera smiles, “it made me more attentive to what matters.”
 The local Ministry reports hybrid classrooms with teacher-led AI tools raised comprehension by almost 40%. Peer teachers in the research group describe similar outcomes where rural girls who struggled with spelling suddenly mastered vocabulary; shy children excelled at quizzes generated just for them.
 Still, Meera warns, “AI doesn’t see everything- a teacher knows when a child’s silence means more than a missed answer.” Community chats reveal hopes: that training continues, that local languages are supported, and that new tools honour empathy, not just automation.`},
-{ id: "r11", answer: `“Invisible Smoke: The Environmental Cost of Ungoverned AI”`, name: "Saima Malik", occupation: "Technology Activist, Bangladesh" , 'image': 'saima_malik.jpg',
+{ id: "r11", answer: `Invisible Smoke: The Environmental Cost of Ungoverned AI`, name: "Saima Malik", occupation: "Technology Activist, Bangladesh" , 'image': 'saima_malik.jpg',
   'story': `“If AI can predict climate change, then AI companies should also be accountable for worsening it.”
 In a small town near Hyderabad, the power flickers again. My dad, a local internet café owner, laughs softly.. “Maybe the data centres are eating all our electricity.” It’s meant as a joke, but he’s not far off. On the city’s outskirts, new server farms hum night and day, cooling thousands of GPUs running AI models that most of the town’s residents will never use. While the machines learn, the river runs a little warmer, cooling water is discharged from unregulated facilities, and electricity bills rise for everyone else.“We thought technology was light,” our neighbour says. “But it’s heavy: on our air, our water, our power.” https://www.businessinsider.com/ai-runs-dirty-power-and-the-public-pays-the-price-2025-6
 I can see a growing unease: AI promises efficiency, but hides its footprint. Training large models demands massive energy and water resources, often in regions already facing power shortages or drought. Yet there is no clear governance for measuring or mitigating these impacts.
@@ -127,13 +127,13 @@ Energy strain & emissions: A single advanced AI model can emit up to 300-500 ton
 
 Water usage: Cooling systems for data centres consume millions of litres daily. Microsoft disclosed that its global water use rose 34% in one year, largely due to AI infrastructure growth (Reuters, 2024).
 From India to Zambia, participants demand transparency and accountability from the AI industry and its enablers: Mandatory Environmental Impact Assessments (EIA) for AI data centres and cloud facilities, Carbon labelling for major AI products and models, like nutritional labels for emissions, Community inclusion in decision-making before large data facilities are established near towns or ecologically sensitive areas. `},
-{ id: "r12", answer: `“Governance by Algorithm: Loss of responsible & answerable bodies”`, name: "Saima Malik", occupation: "Technology Activist, Bangladesh" , 'image': 'saima_malik.jpg',
+{ id: "r12", answer: `Governance by Algorithm: Loss of responsible & answerable bodies`, name: "Saima Malik", occupation: "Technology Activist, Bangladesh" , 'image': 'saima_malik.jpg',
   'story': `“Actually ask what our needs are, listen to our voices, and stop giving us AI we never asked for”, Ann Marie Mossman, 48, a mother & software engineer from Portland. I am Natasha. I come from  a village of Uttar Pradesh, the Ration Distribution Officer of our locality, Ravi says, “We’ve started using the AI tool to rank beneficiaries of the pension scheme.” He scrolls through a dashboard that flashes red alerts next to thousands of names flagged as ineligible. 
 A mother of two, our house help & a regular beneficiary of the scheme, Lakshmi, receives nothing this month. She visits the welfare office, shows her Aadhaar, and her family ration card, but the screen says “Rejected”. The clerk shrugs: “You can file a grievance, but the algorithm flagged you.” As a result, Lakshmi finds herself dreading managing ration supply & school fees now. 
 As these algorithmic systems shape life-changing resources (old-age pensions, scholarships, housing), In parallel, studies show that algorithmic governance without proper design may replicate and amplify inequalities. The chief justice of India warned that the use of AI in policing may disproportionately target marginalised communities. In India, technology experts warn that the rapid rollout of AI in welfare and justice may reinforce caste, class, and gender discrimination. 
 
 From the district offices to village panchayats, there is an emerging demand among citizens for consent, transparency and bias removal while designing these systems.`},
-{ id: "r13", answer: `“Do you also have an AI-generated Ghibli profile picture? Study on Data Theft and Reverse-Engineered Identity”`, name: "Saima Malik", occupation: "Technology Activist, Bangladesh" , 'image': 'saima_malik.jpg',
+{ id: "r13", answer: `Do you also have an AI-generated Ghibli profile picture? Study on Data Theft and Reverse-Engineered Identity`, name: "Saima Malik", occupation: "Technology Activist, Bangladesh" , 'image': 'saima_malik.jpg',
   'story': `“ The conversion of human culture into machine capital: Loss of control over identity and creative work”, Nisha from Pune, a Fashion design student
 I am Nisha, a 19-year-old & a design college student in Pune. I uploaded my digital art portfolio online, portraits I drew to showcase my style to potential clients. Later, I discovered AI-generated artwork on the web mimicking my brushstrokes, signed by a machine(via watermark).
 My mother sees a photo of me being used in a foreign language advertisement for a beauty brand I have never heard of. I did try to convince my mom that I never shared the picture, but then how did it respawn there? Perhaps I participated in the Instagram trend of enhancing your pictures with a prompt. My techie brother explains well, “Your output images can be very well reverse engineered, especially when there is  a dire need for real raw data in this era of training-data scarcity!”
@@ -336,7 +336,7 @@ Still, her vision is tender and fierce: AI that “assists like a friend,” tha
 
     <!-- Front content -->
     <div style=" height:100%; position: relative; z-index: 2; padding: 1rem; display:flex; flex-direction:column; align-content:space-between; ">
-      <div class="flex-1 flex items-center" style="margin:0; font-size:1rem; line-height:1.3; color:var(--soft-light); justify-self:center;">
+      <div class="flex-1 flex items-center " style="margin:0; font-size:1.3rem; line-height:1.6; color:var(--soft-light); justify-self:center; font-weight:bold;">
         ${response.answer}
       </div>
       <div style="display:flex; justify-content:space-between; align-items:center;">

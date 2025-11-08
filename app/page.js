@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import Header from './components/shared/Header';
 import Footer from './components/shared/Footer';
 import TestimonialSlider from './components/home/TestimonialSlider';
+import './Home.css';
 
 export default function Home() {
   const [visibleSections, setVisibleSections] = useState(new Set());
@@ -20,7 +21,6 @@ export default function Home() {
       });
     };
 
-    // Create observers for each section
     ['hero', 'live-badge', 'description', 'change1', 'change2', 'change3', 'cta', 'testimonials'].forEach(sectionId => {
       const element = sectionRefs.current[sectionId];
       if (element) {
@@ -38,7 +38,6 @@ export default function Home() {
     };
   }, []);
 
-  // Parallax scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
@@ -48,480 +47,210 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const getSectionClass = (sectionId, baseClass = '') => {
+  const getSectionClass = (sectionId) => {
     const isVisible = visibleSections.has(sectionId);
-    return `${baseClass} transition-all duration-1000 ease-out ${
-      isVisible
-        ? 'opacity-100 translate-y-0'
-        : 'opacity-0 translate-y-8'
-    }`;
+    return isVisible ? 'visible' : '';
   };
-  // Add smooth scrolling styles
-  useEffect(() => {
-    const style = document.createElement('style');
-    style.textContent = `
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        overflow-x: hidden;
-      }
-    `;
-    document.head.appendChild(style);
 
-    return () => {
-      document.head.removeChild(style);
-    };
-  }, []);
-
-return (
-    <div className="relative w-full min-h-full bg-[#F5F3ED] flex flex-col items-center">
- <div className="relative w-full min-h-screen bg-[#FFFFFF] flex flex-col items-center">
-    
+  return (
+    <div className="home-page">
       <Header />
-      {/* rest of your content */}
 
-
-
-     
-{/* topSection */}
-<section className="relative w-full max-w-[1440px] flex flex-col 
-items-center top-[100px] pt-24 md:pt-32"  >
-
-{/* heroText */}
- <div ref={el => sectionRefs.current['hero'] = el} className={getSectionClass(
-    'hero',
-    'flex flex-col items-center gap-[52px] relative w-full max-w-[881px] mx-auto mt-[120px]'
-  )}>
-
-{/* Heading */}
-  <div className="flex flex-col items-center gap-[40px] text-center w-[90%] px-4 sm:px-10">
-  <h1
-    className="font-['Inter'] text-[72px] w-full text-[clamp(3.2rem,5.5vw,4rem)] sm:w-4/5 md:w-3/4 lg:w-[915px]
-      leading-[87px] tracking-[-0.04em] text-black "
-    style={{ fontWeight: 500, lineHeight: 'clamp(4rem, 6vw, 5.4rem)' }}
-  >
-      An Ecosystem to enable gender parity in ML and AI
-    </h1>
-    <p
-      className="font-['Inter'] text-[36px] text-[clamp(1rem,5vw,2rem)] leading-[60px] tracking-[-0.04em] text-black mt-[10px] px-4 sm:px-0"
-      style={{ fontWeight: 450,  lineHeight: 'clamp(3rem, 7vw, 5.4rem)' }}
-    >
-      GirlsWhoML x Mozilla Festival 2025
-    </p>
-  </div>
-
-  {/* CTA Button (original styling preserved) */}
-  <a
-    href="./mosaic-of-voices"
-    className="group flex flex-row justify-center items-center p-[20px_28px] gap-[8px] w-[323px] h-[64px] bg-[#D89EFA] rounded-[100px] transition-all duration-700 ease-out hover:bg-[#000000]"
-    onMouseEnter={(e) => {
-      e.currentTarget.querySelector('span').style.color = '#ffffff';
-      e.currentTarget.querySelector('svg').style.color = '#ffffff';
-    }}
-    onMouseLeave={(e) => {
-      e.currentTarget.querySelector('span').style.color = '#000000';
-      e.currentTarget.querySelector('svg').style.color = '#231F20';
-    }}
-  >
-    <span
-      className="w-[235px] h-[24px] font-['Inter'] font-bold text-[20px] leading-[24px] tracking-[-0.02em] text-[#000000] transition-colors duration-700"
-      style={{ fontWeight: 450 }}
-    >
-      Explore Collective Gallery
-    </span>
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      className="transition-all duration-700 ease-out group-hover:translate-x-1 
-      text-[#231F20]"
-    >
-      <path
-        d="M3 12H21M21 12L14 5M21 12L14 19"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  </a>
-
-
-{/* liveBadge - REVISED: Removed absolute positioning for flow-based layout and reduced top margin */}
-  <div
-  ref={el => (sectionRefs.current['live-badge'] = el)}
-  // Removed 'absolute' and 'top-[618px]', replaced with flow positioning
-  className={getSectionClass(
-    'live-badge',
-    "box-border flex flex-row justify-center items-center p-[8px_16px] gap-[8px] w-[83px] h-[35px] left-[calc(50%-83px/2)] border border-[#DBDBDB] rounded-[100px]"
-  )}
-  style={{ marginTop: '4rem' }} // 👈 adds ~32px space above
->
-  <style jsx>{`
-    @keyframes smooth-blink {
-      0%, 100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-      50% {
-        opacity: 0.4;
-        transform: scale(0.8);
-      }
-    }
-    .animate-smooth-blink {
-      animation: smooth-blink 1.2s ease-in-out infinite;
-    }
-  `}</style>
-  
-  <div className="w-[9px] h-[9px] bg-[#F06464] rounded-full animate-smooth-blink"></div>
-  <span className="w-[34px] h-[19px] font-['Inter'] text-[16px] leading-[19px] tracking-[-0.02em] text-[#000000] font-semibold">
-    LIVE
-  </span>
-</div>
-
-
-
-  {/* rectangle */}
-  <div
-    className="w-[90%] lg:w-[1056px] aspect-[1056/608] bg-[#000] rounded-[20px]"
-    style={{
-      transform: `translateY(${scrollY * -0.02}px)`,
-    }}
-  ></div>
-
-
-
-
-        {/* description */} 
-        <div
-          ref={el => sectionRefs.current['description'] = el}
-          // REVISED: Removed absolute positioning (absolute, left-[...], top-[...]).
-          // Used responsive max-width, horizontal centering (mx-auto), and large top margin (mt-[1000px]) to push it below the parallax area.
-          className="relative lg:mt-[1600px] w-[90%] max-w-5xl leading-[40px] mx-auto px-4 text-center text-[28px] sm:leading-[39px] text-[#000000]"
-          style={{fontFamily: 'var(--font-inter)', fontWeight: 500, letterSpacing: '-0.04em'}} // Corrected letter-spacing to match original style
+      {/* Hero Section */}
+      <section className="home-hero-section">
+        <div 
+          ref={el => sectionRefs.current['hero'] = el} 
+          className={`hero-content ${getSectionClass('hero')}`}
         >
-          {/* REVISED: Replaced fixed whitespace with a simple div for readability and flow. */}
-          <div className="mx-auto" style={{ marginBottom: '2rem' }} >
-            <div className="mb-8">On November 7th, 2025, GirlsWhoML and Oeuvre unveiled "Below the Surface",
-            an installation that transforms a quiet gesture into an act of visibility.</div>
-          </div>
-          
-          <div className="mx-auto">
-            <div>Visitors tap on our NFC chips, and each touch reveals faces and voices of real 
-            women whose presence in technology is too often unseen, creating a shared act 
-            of recognition and emergence.</div>
-          </div>
-        </div>
-        
-</div>
-</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-      {/* secondSection */}
-      <section className="relative w-full max-w-[1440px] flex flex-col items-center top-[360px] pt-24 md:pt-32"  >
-      <div className="flex flex-col gap-[40px] w-[90%] px-4 sm:px-10">
-      <h2
-        className="font-['Inter'] text-[72px] text-center w-full text-[clamp(3.2rem,5.5vw,4rem)] sm:w-4/5 md:w-3/4 lg:w-[915px]
-          leading-[87px] tracking-[-0.04em] text-black "
-        style={{ fontWeight: 500, lineHeight: 'clamp(4rem, 6vw, 5.4rem)' }}      >
-          The Change We're Making
-        </h2>
-
-        {/* change1 */}
-        <div
-          ref={el => sectionRefs.current['change1'] = el}
-          className={getSectionClass('change1', "flex flex-row items-center p-0 gap-[75px] absolute w-[1069.29px] h-[563px] left-[187px] top-[571px]")}
-        >
-          {/* leftText */}
-          <div className="flex flex-col items-start p-0 gap-11 w-[566px] h-[563px]">
-          <h3
-            className="w-full font-['Inter'] text-[54px] leading-[65px] tracking-[-0.04em] text-black"
-            style={{ fontWeight: 500 }}
-          >
-            Below the Surface —<br />
-            Lifting Women in AI Out<br />
-            of Invisibility
-          </h3>
-
-        <p
-          className="w-full font-['Inter'] text-[24px] leading-[36px] tracking-[-0.02em] text-black mt-[44px]"
-          style={{ fontWeight: 500 }}
-        >
-            Millions of women perform the foundational work of AI — labelling, tagging, and cleaning the data
-            that trains our models. Many earn only $2–4 an hour for this invisible labour. We set out to speak
-            with these women, yet even we, in trying to make them visible, found many beyond reach. Among the
-            submerged faces we could gather, we placed empty frames — reminders that invisibility extends
-            deeper than we imagined.
-          </p>
-        </div>
-
-
-          {/* img */}
-          <div className="w-[428px] h-[520px] flex-none order-1 flex-grow-0 flex items-center justify-center">
-            <div className="w-[440px] h-[550px] flex-none order-1 transition-all duration-500 ease-out">
-              <img src="/images/home/img1.png" alt="Below the Surface illustration" className="w-full h-full object-contain" />
-            </div>
-          </div>
-        </div>
-
-
-
-
-
-
-        
-
-        {/* change2 */}
-        <div
-          ref={el => sectionRefs.current['change2'] = el}
-          className={getSectionClass('change2', "flex flex-row items-start p-0 gap-[69px] absolute w-[1100px] h-[707px] left-[187px] top-[1444px]")}
-        >
-          {/* img */}
-          <div className="w-[476px] h-[476px] flex-none order-0 flex-grow-0 transition-all duration-500 ease-out">
-            <img src="/images/home/img2.png" alt="Tiles of reflection illustration" className="w-full h-full object-contain" />
-          </div>
-
-          {/* rightText */}
-          <div className="flex flex-col items-start p-0 gap-[44px] w-[555px] h-[707px] flex-none order-1 flex-grow-0">
-            <h3 className="w-[555px] h-[195px] font-['Inter'] text-[54px] leading-[65px] tracking-[-0.04em] text-[#000000] flex-none order-0 self-stretch flex-grow-0" style={{fontWeight: 500}}>
-              Tiles of Reflection — Let Women's Voices Be Heard
-            </h3>
-            <p className="w-[555px] h-[360px] font-['Inter'] text-[24px] leading-[36px] tracking-[-0.02em] text-[#000000] flex-none order-1 self-stretch flex-grow-0" style={{fontWeight: 500}}>
-              Through our survey, we collected more than 200 reflections from women working across AI — their words revealing resilience, isolation, and hope. Each response became one of 24 digital tiles within the installation, glowing softly as visitors engaged. Guests were invited to select up to four tiles that resonated with them most — a simple act that amplified these women's voices. In doing so, the installation turned listening into participation, and participation into recognition.
+          {/* Heading */}
+          <div className="hero-text">
+            <h1 className="hero-title">
+              An Ecosystem to enable gender parity in ML and AI
+            </h1>
+            <p className="hero-subtitle">
+              GirlsWhoML x Mozilla Festival 2025
             </p>
-            <a
-              href="/mosaic-of-voices"
-              className="flex flex-row justify-center items-center p-[20px_28px] gap-[8px] w-[206px] h-[64px] bg-[#000000] rounded-[100px] flex-none order-2 flex-grow-0 transition-all duration-300 ease-out ease-out hover:bg-[#333333]"
-            >
-              <span className="w-[150px] h-[24px] font-['Inter'] text-[20px] leading-[24px] tracking-[-0.02em] text-[#F5F5F5] flex-none order-0 flex-grow-0 " style={{fontWeight: 500}}>
-                See their stories
-              </span>
-            </a>
-          </div>
-        </div>
-
-        {/* change3 */}
-        <div
-          ref={el => sectionRefs.current['change3'] = el}
-          className={getSectionClass('change3', "flex flex-row items-start p-0 gap-[53px] absolute w-[1079px] h-[851px] left-[187px] top-[2677px]")}
-        >
-          {/* leftText */}
-
-          
-          <div className="flex flex-col items-start p-0 gap-11 w-[566px] h-[563px]">
-          <h3
-            className="w-full font-['Inter'] text-[54px] leading-[65px] tracking-[-0.04em] text-black"
-            style={{ fontWeight: 500 }}
-          >Two Reflective Questions — Your Reflections Matter
-          </h3>
-
-          <div className="w-full font-['Inter'] text-[24px] leading-[36px] tracking-[-0.02em] text-black mt-[44px]" style={{ fontWeight: 500 }}>
-          <p>
-            At the end of the experience, visitors encountered two open questions:
-          </p>
-
-          <ol className="list-decimal list-inside mt-[32px] mb-[24px]">
-            <li>What word best describes how you feel after exploring this installation?</li>
-            <li>What is one insight or reflection you'll take away with you?</li>
-          </ol>
-
-          <p>
-            We expect to engage around more than 1,000 visitors and receive 100+ reflections. Together, these responses form a living archive of empathy and awareness — the first of its kind to document how people feel when confronted with the gendered invisibility embedded in AI.
-          </p>
-
-          <p className="mt-2">
-            It is both a mirror and a measure of change, reminding us that visibility is not given — it is created, collectively.
-          </p>
-        </div>
-
           </div>
 
-          {/* Reflection Form - Main Container */}
-          <div className="w-[500px] h-[640px] flex-none order-1 flex-grow-0 bg-[#575757] rounded-[20px] relative transition-all duration-500 ease-out">
+          {/* CTA Button */}
+          <a href="./mosaic-of-voices" className="hero-cta-button">
+            <span>Explore Collective Gallery</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M3 12H21M21 12L14 5M21 12L14 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
 
-            {/* Question 1 - Rotated */}
-            <div
-              className="absolute w-[424px] h-[80px] bg-[#D89EFA] rounded-[20px] flex items-center justify-start"
-              style={{
-                left: '50.91px',
-                top: '57.61px',
-                transform: 'rotate(-3deg)'
-              }}
-            >
-              <span
-                className="font-['Inter'] text-[20px] leading-[52px] tracking-[-0.05em] text-[#000000] "
-                style={{
-                  fontWeight: 500,
-                  transform: 'rotate(-0.3deg)',
-                  paddingLeft: '24px'
-                }}
-              >
-                Q1. What word best describe...
-              </span>
-            </div>
-
-            {/* Question 2 - Rotated */}
-            <div
-              className="absolute w-[424px] h-[80px] bg-[#D89EFA] rounded-[20px] flex items-center justify-start"
-              style={{
-                left: '48px',
-                top: '167px',
-                transform: 'rotate(2.08deg)'
-              }}
-            >
-              <span
-                className="font-['Inter'] text-[20px] leading-[52px] tracking-[-0.05em] text-[#000000]"
-                style={{
-                  fontWeight: 500,
-                  transform: 'rotate(0.4deg)',
-                 paddingLeft: '24px' 
-                }}
-              >
-                Q2. What is one insight or...
-              </span>
-            </div>
-
-            {/* Text Area Container */}
-            <div
-              className="absolute w-[409px] h-[167px] bg-[#383838] border border-[#C3C3C3] rounded-[10px]"
-              style={{
-                left: '48px',
-                top: '290px'
-              }}
-            >
-              <textarea
-                className="absolute w-[352px] h-[72px] bg-transparent border-none outline-none resize-none text-[#FFFFFF] font-['Inter'] text-[16px] leading-[24px] tracking-[-0.02em] placeholder-[#CCCCCC] transition-all duration-300 ease-out focus:scale-105 focus:shadow-lg"
-                style={{
-                  left: '24px',
-                  top: '24px',
-                  fontWeight: 500
-                }}
-                placeholder="This experience gave me the confidence to pursue AI, something I never imagined possible..."
-              />
-            </div>
-
-            {/* Send Button Container */}
-            <div className="absolute" style={{ left: '48px', top: '501px' }}>
-              {/* Button */}
-              <button
-                className="w-[208px] h-[54px] bg-[#F1F1F1] transition-all duration-300 ease-out rounded-[100px] flex flex-row justify-center items-center border-none outline-none"
-                style={{ padding: '20px 28px' }}
-              >
-                <span
-                  className="font-['Inter'] text-[16px] leading-[20px] tracking-[-0.02em] text-[#000000]"
-                  style={{fontWeight: 500}}
-                >
-                  Send your reflection
-                </span>
-              </button>
-
-              {/* Purple Arrow Cursor - positioned under o and n in reflection */}
-              <div
-                className="absolute transition-all duration-300 ease-out hover:scale-110 hover:rotate-6"
-                style={{
-                  left: '200px',
-                  top: '65%',
-                  transform: 'translateX(-50%)'
-                }}
-              >
-                <svg width="51" height="58" viewBox="0 0 66 58" fill="none" className="transition-all duration-300 ease-out">
-                  <path
-                    d="M1.06783 5.71928C0.456195 2.30615 4.18041 -0.215276 7.12227 1.62023L48.1239 27.2018C51.0939 29.0549 50.4188 33.5601 47.036 34.4612L30.3342 38.9098C29.0279 39.2579 27.8771 40.0369 27.0689 41.1206L16.7363 54.975C14.6434 57.7813 10.2097 56.7349 9.59207 53.2891L1.06783 5.71928Z"
-                    fill="#D89EFA"
-                    stroke="white"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-            </div>
-
-          </div>
-        </div>
-</div>
-</section>
-
-
-
-
-
-
-
-
-</div>
-
-
-      {/* thirdSection */}
-      <section className="absolute w-[1441px] h-[985px] left-[calc(50%-1441px/2+0.5px)] top-[5567px]">
-        <div className="flex flex-col items-center p-[100px_0px] gap-[10px] w-[1441px] h-[985px]">
-          {/* ctaCard */}
-          <div
-            ref={el => sectionRefs.current['cta'] = el}
-            className={getSectionClass('cta', "flex flex-col justify-center items-center p-[120px_98px] gap-[95px] w-[1079px] h-[785px] bg-[#F6D55C] rounded-[50px] flex-none order-0 flex-grow-0")}
-            style={{transition: 'all 0.5s ease-out'}}
+          {/* Live Badge */}
+          <div 
+            ref={el => sectionRefs.current['live-badge'] = el}
+            className={`live-badge ${getSectionClass('live-badge')}`}
           >
-            <h2 className="w-[989px] h-[174px] font-['Inter'] text-[68px] leading-[87px] text-center tracking-[-0.04em] text-[#000000] flex-none order-0 flex-grow-0" style={{fontWeight: 500}}>
-              Support the Next Generation<br />of Women in AI
-            </h2>
-            <p className="w-[1000px] h-[100px] font-['Inter'] text-[28px] leading-[40px] text-center tracking-[-0.02em] text-[#000000] flex-none order-1 flex-grow-0" style={{fontWeight: 500}}>
-              Your donation helps us reach our goal of introducing 100,000 women and non-binary individuals to machine learning through free education, mentorship, and real-world opportunities.
-            </p>
-            {/* ctaButton */}
-            <a
-              href="/contact"
-              className="flex flex-row justify-center items-center p-[20px_28px] gap-[8px] w-[230px] h-[64px] bg-[#000000] rounded-[100px] flex-none order-2 flex-grow-0 transition-all duration-300 ease-out hover:bg-[#333333]"
-            >
-              <span className="w-[174px] h-[24px] font-['Inter'] text-[20px] leading-[24px] tracking-[-0.02em] text-[#F5F5F5] flex-none order-0 flex-grow-0" style={{fontWeight: 500}}>
-                Support the Future
-              </span>
-            </a>
+            <div className="live-indicator"></div>
+            <span>LIVE</span>
+          </div>
+
+          {/* Image Rectangle */}
+          <div 
+            className="hero-image"
+            style={{ transform: `translateY(${scrollY * -0.02}px)` }}
+          ></div>
+
+          {/* Description */}
+          <div 
+            ref={el => sectionRefs.current['description'] = el}
+            className={`hero-description ${getSectionClass('description')}`}
+          >
+            <div className="description-paragraph">
+              On November 7th, 2025, GirlsWhoML and Oeuvre unveiled "Below the Surface",
+              an installation that transforms a quiet gesture into an act of visibility.
+            </div>
+            <div className="description-paragraph">
+              Visitors tap on our NFC chips, and each touch reveals faces and voices of real 
+              women whose presence in technology is too often unseen, creating a shared act 
+              of recognition and emergence.
+            </div>
           </div>
         </div>
       </section>
 
+      {/* Change Section */}
+      <section className="home-change-section">
+        <h2 className="change-section-title">
+          The Change We're Making
+        </h2>
 
-      {/* forthSection */}
-      <section
-  ref={el => sectionRefs.current['testimonials'] = el}
-  className={getSectionClass(
-    'testimonials',
-    "absolute w-full h-[1331px] left-0 top-[6552px] bg-[#F5F3ED] flex flex-col items-center"
-  )}
->
-  <h2
-    className="absolute w-[915px] h-[87px] left-[calc(50%-915px/2+1px)] top-[179px] font-['Inter'] text-[72px] leading-[87px] text-center tracking-[-0.04em] text-[#000000]"
-    style={{ fontWeight: 500 }}
-  >
-    Voices & Reflections: Women Shaping AI
-  </h2>
+        {/* Change 1 */}
+        <div 
+          ref={el => sectionRefs.current['change1'] = el}
+          className={`change-item change-1 ${getSectionClass('change1')}`}
+        >
+          <div className="change-text">
+            <h3 className="change-title">
+              Below the Surface —<br />
+              Lifting Women in AI Out<br />
+              of Invisibility
+            </h3>
+            <p className="change-description">
+              Millions of women perform the foundational work of AI — labelling, tagging, and cleaning the data
+              that trains our models. Many earn only $2–4 an hour for this invisible labour. We set out to speak
+              with these women, yet even we, in trying to make them visible, found many beyond reach. Among the
+              submerged faces we could gather, we placed empty frames — reminders that invisibility extends
+              deeper than we imagined.
+            </p>
+          </div>
+          <div className="change-image">
+            <img src="/images/home/img1.png" alt="Below the Surface illustration" />
+          </div>
+        </div>
 
-{/* Slider wrapper */}
-<div className="absolute top-[450px] left-1/2 transform -translate-x-1/2 transition-all duration-700 ease-out">
-  <TestimonialSlider />
-</div>
+        {/* Change 2 */}
+        <div 
+          ref={el => sectionRefs.current['change2'] = el}
+          className={`change-item change-2 ${getSectionClass('change2')}`}
+        >
+          <div className="change-image">
+            <img src="/images/home/img2.png" alt="Tiles of reflection illustration" />
+          </div>
+          <div className="change-text">
+            <h3 className="change-title">
+              Tiles of Reflection — Let Women's Voices Be Heard
+            </h3>
+            <p className="change-description">
+              Through our survey, we collected more than 200 reflections from women working across AI — their words revealing resilience, isolation, and hope. Each response became one of 24 digital tiles within the installation, glowing softly as visitors engaged. Guests were invited to select up to four tiles that resonated with them most — a simple act that amplified these women's voices. In doing so, the installation turned listening into participation, and participation into recognition.
+            </p>
+            <a href="/mosaic-of-voices" className="change-button">
+              <span>See their stories</span>
+            </a>
+          </div>
+        </div>
 
-</section>
+        {/* Change 3 */}
+        <div 
+          ref={el => sectionRefs.current['change3'] = el}
+          className={`change-item change-3 ${getSectionClass('change3')}`}
+        >
+          <div className="change-text">
+            <h3 className="change-title">
+              Two Reflective Questions — Your Reflections Matter
+            </h3>
+            <div className="change-description">
+              <p>
+                At the end of the experience, visitors encountered two open questions:
+              </p>
+              <ol>
+                <li>What word best describes how you feel after exploring this installation?</li>
+                <li>What is one insight or reflection you'll take away with you?</li>
+              </ol>
+              <p>
+                We expect to engage around more than 1,000 visitors and receive 100+ reflections. Together, these responses form a living archive of empathy and awareness — the first of its kind to document how people feel when confronted with the gendered invisibility embedded in AI.
+              </p>
+              <p>
+                It is both a mirror and a measure of change, reminding us that visibility is not given — it is created, collectively.
+              </p>
+            </div>
+          </div>
 
+          {/* Reflection Form */}
+          <div className="reflection-form">
+            <div className="reflection-question q1">
+              <span>Q1. What word best describe...</span>
+            </div>
+            <div className="reflection-question q2">
+              <span>Q2. What is one insight or...</span>
+            </div>
+            <div className="reflection-textarea-container">
+              <textarea 
+                className="reflection-textarea"
+                placeholder="This experience gave me the confidence to pursue AI, something I never imagined possible..."
+              />
+            </div>
+            <div className="reflection-submit">
+              <button className="submit-button">
+                <span>Send your reflection</span>
+              </button>
+              <div className="cursor-arrow">
+                <svg width="51" height="58" viewBox="0 0 66 58" fill="none">
+                  <path d="M1.06783 5.71928C0.456195 2.30615 4.18041 -0.215276 7.12227 1.62023L48.1239 27.2018C51.0939 29.0549 50.4188 33.5601 47.036 34.4612L30.3342 38.9098C29.0279 39.2579 27.8771 40.0369 27.0689 41.1206L16.7363 54.975C14.6434 57.7813 10.2097 56.7349 9.59207 53.2891L1.06783 5.71928Z" fill="#D89EFA" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      {/* footer */}
-      <div className="absolute w-full h-[780px] top-[7883px] flex justify-center">
-        <Footer />
-      </div>
-    
+      {/* CTA Section */}
+      <section className="home-cta-section">
+        <div 
+          ref={el => sectionRefs.current['cta'] = el}
+          className={`cta-card ${getSectionClass('cta')}`}
+        >
+          <h2 className="cta-title">
+            Support the Next Generation<br />of Women in AI
+          </h2>
+          <p className="cta-description">
+            Your donation helps us reach our goal of introducing 100,000 women and non-binary individuals to machine learning through free education, mentorship, and real-world opportunities.
+          </p>
+          <a href="/contact" className="cta-button">
+            <span>Support the Future</span>
+          </a>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section 
+        ref={el => sectionRefs.current['testimonials'] = el}
+        className={`home-testimonials-section ${getSectionClass('testimonials')}`}
+      >
+        <h2 className="testimonials-title">
+          Voices & Reflections: Women Shaping AI
+        </h2>
+        <div className="testimonials-slider">
+          <TestimonialSlider />
+        </div>
+      </section>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

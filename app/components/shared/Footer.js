@@ -1,8 +1,6 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
-import { Inter } from 'next/font/google'
-const inter = Inter({ subsets: ['latin'], weight: ['300', '400', '500', '600'] })
-
+import './Footer.css';
 
 export default function Footer() {
   const [isVisible, setIsVisible] = useState(false);
@@ -28,92 +26,37 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer
-  ref={footerRef}
-  className="w-full bg-[#393939] py-20 px-6 md:px-16 lg:px-32 relative overflow-hidden min-h-[800px] md:min-h-[900px]"
->
-
-      {/* Empowering women in ML and AI - exact Figma specs */}
-
-      <div className="relative flex flex-col items-start md:items-start md:pl-[6vw] pt-24 md:pt-32">
-  
-      <h2
-        className={`text-[#FFFFFF] font-['Inter'] font-normal max-w-[706px] leading-tight tracking-[-0.04em] transition-all duration-1000 ease-out mx-auto text-[clamp(2.3rem,5vw,4.5rem)]    ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}
-        style={{marginTop: '102px',               // replaces top-[102px]
-    marginLeft: 'clamp(1rem,10vw,288px)', // replaces left-[calc(50%-706px/2-288.5px)]
-    marginRight: 'clamp(1rem,10vw,288px)'
-  }}
-      >
+    <div className="footer-container-wrapper">
+    <footer ref={footerRef} className="footer-container">
+      {/* Main heading */}
+      <h2 className={`footer-heading ${isVisible ? 'visible' : ''}`}>
         Empowering women in ML and AI
       </h2>
 
-      </div>
+      {/* CTA Button */}
+      <a href="/mosaic-of-voices" className={`footer-cta ${isVisible ? 'visible' : ''}`}>
+        <span>See the live action</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </a>
 
-      {/* cta - exact Figma specs */}
-      <a
-        href="/mosaic-of-voices"
-  className={`group flex flex-row justify-center items-center p-[20px_28px] gap-[8px] absolute w-[257px] h-[64px] top-[327px] bg-[#D89EFA] rounded-[100px] transition-all duration-700 ease-out hover:bg-[#000000] ${
-    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-  }`}
-  style={{animationDelay: '400ms', marginLeft: 'clamp(1rem,10vw,288px)'}}
-  onMouseEnter={(e) => {
-    e.currentTarget.querySelector('span').style.color = '#ffffff';
-    e.currentTarget.querySelector('svg').style.color = '#ffffff';
-    
-  }}
-  onMouseLeave={(e) => {
-    e.currentTarget.querySelector('span').style.color = '#000000';
-    e.currentTarget.querySelector('svg').style.color = '#231F20';
-  }}
->
-  <span className="w-[169px] h-[24px] font-['Inter'] text-[20px] leading-[24px] tracking-[-0.02em] text-[#000000] order-0 transition-colors duration-700" style={{fontWeight: 500}}>
-    See the live action
-  </span>
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="order-1 transition-all duration-700 ease-out group-hover:translate-x-1 text-[#231F20]">
-    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-</a>
+      {/* Divider */}
+      <div className={`footer-divider ${isVisible ? 'visible' : ''}`}></div>
 
-      {/* divider */}
-<div
-  className={`absolute border-t border-[#8A8A8A] transition-all duration-700 ease-out ${
-    isVisible ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
-  }`}
-  style={{ 
-    animationDelay: '600ms',
-    top: '471px',
-    left: 'clamp(1rem,10vw,288px)',
-    right: 'clamp(1rem,10vw,288px)'
-  }}
-></div>
-
-
-
-      {/* harangè logo */}
-      <span
-        className={`absolute w-[275px] h-[24px] top-[521px] font-alata font-normal text-[56px] leading-[20px] tracking-[-0.05em] text-[#FFFFFF] transition-all duration-700 ease-out  ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}
-        style={{animationDelay: '800ms', marginLeft: 'clamp(1rem,10vw,288px)'}}
-      >
+      {/* Logo */}
+      <span className={`footer-logo ${isVisible ? 'visible' : ''}`}>
         harangè
       </span>
 
-      {/* socialMedia - exact Figma specs */}
-      <div
-        className={`flex flex-row items-center p-0 gap-[16px] absolute w-[218px] h-[62px] top-[614px] transition-all duration-700 ease-out ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}
-        style={{animationDelay: '1000ms', marginLeft: 'clamp(1rem,10vw,288px)'}}
-      >
-        {/* Frame 109 - Instagram */}
+      {/* Social Media */}
+      <div className={`footer-social ${isVisible ? 'visible' : ''}`}>
+        {/* Instagram */}
         <a
           href="https://www.instagram.com/girlswhoml/"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-[58px] h-[58px] bg-[#575757] rounded-[31px] flex items-center justify-center transition-all duration-300 ease-out order-0 group"
+          className="social-icon"
           aria-label="Instagram"
         >
           <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
@@ -123,12 +66,12 @@ export default function Footer() {
           </svg>
         </a>
 
-        {/* Frame 110 - LinkedIn */}
+        {/* LinkedIn */}
         <a
           href="https://www.linkedin.com/company/girlswhoml/posts/?feedView=all"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-[58px] h-[58px] bg-[#575757] rounded-[31px] flex items-center justify-center transition-all duration-300 ease-out  order-1 group"
+          className="social-icon"
           aria-label="LinkedIn"
         >
           <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
@@ -136,12 +79,12 @@ export default function Footer() {
           </svg>
         </a>
 
-        {/* Frame 111 - X/Twitter */}
+        {/* X/Twitter */}
         <a
           href="https://x.com/girlswhoml"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-[58px] h-[58px] bg-[#575757] rounded-[31px] flex items-center justify-center transition-all duration-300 ease-out  order-2 group"
+          className="social-icon"
           aria-label="X"
         >
           <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
@@ -150,5 +93,6 @@ export default function Footer() {
         </a>
       </div>
     </footer>
+    </div>
   );
 }

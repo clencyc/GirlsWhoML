@@ -50,6 +50,7 @@ ul, ol {
   max-width: 1440px;
   padding: 120px 16px 0 16px; /* top padding for spacing */
   gap: 80px;                 /* spacing between title, description, cards */
+  margin: 0 auto; 
 }
 
 /* Title */
@@ -173,8 +174,8 @@ ul, ol {
   max-width: 455px;
   font-family: 'Inter', sans-serif;
   font-size: 28px;
-  font-weight: 700;
-  line-height: 34px;
+  font-weight: 600;
+  line-height: 36px;
   text-align: center;
   letter-spacing: -0.02em;
   color: #000000;
@@ -187,7 +188,7 @@ ul, ol {
   font-family: 'Inter', sans-serif;
   font-size: 24px;
   font-weight: 500;
-  line-height: 29px;
+  line-height: 40px;
   text-align: center;
   letter-spacing: -0.02em;
   color: #000000;

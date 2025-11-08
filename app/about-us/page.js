@@ -63,8 +63,9 @@ export default function AboutUs() {
             </div>
           </div>
         </section>
-
+</main>
         {/* Bottom Section (Quote) */}
+         
         <section className="about-quote-section">
           {/* Quote */}
           <p className="about-quote">
@@ -77,7 +78,8 @@ export default function AboutUs() {
             Melinda Gates, Co-chair Bill & Melinda Gates Foundation
           </p>
         </section>
-      </main>
+         
+      
 
       {/* Footer */}
       <Footer />

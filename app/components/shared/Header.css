@@ -31,6 +31,7 @@ html, body {
   width: 100%;
   z-index: 50;
   background: transparent;
+  
 }
 
 .header-content {
@@ -50,6 +51,7 @@ html, body {
   transition: all 0.7s ease-out;
   opacity: 0;
   transform: translateX(-50%) translateY(-16px);
+  
 }
 
 .header-content.visible {
@@ -59,7 +61,7 @@ html, body {
 
 /* Responsive Width */
 .header-content {
-  width: 90%;
+  width: 90%; 
 }
 
 @media (min-width: 640px) {
@@ -72,13 +74,13 @@ html, body {
 @media (min-width: 960px) {
   .header-content {
     width: 70%;
-    padding: 12px 32px;
+    padding: 20px 20px;
   }
 }
 
 @media (min-width: 1024px) {
   .header-content {
-    width: 808px;
+    width: 50rem;
   }
 }
 
@@ -88,6 +90,7 @@ html, body {
   align-items: center;
   gap: 8px;
   text-decoration: none;
+  
 }
 
 .logo-icon {
@@ -115,6 +118,9 @@ html, body {
   .logo-text {
     font-size: 36px;
   }
+  .logo-link {
+    margin-left: 1rem;
+  }
 }
 
 /* Desktop Navigation */
@@ -132,7 +138,7 @@ html, body {
 }
 
 .nav-link {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', sans-serif; 
   font-size: 18px;
   font-weight: 500;
   line-height: 24px;
@@ -150,10 +156,12 @@ html, body {
 @media (min-width: 1024px) {
   .nav-link {
     font-size: 20px;
+    margin-left: 0.8rem;
+    margin-right: 0.8rem;
   }
 }
 
-.nav-button {
+.header-nav-button {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -171,20 +179,20 @@ html, body {
   text-decoration: none;
   white-space: nowrap;
   transition: all 0.3s ease-out;
-  cursor: pointer;
+  cursor: pointer; 
 }
 
-.nav-button:hover {
+.header-nav-button:hover {
   background: #F5F5F5; 
 }
 
 
-.nav-button svg {
+.header-nav-button svg {
   color: var(--text-black);
   transition: all 0.3s ease-out;
 }
 
-.nav-button:hover svg {
+.header-nav-button:hover svg {
   color: #FF6B6B;
 }
 
